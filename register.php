@@ -14,19 +14,18 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="index.html">CC - Computer Crafter</a>
+                <a class="navbar-brand" href="/ProjekUAS">CC - Computer Crafter</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#parts">Parts List</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#build">Build Guide</a></li>
-                        <li class="nav-item"><a class="nav-link" href="forum.php">Forum</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#parts">Parts List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#build">Build Guide</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/forum">Forum</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
