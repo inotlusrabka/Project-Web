@@ -2,6 +2,6 @@
 
 ###
 
-<p align="left">Hello World!!</p>
+<p align="left">Set the parent folder to "ProjekUAS"</p>
 
 ###
