@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "rafie1715";
 $dbname = "pc_part";
 
 // Buat koneksi
@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$tables = ['motherboard', 'processor', 'gpu', 'ram'];
+$tables = ['motherboard', 'processor', 'gpu', 'ram', 'powersupply', 'cases'];
 $data = [];
 
 foreach ($tables as $table) {
