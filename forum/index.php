@@ -1,7 +1,8 @@
 <?php
+session_start();
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "rafie1715";
 $dbname = "pc_part";
 
 // Create connection
@@ -37,7 +38,7 @@ $result = $conn->query($sql);
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="/ProjekUAS/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#parts">Parts List</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#build">Build Guide</a></li>
                         <li class="nav-item active"><a class="nav-link" href="#">Forum</a></li>
@@ -69,9 +70,11 @@ $result = $conn->query($sql);
                                     echo '<h5 class="mb-1">' . htmlspecialchars($row["title"]) . '</h5>';
                                     echo '<p class="mb-1">' . htmlspecialchars($row["message"]) . '</p>';
                                     echo '</div>';
-                                    echo '<div>';
-                                    echo '<button class="btn btn-secondary btn-sm edit-btn mr-2" data-toggle="modal" data-target="#editDeletePostModal" data-id="' . $row["id"] . '" data-title="' . htmlspecialchars($row["title"]) . '" data-message="' . htmlspecialchars($row["message"]) . '">Edit/Delete</button>';
-                                    echo '</div>';
+                                    if (isset($_SESSION['username'])) {
+                                        echo '<div>';
+                                        echo '<button class="btn btn-secondary btn-sm edit-btn mr-2" data-toggle="modal" data-target="#editDeletePostModal" data-id="' . $row["id"] . '" data-title="' . htmlspecialchars($row["title"]) . '" data-message="' . htmlspecialchars($row["message"]) . '">Edit/Delete</button>';
+                                        echo '</div>';
+                                    }
                                     echo '</div>';
                                     echo '</div>';
                                 }
@@ -81,7 +84,13 @@ $result = $conn->query($sql);
                             ?>
                         </div>
                         <div class="mt-4">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPostModal">New Post</button>
+                            <?php
+                            if (isset($_SESSION['username'])) {
+                                echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPostModal">New Post</button>';
+                            } else {
+                                echo '<p class="text-center">You must be logged in to create a new post.</p>';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -100,15 +109,21 @@ $result = $conn->query($sql);
                     </div>
                     <div class="modal-body">
                         <form action="post.php" method="POST">
-                            <div class="form-group">
-                                <label for="post-title">Title</label>
-                                <input type="text" class="form-control" id="post-title" name="post-title" placeholder="Enter post title">
-                            </div>
-                            <div class="form-group">
-                                <label for="post-content">Content</label>
-                                <textarea class="form-control" id="post-content" name="post-content" rows="3" placeholder="Enter post content"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <?php
+                            if (isset($_SESSION['username'])) {
+                                echo '<div class="form-group">';
+                                echo '<label for="post-title">Title</label>';
+                                echo '<input type="text" class="form-control" id="post-title" name="post-title" placeholder="Enter post title">';
+                                echo '</div>';
+                                echo '<div class="form-group">';
+                                echo '<label for="post-content">Content</label>';
+                                echo '<textarea class="form-control" id="post-content" name="post-content" rows="3" placeholder="Enter post content"></textarea>';
+                                echo '</div>';
+                                echo '<button type="submit" class="btn btn-primary">Submit</button>';
+                            } else {
+                                echo '<p class="text-center">You must be logged in to create a new post.</p>';
+                            }
+                            ?>
                         </form>
                     </div>
                 </div>
@@ -127,17 +142,23 @@ $result = $conn->query($sql);
                     </div>
                     <div class="modal-body">
                         <form id="editDeletePostForm" action="edit_delete_post.php" method="POST">
-                            <input type="hidden" id="edit-delete-post-id" name="post-id">
-                            <div class="form-group">
-                                <label for="edit-delete-post-title">Title</label>
-                                <input type="text" class="form-control" id="edit-delete-post-title" name="post-title" placeholder="Enter post title">
-                            </div>
-                            <div class="form-group">
-                                <label for="edit-delete-post-content">Content</label>
-                                <textarea class="form-control" id="edit-delete-post-content" name="post-content" rows="3" placeholder="Enter post content"></textarea>
-                            </div>
-                            <button type="submit" name="action" value="edit" class="btn btn-primary">Save Changes</button>
-                            <button type="submit" name="action" value="delete" class="btn btn-danger">Delete Post</button>
+                            <?php
+                            if (isset($_SESSION['username'])) {
+                                echo '<input type="hidden" id="edit-delete-post-id" name="post-id">';
+                                echo '<div class="form-group">';
+                                echo '<label for="edit-delete-post-title">Title</label>';
+                                echo '<input type="text" class="form-control" id="edit-delete-post-title" name="post-title" placeholder="Enter post title">';
+                                echo '</div>';
+                                echo '<div class="form-group">';
+                                echo '<label for="edit-delete-post-content">Content</label>';
+                                echo '<textarea class="form-control" id="edit-delete-post-content" name="post-content" rows="3" placeholder="Enter post content"></textarea>';
+                                echo '</div>';
+                                echo '<button type="submit" name="action" value="edit" class="btn btn-primary">Save Changes</button>';
+                                echo '<button type="submit" name="action" value="delete" class="btn btn-danger">Delete Post</button>';
+                            } else {
+                                echo '<p class="text-center">You must be logged in to edit or delete a post.</p>';
+                            }
+                            ?>
                         </form>
                     </div>
                 </div>
@@ -157,26 +178,19 @@ $result = $conn->query($sql);
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <!-- Additional JS for handling modal data -->
     <script>
-        $('#editDeletePostModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var id = button.data('id');
-            var title = button.data('title');
-            var message = button.data('message');
+    $('#editDeletePostModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var id = button.data('id');
+        var title = button.data('title');
+        var message = button.data('message');
 
-            var modal = $(this);
-            modal.find('#edit-delete-post-id').val(id);
-            modal.find('#edit-delete-post-title').val(title);
-            modal.find('#edit-delete-post-content').val(message);
-        });
+        var modal = $(this);
+        modal.find('#edit-delete-post-id').val(id);
+        modal.find('#edit-delete-post-title').val(title);
+        modal.find('#edit-delete-post-content').val(message);
+    });
     </script>
 </body>
 </html>
-
-<?php
-$conn->close();
-?>
-
-<?php
-$conn->close();
-?>
