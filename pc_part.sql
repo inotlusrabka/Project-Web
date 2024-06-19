@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jun 2024 pada 18.09
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
+-- Generation Time: Jun 19, 2024 at 03:44 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `build_component`
+-- Table structure for table `build_component`
 --
 
 CREATE TABLE `build_component` (
@@ -36,10 +36,10 @@ CREATE TABLE `build_component` (
   `gpu_id` int(11) NOT NULL,
   `powersupply_id` int(11) NOT NULL,
   `cases_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `build_component`
+-- Dumping data for table `build_component`
 --
 
 INSERT INTO `build_component` (`build_id`, `UserID`, `motherboard_id`, `processor_id`, `ram_id`, `gpu_id`, `powersupply_id`, `cases_id`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `build_component` (`build_id`, `UserID`, `motherboard_id`, `processo
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cases`
+-- Table structure for table `cases`
 --
 
 CREATE TABLE `cases` (
@@ -56,40 +56,40 @@ CREATE TABLE `cases` (
   `model` varchar(100) NOT NULL,
   `series_number` varchar(50) DEFAULT NULL,
   `type` varchar(50) DEFAULT NULL,
-  `price` decimal(10,2) DEFAULT NULL,
+  `price` int(25) DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `cases`
+-- Dumping data for table `cases`
 --
 
 INSERT INTO `cases` (`id`, `model`, `series_number`, `type`, `price`, `description`) VALUES
-(41, 'NZXT H510', 'CA-H510B-W1', 'Mid Tower', 1200000.00, 'Stylish mid tower case with tempered glass side panel and excellent cable management.'),
-(42, 'Phanteks Eclipse P400A', 'PH-EC400ATG_BK01', 'Mid Tower', 1400000.00, 'High airflow mid tower case with mesh front panel and RGB lighting.'),
-(43, 'Fractal Design Meshify C', 'FD-CA-MESH-C-BKO-TG', 'Mid Tower', 1300000.00, 'Compact mid tower case with excellent airflow and tempered glass side panel.'),
-(44, 'Cooler Master MasterBox MB511 RGB', 'MCB-B511D-KGNN-RGB', 'Mid Tower', 1100000.00, 'Mid tower case with RGB lighting and optimized airflow for gaming builds.'),
-(45, 'Corsair iCUE 220T RGB', 'CC-9011190-WW', 'Mid Tower', 1500000.00, 'Compact mid tower case with tempered glass side panel and RGB lighting.'),
-(46, 'NZXT H710i', 'CA-H710i-B1', 'Full Tower', 1800000.00, 'Premium full tower case with integrated RGB lighting and tempered glass side panel.'),
-(47, 'Phanteks Enthoo Pro II', 'PH-ES719LTG_DBK01', 'Full Tower', 2000000.00, 'Spacious full tower case with versatile cooling options and extensive storage support.'),
-(48, 'Fractal Design Define 7', 'FD-C-DEF7A-06', 'Full Tower', 1900000.00, 'Silent full tower case with sound-dampening panels and modular interior layout.'),
-(49, 'Cooler Master Cosmos C700M', 'MCC-C700M-MG5N-S00', 'Full Tower', 2200000.00, 'High-end full tower case with aluminum panels, RGB lighting, and adjustable motherboard layout.'),
-(50, 'Corsair Obsidian Series 1000D', 'CC-9011148-WW', 'Super Tower', 2500000.00, 'Super tower case with dual-system capability, extensive cooling support, and premium build quality.'),
-(51, 'NZXT H210i', 'CA-H210i-B1', 'Mini-ITX', 1000000.00, 'Compact Mini-ITX case with tempered glass side panel and integrated RGB lighting.'),
-(52, 'Phanteks Evolv Shift 2', 'PH-ES217XE_BK01', 'Mini-ITX', 900000.00, 'Vertical Mini-ITX case with small footprint and unique dual-chamber design.'),
-(53, 'Fractal Design Node 202', 'FD-CA-NODE-202-BK', 'Mini-ITX', 800000.00, 'Slim Mini-ITX case designed for HTPC and console-style gaming builds.'),
-(54, 'Cooler Master Elite 110', 'RC-110-KKN2', 'Mini-ITX', 600000.00, 'Compact and affordable Mini-ITX case with mesh front panel for optimal airflow.'),
-(55, 'Corsair Carbide Series 88R', 'CC-9011086-WW', 'MicroATX', 700000.00, 'MicroATX case with clean exterior design and versatile cooling options.'),
-(56, 'NZXT H400i', 'CA-H400W-BB', 'MicroATX', 900000.00, 'Compact MicroATX case with tempered glass side panel and integrated RGB lighting.'),
-(57, 'Phanteks Eclipse P300A', 'PH-EC300ATG_BK01', 'MicroATX', 750000.00, 'Budget-friendly MicroATX case with good airflow and stylish design.'),
-(58, 'Fractal Design Meshify C Mini', 'FD-CA-MESH-C-MINI-BKO-TG', 'MicroATX', 800000.00, 'Compact MicroATX case with high airflow mesh front panel and tempered glass side panel.'),
-(59, 'Cooler Master MasterBox Q300L', 'MCB-Q300L-KANN-S00', 'MicroATX', 600000.00, 'MicroATX case with magnetic dust filters and versatile cooling options.'),
-(60, 'Corsair Crystal Series 280X', 'CC-9011135-WW', 'MicroATX', 850000.00, 'MicroATX case with tempered glass side panels and dual-chamber internal layout.');
+(41, 'NZXT H510', 'CA-H510B-W1', 'Mid Tower', 1200000, 'Stylish mid tower case with tempered glass side panel and excellent cable management.'),
+(42, 'Phanteks Eclipse P400A', 'PH-EC400ATG_BK01', 'Mid Tower', 1400000, 'High airflow mid tower case with mesh front panel and RGB lighting.'),
+(43, 'Fractal Design Meshify C', 'FD-CA-MESH-C-BKO-TG', 'Mid Tower', 1300000, 'Compact mid tower case with excellent airflow and tempered glass side panel.'),
+(44, 'Cooler Master MasterBox MB511 RGB', 'MCB-B511D-KGNN-RGB', 'Mid Tower', 1100000, 'Mid tower case with RGB lighting and optimized airflow for gaming builds.'),
+(45, 'Corsair iCUE 220T RGB', 'CC-9011190-WW', 'Mid Tower', 1500000, 'Compact mid tower case with tempered glass side panel and RGB lighting.'),
+(46, 'NZXT H710i', 'CA-H710i-B1', 'Full Tower', 1800000, 'Premium full tower case with integrated RGB lighting and tempered glass side panel.'),
+(47, 'Phanteks Enthoo Pro II', 'PH-ES719LTG_DBK01', 'Full Tower', 2000000, 'Spacious full tower case with versatile cooling options and extensive storage support.'),
+(48, 'Fractal Design Define 7', 'FD-C-DEF7A-06', 'Full Tower', 1900000, 'Silent full tower case with sound-dampening panels and modular interior layout.'),
+(49, 'Cooler Master Cosmos C700M', 'MCC-C700M-MG5N-S00', 'Full Tower', 2200000, 'High-end full tower case with aluminum panels, RGB lighting, and adjustable motherboard layout.'),
+(50, 'Corsair Obsidian Series 1000D', 'CC-9011148-WW', 'Super Tower', 2500000, 'Super tower case with dual-system capability, extensive cooling support, and premium build quality.'),
+(51, 'NZXT H210i', 'CA-H210i-B1', 'Mini-ITX', 1000000, 'Compact Mini-ITX case with tempered glass side panel and integrated RGB lighting.'),
+(52, 'Phanteks Evolv Shift 2', 'PH-ES217XE_BK01', 'Mini-ITX', 900000, 'Vertical Mini-ITX case with small footprint and unique dual-chamber design.'),
+(53, 'Fractal Design Node 202', 'FD-CA-NODE-202-BK', 'Mini-ITX', 800000, 'Slim Mini-ITX case designed for HTPC and console-style gaming builds.'),
+(54, 'Cooler Master Elite 110', 'RC-110-KKN2', 'Mini-ITX', 600000, 'Compact and affordable Mini-ITX case with mesh front panel for optimal airflow.'),
+(55, 'Corsair Carbide Series 88R', 'CC-9011086-WW', 'MicroATX', 700000, 'MicroATX case with clean exterior design and versatile cooling options.'),
+(56, 'NZXT H400i', 'CA-H400W-BB', 'MicroATX', 900000, 'Compact MicroATX case with tempered glass side panel and integrated RGB lighting.'),
+(57, 'Phanteks Eclipse P300A', 'PH-EC300ATG_BK01', 'MicroATX', 750000, 'Budget-friendly MicroATX case with good airflow and stylish design.'),
+(58, 'Fractal Design Meshify C Mini', 'FD-CA-MESH-C-MINI-BKO-TG', 'MicroATX', 800000, 'Compact MicroATX case with high airflow mesh front panel and tempered glass side panel.'),
+(59, 'Cooler Master MasterBox Q300L', 'MCB-Q300L-KANN-S00', 'MicroATX', 600000, 'MicroATX case with magnetic dust filters and versatile cooling options.'),
+(60, 'Corsair Crystal Series 280X', 'CC-9011135-WW', 'MicroATX', 850000, 'MicroATX case with tempered glass side panels and dual-chamber internal layout.');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `gpu`
+-- Table structure for table `gpu`
 --
 
 CREATE TABLE `gpu` (
@@ -97,10 +97,10 @@ CREATE TABLE `gpu` (
   `price` int(11) NOT NULL,
   `brand` varchar(20) NOT NULL,
   `item_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `gpu`
+-- Dumping data for table `gpu`
 --
 
 INSERT INTO `gpu` (`item_id`, `price`, `brand`, `item_name`) VALUES
@@ -131,7 +131,7 @@ INSERT INTO `gpu` (`item_id`, `price`, `brand`, `item_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `motherboard`
+-- Table structure for table `motherboard`
 --
 
 CREATE TABLE `motherboard` (
@@ -143,10 +143,10 @@ CREATE TABLE `motherboard` (
   `image_url` varchar(100) DEFAULT NULL,
   `socket` varchar(20) NOT NULL,
   `ram_slot` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `motherboard`
+-- Dumping data for table `motherboard`
 --
 
 INSERT INTO `motherboard` (`item_id`, `price`, `brand`, `item_name`, `power_usage`, `image_url`, `socket`, `ram_slot`) VALUES
@@ -177,7 +177,7 @@ INSERT INTO `motherboard` (`item_id`, `price`, `brand`, `item_name`, `power_usag
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `posts`
+-- Table structure for table `posts`
 --
 
 CREATE TABLE `posts` (
@@ -185,10 +185,10 @@ CREATE TABLE `posts` (
   `UserID` int(11) NOT NULL,
   `title` varchar(64) DEFAULT NULL,
   `message` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `posts`
+-- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `UserID`, `title`, `message`) VALUES
@@ -198,7 +198,7 @@ INSERT INTO `posts` (`id`, `UserID`, `title`, `message`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `powersupply`
+-- Table structure for table `powersupply`
 --
 
 CREATE TABLE `powersupply` (
@@ -206,40 +206,40 @@ CREATE TABLE `powersupply` (
   `model` varchar(100) NOT NULL,
   `series_number` varchar(50) DEFAULT NULL,
   `wattage` int(11) DEFAULT NULL,
-  `price` decimal(10,2) DEFAULT NULL,
+  `price` int(25) DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `powersupply`
+-- Dumping data for table `powersupply`
 --
 
 INSERT INTO `powersupply` (`id`, `model`, `series_number`, `wattage`, `price`, `description`) VALUES
-(21, 'Corsair RM750x', 'CP-9020179-NA', 750, 1500000.00, 'Unit sumber daya yang andal dan efisien dengan kabel modular.'),
-(22, 'EVGA SuperNOVA 850 G3', '220-G3-0850-X1', 850, 1700000.00, 'Sumber daya yang sangat baik untuk gaming dan overclocking.'),
-(23, 'Seasonic Focus GX-650', 'SSR-650FX', 650, 1300000.00, 'Sumber daya dengan sertifikasi 80 Plus Gold dan desain kompak.'),
-(24, 'Thermaltake Toughpower GF1 750W', 'PS-TPD-0750FNFAGU-1', 750, 1600000.00, 'Sumber daya modular lengkap dengan pencahayaan RGB dan efisiensi tinggi.'),
-(25, 'Cooler Master MWE Gold 650 V2', 'MPY-6501-AFAAG-US', 650, 1400000.00, 'Sumber daya yang tenang dan efisien cocok untuk build gaming menengah.'),
-(26, 'be quiet! Straight Power 11 750W', 'BN283', 750, 1800000.00, 'Sumber daya yang diam dan handal dengan komponen berkualitas tinggi.'),
-(27, 'NZXT C Series 650W', 'NP-C650M-US', 650, 1500000.00, 'Sumber daya kompak dengan sertifikasi 80 Plus Gold.'),
-(28, 'SilverStone SST-SX650-G', 'SST-SX650-G', 650, 1600000.00, 'Unit sumber daya yang ramping dan kuat untuk build form factor kecil.'),
-(29, 'Antec Earthwatts Gold Pro 550W', 'EA550G PRO', 550, 1200000.00, 'Sumber daya hemat energi dengan kapasitor Jepang untuk kehandalan jangka panjang.'),
-(30, 'Cooler Master MasterWatt 750', 'MPX-7501-AMAAB-US', 750, 1400000.00, 'Sumber daya yang terjangkau dan tahan lama dengan kabel modular penuh.'),
-(31, 'EVGA 600 W1', '100-W1-0600-K1', 600, 1100000.00, 'Sumber daya dasar untuk build berbiaya terjangkau.'),
-(32, 'Thermaltake Smart 500W', 'PS-SPD-0500NPCWUS-W', 500, 900000.00, 'Sumber daya tingkat pemula dengan performa yang handal untuk build pemula.'),
-(33, 'Seasonic S12III 500 SSR-500GB3', 'SSR-500GB3', 500, 1000000.00, 'Sumber daya berbiaya rendah dengan sertifikasi 80 Plus Bronze.'),
-(34, 'Rosewill Glacier 600W', 'GLACIER-600M', 600, 1100000.00, 'Sumber daya modular dengan operasi yang senyap dan efisiensi yang baik.'),
-(35, 'Corsair CX Series 450 Watt 80 Plus Bronze Certified', 'CP-9020120-NA', 450, 900000.00, 'Sumber daya berbiaya rendah dengan performa yang handal dan rating efisiensi Bronze.'),
-(36, 'EVGA 750 N1, 750W', '100-N1-0750-L1', 750, 1300000.00, 'Sumber daya berbiaya rendah dengan performa yang handal untuk gaming menengah.'),
-(37, 'Cooler Master MWE 500W 80 Plus White', 'MPX-5001-ACABW-US', 500, 1000000.00, 'Sumber daya yang terjangkau untuk build gaming dasar dan kantor.'),
-(38, 'Antec VP 450 Watt Energy-Efficient Power Supply', 'VP450P', 450, 850000.00, 'Sumber daya level entry dengan fitur dasar dan kehandalan yang baik.'),
-(39, 'SilverStone SST-ST30SF', 'SST-ST30SF', 300, 700000.00, 'Sumber daya kompak dan efisien untuk PC form factor kecil.'),
-(40, 'be quiet! Pure Power 11 400W', 'BN287', 400, 1000000.00, 'Sumber daya yang tenang dan hemat energi cocok untuk kantor dan multimedia.');
+(21, 'Corsair RM750x', 'CP-9020179-NA', 750, 1500000, 'Unit sumber daya yang andal dan efisien dengan kabel modular.'),
+(22, 'EVGA SuperNOVA 850 G3', '220-G3-0850-X1', 850, 1700000, 'Sumber daya yang sangat baik untuk gaming dan overclocking.'),
+(23, 'Seasonic Focus GX-650', 'SSR-650FX', 650, 1300000, 'Sumber daya dengan sertifikasi 80 Plus Gold dan desain kompak.'),
+(24, 'Thermaltake Toughpower GF1 750W', 'PS-TPD-0750FNFAGU-1', 750, 1600000, 'Sumber daya modular lengkap dengan pencahayaan RGB dan efisiensi tinggi.'),
+(25, 'Cooler Master MWE Gold 650 V2', 'MPY-6501-AFAAG-US', 650, 1400000, 'Sumber daya yang tenang dan efisien cocok untuk build gaming menengah.'),
+(26, 'be quiet! Straight Power 11 750W', 'BN283', 750, 1800000, 'Sumber daya yang diam dan handal dengan komponen berkualitas tinggi.'),
+(27, 'NZXT C Series 650W', 'NP-C650M-US', 650, 1500000, 'Sumber daya kompak dengan sertifikasi 80 Plus Gold.'),
+(28, 'SilverStone SST-SX650-G', 'SST-SX650-G', 650, 1600000, 'Unit sumber daya yang ramping dan kuat untuk build form factor kecil.'),
+(29, 'Antec Earthwatts Gold Pro 550W', 'EA550G PRO', 550, 1200000, 'Sumber daya hemat energi dengan kapasitor Jepang untuk kehandalan jangka panjang.'),
+(30, 'Cooler Master MasterWatt 750', 'MPX-7501-AMAAB-US', 750, 1400000, 'Sumber daya yang terjangkau dan tahan lama dengan kabel modular penuh.'),
+(31, 'EVGA 600 W1', '100-W1-0600-K1', 600, 1100000, 'Sumber daya dasar untuk build berbiaya terjangkau.'),
+(32, 'Thermaltake Smart 500W', 'PS-SPD-0500NPCWUS-W', 500, 900000, 'Sumber daya tingkat pemula dengan performa yang handal untuk build pemula.'),
+(33, 'Seasonic S12III 500 SSR-500GB3', 'SSR-500GB3', 500, 1000000, 'Sumber daya berbiaya rendah dengan sertifikasi 80 Plus Bronze.'),
+(34, 'Rosewill Glacier 600W', 'GLACIER-600M', 600, 1100000, 'Sumber daya modular dengan operasi yang senyap dan efisiensi yang baik.'),
+(35, 'Corsair CX Series 450 Watt 80 Plus Bronze Certified', 'CP-9020120-NA', 450, 900000, 'Sumber daya berbiaya rendah dengan performa yang handal dan rating efisiensi Bronze.'),
+(36, 'EVGA 750 N1, 750W', '100-N1-0750-L1', 750, 1300000, 'Sumber daya berbiaya rendah dengan performa yang handal untuk gaming menengah.'),
+(37, 'Cooler Master MWE 500W 80 Plus White', 'MPX-5001-ACABW-US', 500, 1000000, 'Sumber daya yang terjangkau untuk build gaming dasar dan kantor.'),
+(38, 'Antec VP 450 Watt Energy-Efficient Power Supply', 'VP450P', 450, 850000, 'Sumber daya level entry dengan fitur dasar dan kehandalan yang baik.'),
+(39, 'SilverStone SST-ST30SF', 'SST-ST30SF', 300, 700000, 'Sumber daya kompak dan efisien untuk PC form factor kecil.'),
+(40, 'be quiet! Pure Power 11 400W', 'BN287', 400, 1000000, 'Sumber daya yang tenang dan hemat energi cocok untuk kantor dan multimedia.');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `processor`
+-- Table structure for table `processor`
 --
 
 CREATE TABLE `processor` (
@@ -252,10 +252,10 @@ CREATE TABLE `processor` (
   `socket` varchar(20) NOT NULL,
   `core_count` int(11) NOT NULL,
   `performance_core_clock` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `processor`
+-- Dumping data for table `processor`
 --
 
 INSERT INTO `processor` (`item_id`, `price`, `brand`, `item_name`, `power_usage`, `image_url`, `socket`, `core_count`, `performance_core_clock`) VALUES
@@ -285,7 +285,7 @@ INSERT INTO `processor` (`item_id`, `price`, `brand`, `item_name`, `power_usage`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ram`
+-- Table structure for table `ram`
 --
 
 CREATE TABLE `ram` (
@@ -296,10 +296,10 @@ CREATE TABLE `ram` (
   `size` int(11) NOT NULL,
   `module` int(11) NOT NULL,
   `type` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `ram`
+-- Dumping data for table `ram`
 --
 
 INSERT INTO `ram` (`item_id`, `price`, `brand`, `item_name`, `size`, `module`, `type`) VALUES
@@ -329,7 +329,7 @@ INSERT INTO `ram` (`item_id`, `price`, `brand`, `item_name`, `size`, `module`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `userdata`
+-- Table structure for table `userdata`
 --
 
 CREATE TABLE `userdata` (
@@ -338,10 +338,10 @@ CREATE TABLE `userdata` (
   `Email` varchar(256) NOT NULL,
   `Password` varchar(64) NOT NULL,
   `AccessLevel` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `userdata`
+-- Dumping data for table `userdata`
 --
 
 INSERT INTO `userdata` (`UserID`, `Username`, `Email`, `Password`, `AccessLevel`) VALUES
@@ -361,7 +361,7 @@ INSERT INTO `userdata` (`UserID`, `Username`, `Email`, `Password`, `AccessLevel`
 --
 
 --
--- Indeks untuk tabel `build_component`
+-- Indexes for table `build_component`
 --
 ALTER TABLE `build_component`
   ADD PRIMARY KEY (`build_id`),
@@ -372,88 +372,88 @@ ALTER TABLE `build_component`
   ADD KEY `UserID` (`UserID`);
 
 --
--- Indeks untuk tabel `cases`
+-- Indexes for table `cases`
 --
 ALTER TABLE `cases`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `gpu`
+-- Indexes for table `gpu`
 --
 ALTER TABLE `gpu`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indeks untuk tabel `motherboard`
+-- Indexes for table `motherboard`
 --
 ALTER TABLE `motherboard`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indeks untuk tabel `posts`
+-- Indexes for table `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
   ADD KEY `UserID` (`UserID`);
 
 --
--- Indeks untuk tabel `powersupply`
+-- Indexes for table `powersupply`
 --
 ALTER TABLE `powersupply`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `processor`
+-- Indexes for table `processor`
 --
 ALTER TABLE `processor`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indeks untuk tabel `ram`
+-- Indexes for table `ram`
 --
 ALTER TABLE `ram`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indeks untuk tabel `userdata`
+-- Indexes for table `userdata`
 --
 ALTER TABLE `userdata`
   ADD PRIMARY KEY (`UserID`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `cases`
+-- AUTO_INCREMENT for table `cases`
 --
 ALTER TABLE `cases`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
--- AUTO_INCREMENT untuk tabel `posts`
+-- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `powersupply`
+-- AUTO_INCREMENT for table `powersupply`
 --
 ALTER TABLE `powersupply`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT untuk tabel `userdata`
+-- AUTO_INCREMENT for table `userdata`
 --
 ALTER TABLE `userdata`
   MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `build_component`
+-- Constraints for table `build_component`
 --
 ALTER TABLE `build_component`
   ADD CONSTRAINT `build_component_ibfk_1` FOREIGN KEY (`gpu_id`) REFERENCES `gpu` (`item_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -463,16 +463,11 @@ ALTER TABLE `build_component`
   ADD CONSTRAINT `build_component_ibfk_5` FOREIGN KEY (`UserID`) REFERENCES `userdata` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Ketidakleluasaan untuk tabel `posts`
+-- Constraints for table `posts`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `userdata` (`UserID`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

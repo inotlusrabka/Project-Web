@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "rafie1715";
+$password = "";
 $dbname = "pc_part";
 
 // Buat koneksi
