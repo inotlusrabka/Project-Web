@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2024 at 01:33 PM
+-- Generation Time: Jun 20, 2024 at 02:19 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -119,6 +119,7 @@ CREATE TABLE `gpu` (
   `price` int(11) NOT NULL,
   `brand` varchar(20) NOT NULL,
   `item_name` varchar(50) NOT NULL,
+  `power_usage` int(11) NOT NULL,
   `image_url` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -126,30 +127,30 @@ CREATE TABLE `gpu` (
 -- Dumping data for table `gpu`
 --
 
-INSERT INTO `gpu` (`item_id`, `price`, `brand`, `item_name`, `image_url`) VALUES
-(1, 4700000, 'MSI', 'GeForce RTX™ 3060 VENTUS 2X 12G OC', 'https://asset.msi.com/resize/image/global/product/product_1610443907b48feb29b4a49834f4b19e35c5511db6.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png'),
-(2, 8800000, 'Gigabyte', 'WINDFORCE OC GeForce RTX 4070 12 GB', 'https://m.media-amazon.com/images/I/71qIJjDVfzL.jpg'),
-(3, 30500000, 'Asus', 'ROG STRIX GAMING OC GeForce RTX 4090 24 GB', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/10/12/96bcfdea-f74a-4ead-afee-1375501e1af9.png'),
-(4, 3000000, 'EVGA', 'GeForce GTX 1050 Ti 4GB', 'https://m.media-amazon.com/images/I/81Yj5yvjwHL.jpg'),
-(5, 15000000, 'NVIDIA', 'GeForce RTX 3080 10GB', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9MrAb-wDuxFXxc8JTgUaTM2-anIphDio1eg&s'),
-(6, 10000000, 'ZOTAC', 'GeForce RTX 3070 8GB', 'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/2/9/6898de2d-ad00-449f-92fc-de9d797cd4a2.jpg'),
-(7, 7000000, 'MSI', 'GeForce GTX 1660 SUPER 6GB', 'https://asset.msi.com/resize/image/global/product/product_9_20191024090506_5db0f8c2ee3a7.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png'),
-(8, 5000000, 'Gigabyte', 'GeForce GTX 1650 4GB', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/2/16/607d4958-ed36-41ba-9851-322f4bece667.jpg'),
-(9, 2500000, 'Asus', 'GeForce GT 1030 2GB', 'https://images.tokopedia.net/img/cache/700/product-1/2019/4/23/7701906/7701906_9276a88c-3bf9-4490-a0bc-ef5b596c9448_500_500.png'),
-(10, 4500000, 'ASRock', 'Radeon RX 570 4GB', 'https://pg.asrock.com/Graphics-Card/photo/Phantom%20Gaming%20D%20Radeon%20RX570%204G(L1).png'),
-(11, 16000000, 'Sapphire', 'Radeon RX 6800 XT 16GB', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/2/11/2b960ec4-52d5-4390-86d6-9e2ba53928bf.jpg'),
-(12, 18000000, 'XFX', 'Radeon RX 6900 XT 16GB', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/8/18/64068afe-d800-45da-8cbb-1be66ea243a4.jpg'),
-(13, 12000000, 'PowerColor', 'Radeon RX 6700 XT 12GB', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp_lQkFTNc4WlEXxYYSPj4V7aARm5GPMSyOA&s'),
-(14, 9000000, 'AMD', 'Radeon RX 5600 XT 6GB', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2023/12/19/bd5261c1-eef3-4035-81ca-bae0ca20bfe6.jpg'),
-(15, 7000000, 'MSI', 'Radeon RX 5500 XT 8GB', 'https://asset.msi.com/resize/image/global/product/product_0_20191129162145_5de0d519d6953.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png'),
-(16, 14000000, 'Gigabyte', 'GeForce RTX 3060 Ti 8GB', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-KO36Vwb90O8iCI7ifJC2KAUq6KCUcP14Tw&s'),
-(17, 20000000, 'NVIDIA', 'GeForce RTX 3080 Ti 12GB', 'https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ampere/rtx-3080-3080ti/geforce-rtx-3080-ti-product-gallery-thumbnail-267-3.jpg'),
-(18, 35000000, 'Asus', 'GeForce RTX 3090 24GB', 'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/2/8/6aea6ed8-a9c5-40c5-a144-8047cd9a5e0f.jpg'),
-(19, 22000000, 'ZOTAC', 'GeForce RTX 3070 Ti 8GB', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4M2xPpUtbATTTxD_AdEqU7lYjkyBsuP97UA&s'),
-(20, 11000000, 'MSI', 'GeForce GTX 1080 Ti 11GB', 'https://asset.msi.com/resize/image/global/product/product_0_20170323105218_58d33862572b9.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png'),
-(21, 26000000, 'Gigabyte', 'GeForce RTX 3080 Ti 12GB', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwjIlZYdlxlulP2wWSFrIGEXbDEj03900p9Q&s'),
-(22, 30000000, 'NVIDIA', 'GeForce RTX 3090 Ti 24GB', 'https://m.media-amazon.com/images/I/51K36OrmxLL._AC_UF894,1000_QL80_.jpg'),
-(23, 27000000, 'Asus', 'GeForce RTX 3080 Ti 12GB', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/11/1/de1217e3-674e-4e5b-8681-a5966df81a55.jpg');
+INSERT INTO `gpu` (`item_id`, `price`, `brand`, `item_name`, `power_usage`, `image_url`) VALUES
+(1, 4700000, 'MSI', 'GeForce RTX™ 3060 VENTUS 2X 12G OC', 170, 'https://asset.msi.com/resize/image/global/product/product_1610443907b48feb29b4a49834f4b19e35c5511db6.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png'),
+(2, 8800000, 'Gigabyte', 'WINDFORCE OC GeForce RTX 4070 12 GB', 200, 'https://m.media-amazon.com/images/I/71qIJjDVfzL.jpg'),
+(3, 30500000, 'Asus', 'ROG STRIX GAMING OC GeForce RTX 4090 24 GB', 450, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/10/12/96bcfdea-f74a-4ead-afee-1375501e1af9.png'),
+(4, 3000000, 'EVGA', 'GeForce GTX 1050 Ti 4GB', 75, 'https://m.media-amazon.com/images/I/81Yj5yvjwHL.jpg'),
+(5, 15000000, 'NVIDIA', 'GeForce RTX 3080 10GB', 320, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9MrAb-wDuxFXxc8JTgUaTM2-anIphDio1eg&s'),
+(6, 10000000, 'ZOTAC', 'GeForce RTX 3070 8GB', 220, 'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/2/9/6898de2d-ad00-449f-92fc-de9d797cd4a2.jpg'),
+(7, 7000000, 'MSI', 'GeForce GTX 1660 SUPER 6GB', 125, 'https://asset.msi.com/resize/image/global/product/product_9_20191024090506_5db0f8c2ee3a7.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png'),
+(8, 5000000, 'Gigabyte', 'GeForce GTX 1650 4GB', 75, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/2/16/607d4958-ed36-41ba-9851-322f4bece667.jpg'),
+(9, 2500000, 'Asus', 'GeForce GT 1030 2GB', 30, 'https://images.tokopedia.net/img/cache/700/product-1/2019/4/23/7701906/7701906_9276a88c-3bf9-4490-a0bc-ef5b596c9448_500_500.png'),
+(10, 4500000, 'ASRock', 'Radeon RX 570 4GB', 150, 'https://pg.asrock.com/Graphics-Card/photo/Phantom%20Gaming%20D%20Radeon%20RX570%204G(L1).png'),
+(11, 16000000, 'Sapphire', 'Radeon RX 6800 XT 16GB', 300, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/2/11/2b960ec4-52d5-4390-86d6-9e2ba53928bf.jpg'),
+(12, 18000000, 'XFX', 'Radeon RX 6900 XT 16GB', 300, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/8/18/64068afe-d800-45da-8cbb-1be66ea243a4.jpg'),
+(13, 12000000, 'PowerColor', 'Radeon RX 6700 XT 12GB', 230, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp_lQkFTNc4WlEXxYYSPj4V7aARm5GPMSyOA&s'),
+(14, 9000000, 'AMD', 'Radeon RX 5600 XT 6GB', 150, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2023/12/19/bd5261c1-eef3-4035-81ca-bae0ca20bfe6.jpg'),
+(15, 7000000, 'MSI', 'Radeon RX 5500 XT 8GB', 130, 'https://asset.msi.com/resize/image/global/product/product_0_20191129162145_5de0d519d6953.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png'),
+(16, 14000000, 'Gigabyte', 'GeForce RTX 3060 Ti 8GB', 200, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-KO36Vwb90O8iCI7ifJC2KAUq6KCUcP14Tw&s'),
+(17, 20000000, 'NVIDIA', 'GeForce RTX 3080 Ti 12GB', 350, 'https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ampere/rtx-3080-3080ti/geforce-rtx-3080-ti-product-gallery-thumbnail-267-3.jpg'),
+(18, 35000000, 'Asus', 'GeForce RTX 3090 24GB', 350, 'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/2/8/6aea6ed8-a9c5-40c5-a144-8047cd9a5e0f.jpg'),
+(19, 22000000, 'ZOTAC', 'GeForce RTX 3070 Ti 8GB', 290, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4M2xPpUtbATTTxD_AdEqU7lYjkyBsuP97UA&s'),
+(20, 11000000, 'MSI', 'GeForce GTX 1080 Ti 11GB', 250, 'https://asset.msi.com/resize/image/global/product/product_0_20170323105218_58d33862572b9.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png'),
+(21, 26000000, 'Gigabyte', 'GeForce RTX 3080 Ti 12GB', 350, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwjIlZYdlxlulP2wWSFrIGEXbDEj03900p9Q&s'),
+(22, 30000000, 'NVIDIA', 'GeForce RTX 3090 Ti 24GB', 450, 'https://m.media-amazon.com/images/I/51K36OrmxLL._AC_UF894,1000_QL80_.jpg'),
+(23, 27000000, 'Asus', 'GeForce RTX 3080 Ti 12GB', 350, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/11/1/de1217e3-674e-4e5b-8681-a5966df81a55.jpg');
 
 -- --------------------------------------------------------
 
@@ -173,9 +174,9 @@ CREATE TABLE `motherboard` (
 --
 
 INSERT INTO `motherboard` (`item_id`, `price`, `brand`, `item_name`, `power_usage`, `image_url`, `socket`, `ram_slot`) VALUES
-(1, 3500000, 'MSI', 'B650 GAMING PLUS WIFI', NULL, 'https://storage-asset.msi.com/global/picture/image/feature/mb/B650/B650-GAMING-PLUS-WIFI/modelblock-gaming-pd.png', 'AM5', 4),
-(2, 3700000, 'Asus', 'ROG STRIX B650-A GAMING WIFI', NULL, 'https://dlcdnwebimgs.asus.com/files/media/3151EBBB-8450-43F6-9994-D7E5E6A9D0E5/v1/img/style/id-desig', 'AM5', 4),
-(3, 2900000, 'Gigabyte', 'B650 GAMING X AX', NULL, 'https://static.gigabyte.com/StaticFile/Image/Global/78a667df301f4e8abecc66bb5e8ea619/Product/32245/p', 'AM5', 4),
+(1, 3500000, 'MSI', 'B650 GAMING PLUS WIFI', 60, 'https://storage-asset.msi.com/global/picture/image/feature/mb/B650/B650-GAMING-PLUS-WIFI/modelblock-gaming-pd.png', 'AM5', 4),
+(2, 3700000, 'Asus', 'ROG STRIX B650-A GAMING WIFI', 60, 'https://dlcdnwebimgs.asus.com/files/media/3151EBBB-8450-43F6-9994-D7E5E6A9D0E5/v1/img/style/id-desig', 'AM5', 4),
+(3, 2900000, 'Gigabyte', 'B650 GAMING X AX', 60, 'https://static.gigabyte.com/StaticFile/Image/Global/78a667df301f4e8abecc66bb5e8ea619/Product/32245/p', 'AM5', 4),
 (4, 2500000, 'ASRock', 'B450M PRO4', 50, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOfhHfuFGG48In_bNPmmL1B1W4cSBFTuFu_Q&s', 'AM4', 4),
 (5, 3000000, 'MSI', 'MAG B550 TOMAHAWK', 55, 'https://blossomzones.com/wp-content/uploads/2020/07/B550-TOMAHAWK.jpg', 'AM4', 4),
 (6, 4500000, 'Gigabyte', 'X570 AORUS ELITE', 60, 'https://static.gigabyte.com/StaticFile/Image/Global/b281bb90ea1787d73fe5bff45821cd8c/Product/22419/png/500', 'AM4', 4),
@@ -320,6 +321,7 @@ CREATE TABLE `ram` (
   `size` int(11) NOT NULL,
   `module` int(11) NOT NULL,
   `type` varchar(20) NOT NULL,
+  `power_usage` int(11) NOT NULL,
   `image_url` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -327,29 +329,29 @@ CREATE TABLE `ram` (
 -- Dumping data for table `ram`
 --
 
-INSERT INTO `ram` (`item_id`, `price`, `brand`, `item_name`, `size`, `module`, `type`, `image_url`) VALUES
-(1, 1850000, 'Corsair', 'Vengeance 32 GB', 16, 2, 'DDR4', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/8/15/866b5733-707c-421f-bdf4-2af6f9fef2be.jpg'),
-(2, 2500000, 'G.Skill', 'Ripjaws V 16 GB', 8, 2, 'DDR4', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/11/11/cfb86031-63d3-4383-813d-f5ba48e873e3.jpg'),
-(3, 3700000, 'Corsair', 'Vengeance LPX 32 GB', 16, 2, 'DDR4', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/8/15/518a07f4-ec9e-41f8-89ab-d2fbbe1f5857.jpg'),
-(4, 4500000, 'Kingston', 'HyperX Fury 16 GB', 8, 2, 'DDR4', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/2/25/f6f8d4c4-7f12-4795-9a9e-a85deac3af76.jpg'),
-(5, 5200000, 'Crucial', 'Ballistix Sport LT 32 GB', 16, 2, 'DDR4', 'https://www.memoryc.com/images/products/bb/xxe_41969.jpg'),
-(6, 6100000, 'G.Skill', 'Trident Z RGB 32 GB', 16, 2, 'DDR4', 'https://images.tokopedia.net/img/cache/700/product-1/2018/11/10/5196009/5196009_b496f02a-58b8-4f29-b11b-9c7ddb51b862_1280_960.jpg'),
-(7, 4700000, 'Corsair', 'Vengeance RGB Pro 16 GB', 8, 2, 'DDR4', 'https://images.tokopedia.net/img/cache/700/product-1/2018/7/10/9126088/9126088_5b79f2ab-6e8f-4858-b394-e99ea646d973_700_448.png'),
-(8, 5400000, 'Kingston', 'FURY Beast 16 GB', 8, 2, 'DDR4', 'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/11/3/f90eecad-2b13-43fb-aecc-ab9366cd6d93.jpg'),
-(9, 3300000, 'Team', 'T-Force Vulcan Z 16 GB', 8, 2, 'DDR4', 'https://images.teamgroupinc.com/products/memory/u-dimm/ddr4/vulcan-z/gray/dual_01.jpg'),
-(10, 4100000, 'ADATA', 'XPG Z1 16 GB', 8, 2, 'DDR4', 'https://images.tokopedia.net/img/cache/700/hDjmkQ/2022/7/31/8b522262-a000-47c3-87ce-c8ce656466fe.jpg'),
-(11, 2900000, 'G.Skill', 'Aegis 16 GB', 8, 2, 'DDR4', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRY8hUp4vCQk5s-gwSfIk8Z_xDF3bfgP7VGA&s'),
-(12, 5000000, 'Patriot', 'Viper 4 16 GB', 8, 2, 'DDR4', 'https://cdn.mos.cms.futurecdn.net/i4ML4ZTkmGgiWxokbRXVG3.jpg'),
-(13, 2700000, 'Corsair', 'Vengeance 16 GB', 8, 2, 'DDR4', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/8/15/507e82f6-38db-4775-bdf6-b7770f4fcabe.jpg'),
-(14, 3500000, 'Crucial', 'Ballistix 16 GB', 8, 2, 'DDR4', 'https://images.tokopedia.net/img/cache/700/product-1/2018/4/1/0/0_c79797ff-ffeb-4f45-93d3-deee0171501f_700_366.jpg'),
-(15, 3800000, 'G.Skill', 'Ripjaws V 32 GB', 16, 2, 'DDR4', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTztt6YR0aFUXU3vQAzSwRGCYVrn4feOIVtQ&s'),
-(16, 6000000, 'Corsair', 'Vengeance LPX 64 GB', 16, 4, 'DDR4', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/8/31/c1601b79-9112-48dc-820c-f522fc68643c.jpg'),
-(17, 4500000, 'Kingston', 'HyperX Fury 32 GB', 16, 2, 'DDR4', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/4/23/f5beb4ce-b047-4556-b860-0051f94b3205.jpg'),
-(18, 5200000, 'Crucial', 'Ballistix Sport LT 16 GB', 8, 2, 'DDR4', 'https://images.tokopedia.net/img/cache/700/product-1/2020/6/24/batch-upload/batch-upload_530aa6d4-332a-4513-9fab-98126469d6e7.jpg'),
-(19, 6100000, 'G.Skill', 'Trident Z RGB 64 GB', 16, 4, 'DDR4', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/4/1/824323d2-4a3c-48ea-bf07-f6168d086390.png'),
-(20, 4700000, 'Corsair', 'Vengeance RGB Pro 32 GB', 16, 2, 'DDR4', 'https://images.tokopedia.net/img/cache/700/product-1/2018/7/10/9126088/9126088_5b79f2ab-6e8f-4858-b394-e99ea646d973_700_448.png'),
-(21, 5400000, 'Kingston', 'FURY Beast 32 GB', 16, 2, 'DDR4', 'https://m.media-amazon.com/images/I/61uXihcspuL._AC_UF894,1000_QL80_.jpg'),
-(22, 3300000, 'Team', 'T-Force Vulcan Z 32 GB', 16, 2, 'DDR4', 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/10/19/aa03b8e7-ef7e-42b8-923f-fbf3c41b3e69.jpg');
+INSERT INTO `ram` (`item_id`, `price`, `brand`, `item_name`, `size`, `module`, `type`, `power_usage`, `image_url`) VALUES
+(1, 1850000, 'Corsair', 'Vengeance 32 GB', 16, 2, 'DDR4', 15, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/8/15/866b5733-707c-421f-bdf4-2af6f9fef2be.jpg'),
+(2, 2500000, 'G.Skill', 'Ripjaws V 16 GB', 8, 2, 'DDR4', 15, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/11/11/cfb86031-63d3-4383-813d-f5ba48e873e3.jpg'),
+(3, 3700000, 'Corsair', 'Vengeance LPX 32 GB', 16, 2, 'DDR4', 15, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/8/15/518a07f4-ec9e-41f8-89ab-d2fbbe1f5857.jpg'),
+(4, 4500000, 'Kingston', 'HyperX Fury 16 GB', 8, 2, 'DDR4', 15, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/2/25/f6f8d4c4-7f12-4795-9a9e-a85deac3af76.jpg'),
+(5, 5200000, 'Crucial', 'Ballistix Sport LT 32 GB', 16, 2, 'DDR4', 15, 'https://www.memoryc.com/images/products/bb/xxe_41969.jpg'),
+(6, 6100000, 'G.Skill', 'Trident Z RGB 32 GB', 16, 2, 'DDR4', 15, 'https://images.tokopedia.net/img/cache/700/product-1/2018/11/10/5196009/5196009_b496f02a-58b8-4f29-b11b-9c7ddb51b862_1280_960.jpg'),
+(7, 4700000, 'Corsair', 'Vengeance RGB Pro 16 GB', 8, 2, 'DDR4', 15, 'https://images.tokopedia.net/img/cache/700/product-1/2018/7/10/9126088/9126088_5b79f2ab-6e8f-4858-b394-e99ea646d973_700_448.png'),
+(8, 5400000, 'Kingston', 'FURY Beast 16 GB', 8, 2, 'DDR4', 15, 'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/11/3/f90eecad-2b13-43fb-aecc-ab9366cd6d93.jpg'),
+(9, 3300000, 'Team', 'T-Force Vulcan Z 16 GB', 8, 2, 'DDR4', 15, 'https://images.teamgroupinc.com/products/memory/u-dimm/ddr4/vulcan-z/gray/dual_01.jpg'),
+(10, 4100000, 'ADATA', 'XPG Z1 16 GB', 8, 2, 'DDR4', 15, 'https://images.tokopedia.net/img/cache/700/hDjmkQ/2022/7/31/8b522262-a000-47c3-87ce-c8ce656466fe.jpg'),
+(11, 2900000, 'G.Skill', 'Aegis 16 GB', 8, 2, 'DDR4', 15, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRY8hUp4vCQk5s-gwSfIk8Z_xDF3bfgP7VGA&s'),
+(12, 5000000, 'Patriot', 'Viper 4 16 GB', 8, 2, 'DDR4', 15, 'https://cdn.mos.cms.futurecdn.net/i4ML4ZTkmGgiWxokbRXVG3.jpg'),
+(13, 2700000, 'Corsair', 'Vengeance 16 GB', 8, 2, 'DDR4', 15, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/8/15/507e82f6-38db-4775-bdf6-b7770f4fcabe.jpg'),
+(14, 3500000, 'Crucial', 'Ballistix 16 GB', 8, 2, 'DDR4', 15, 'https://images.tokopedia.net/img/cache/700/product-1/2018/4/1/0/0_c79797ff-ffeb-4f45-93d3-deee0171501f_700_366.jpg'),
+(15, 3800000, 'G.Skill', 'Ripjaws V 32 GB', 16, 2, 'DDR4', 15, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTztt6YR0aFUXU3vQAzSwRGCYVrn4feOIVtQ&s'),
+(16, 6000000, 'Corsair', 'Vengeance LPX 64 GB', 16, 4, 'DDR4', 30, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/8/31/c1601b79-9112-48dc-820c-f522fc68643c.jpg'),
+(17, 4500000, 'Kingston', 'HyperX Fury 32 GB', 16, 2, 'DDR4', 15, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/4/23/f5beb4ce-b047-4556-b860-0051f94b3205.jpg'),
+(18, 5200000, 'Crucial', 'Ballistix Sport LT 16 GB', 8, 2, 'DDR4', 15, 'https://images.tokopedia.net/img/cache/700/product-1/2020/6/24/batch-upload/batch-upload_530aa6d4-332a-4513-9fab-98126469d6e7.jpg'),
+(19, 6100000, 'G.Skill', 'Trident Z RGB 64 GB', 16, 4, 'DDR4', 30, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/4/1/824323d2-4a3c-48ea-bf07-f6168d086390.png'),
+(20, 4700000, 'Corsair', 'Vengeance RGB Pro 32 GB', 16, 2, 'DDR4', 15, 'https://images.tokopedia.net/img/cache/700/product-1/2018/7/10/9126088/9126088_5b79f2ab-6e8f-4858-b394-e99ea646d973_700_448.png'),
+(21, 5400000, 'Kingston', 'FURY Beast 32 GB', 16, 2, 'DDR4', 15, 'https://m.media-amazon.com/images/I/61uXihcspuL._AC_UF894,1000_QL80_.jpg'),
+(22, 3300000, 'Team', 'T-Force Vulcan Z 32 GB', 16, 2, 'DDR4', 15, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/10/19/aa03b8e7-ef7e-42b8-923f-fbf3c41b3e69.jpg');
 
 -- --------------------------------------------------------
 
