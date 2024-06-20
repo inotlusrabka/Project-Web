@@ -28,7 +28,7 @@ $result = $conn->query($sql);
     
     <!-- Bootstrap CSS and other styles -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/ProjekUAS/stylesheets/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
@@ -48,7 +48,7 @@ $result = $conn->query($sql);
                         <li class="nav-item active"><a class="nav-link" href="#">Forum</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#contact">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/profile.php"><i class="fas fa-user"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/profile/"><i class="fas fa-user"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -68,7 +68,7 @@ $result = $conn->query($sql);
                             <?php
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    echo '<div class="list-group-item" data-aos="fade-right" data-aos-duration="1000">';
+                                    echo '<div class="list-group-item" data-aos="fade-up" data-aos-duration="1000">';
                                     echo '<div class="d-flex w-100 justify-content-between">';
                                     echo '<div>';
                                     echo '<h5 class="mb-1">' . htmlspecialchars($row["title"]) . '</h5>';
@@ -92,7 +92,7 @@ $result = $conn->query($sql);
                             if (isset($_SESSION['username'])) {
                                 echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPostModal">New Post</button>';
                             } else {
-                                echo '<p class="text-center" data-aos="fade-up">You must be logged in to create a new post.</p>';
+                                echo '<div class="text-center alert alert-danger" role="alert" data-aos="fade-up" data-aos-duration="1000">You must be logged in to create a new post.</div>';
                             }
                             ?>
                         </div>
@@ -125,7 +125,7 @@ $result = $conn->query($sql);
                                 echo '</div>';
                                 echo '<button type="submit" class="btn btn-primary">Submit</button>';
                             } else {
-                                echo '<p class="text-center">You must be logged in to create a new post.</p>';
+                                echo '<div class="mt-4 alert alert-danger" role="alert">You must be logged in to create a new post.</div>'; 
                             }
                             ?>
                         </form>

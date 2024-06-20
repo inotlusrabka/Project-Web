@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2024 at 02:19 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Jun 20, 2024 at 06:25 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,14 +36,14 @@ CREATE TABLE `build_component` (
   `gpu_id` int(11) NOT NULL,
   `powersupply_id` int(11) NOT NULL,
   `cases_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `build_component`
 --
 
 INSERT INTO `build_component` (`build_id`, `UserID`, `motherboard_id`, `processor_id`, `ram_id`, `gpu_id`, `powersupply_id`, `cases_id`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 1);
+(5, 1, 1, 1, 13, 10, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -59,33 +59,33 @@ CREATE TABLE `cases` (
   `price` int(25) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `image_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cases`
 --
 
 INSERT INTO `cases` (`id`, `model`, `series_number`, `type`, `price`, `description`, `image_url`) VALUES
-(41, 'NZXT H510', 'CA-H510B-W1', 'Mid Tower', 1200000, 'Stylish mid tower case with tempered glass side panel and excellent cable management.', 'https://nzxt.com/assets/cms/34299/1617970872-h510-white-black-mainw-system.png?auto=format&dpr=1.5&fit=crop&h=1000&w=1000'),
-(42, 'Phanteks Eclipse P400A', 'PH-EC400ATG_BK01', 'Mid Tower', 1400000, 'High airflow mid tower case with mesh front panel and RGB lighting.', 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//catalog-image/89/MTA-131424901/no-brand_no-brand_full01.jpg'),
-(43, 'Fractal Design Meshify C', 'FD-CA-MESH-C-BKO-TG', 'Mid Tower', 1300000, 'Compact mid tower case with excellent airflow and tempered glass side panel.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOv46jijvWgtndVeU3wWKJQjKxZ91z07fhJQ&s'),
-(44, 'Cooler Master MasterBox MB511 RGB', 'MCB-B511D-KGNN-RGB', 'Mid Tower', 1100000, 'Mid tower case with RGB lighting and optimized airflow for gaming builds.', 'https://a.storyblok.com/f/281110/322073bfac/mb511rgb_g1.png/m/1440x0/smart'),
-(45, 'Corsair iCUE 220T RGB', 'CC-9011190-WW', 'Mid Tower', 1500000, 'Compact mid tower case with tempered glass side panel and RGB lighting.', 'https://assets.corsair.com/image/upload/c_pad,q_auto,h_1024,w_1024,f_auto/products/Cases/CC-9011190-WW/Gallery/220T_RGB_GLASS_BLACK_01.webp?width=1080&quality=85&auto=webp&format=pjpg'),
-(46, 'NZXT H710i', 'CA-H710i-B1', 'Full Tower', 1800000, 'Premium full tower case with integrated RGB lighting and tempered glass side panel.', 'https://nzxt.com/assets/cms/34299/1615570836-h710i-2020-white-black-kraken-x-system.png?auto=format&dpr=1.5&fit=crop&h=1000&w=1000'),
-(47, 'Phanteks Enthoo Pro II', 'PH-ES719LTG_DBK01', 'Full Tower', 2000000, 'Spacious full tower case with versatile cooling options and extensive storage support.', 'https://m.media-amazon.com/images/I/81gALg+hx3L._AC_UF894,1000_QL80_.jpg'),
-(48, 'Fractal Design Define 7', 'FD-C-DEF7A-06', 'Full Tower', 1900000, 'Silent full tower case with sound-dampening panels and modular interior layout.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn-yjocwF8_v6yc51VE1AhRDpP15Nx8VYN7g&s'),
-(49, 'Cooler Master Cosmos C700M', 'MCC-C700M-MG5N-S00', 'Full Tower', 2200000, 'High-end full tower case with aluminum panels, RGB lighting, and adjustable motherboard layout.', 'https://a.storyblok.com/f/281110/cb15588e1a/c700m-black-gallery-1.png/m/1440x0/smart'),
-(50, 'Corsair Obsidian Series 1000D', 'CC-9011148-WW', 'Super Tower', 2500000, 'Super tower case with dual-system capability, extensive cooling support, and premium build quality.', 'https://assets.corsair.com/image/upload/c_pad,q_auto,h_1024,w_1024,f_auto/products/Cases/CC-9011148-WW/Gallery/1000D_01.webp?width=1080&quality=85&auto=webp&format=pjpg'),
-(51, 'NZXT H210i', 'CA-H210i-B1', 'Mini-ITX', 1000000, 'Compact Mini-ITX case with tempered glass side panel and integrated RGB lighting.', 'https://nzxt.com/assets/cms/34299/1615556894-h210i-2020-white-black-kraken-x-system.png?auto=format&dpr=1.5&fit=crop&h=1000&w=1000'),
-(52, 'Phanteks Evolv Shift 2', 'PH-ES217XE_BK01', 'Mini-ITX', 900000, 'Vertical Mini-ITX case with small footprint and unique dual-chamber design.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBo7psWDN90PLhhXOouChmX4RiOEKRalFlQQ&s'),
-(53, 'Fractal Design Node 202', 'FD-CA-NODE-202-BK', 'Mini-ITX', 800000, 'Slim Mini-ITX case designed for HTPC and console-style gaming builds.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ4hn6WrQUnE9udDu0ZA7LBzUU1ipdiV0cHg&s'),
-(54, 'Cooler Master Elite 110', 'RC-110-KKN2', 'Mini-ITX', 600000, 'Compact and affordable Mini-ITX case with mesh front panel for optimal airflow.', 'https://a.storyblok.com/f/281110/f6cacaa8a0/elite110-gallery-3.png/m/1440x0/smart'),
-(55, 'Corsair Carbide Series 88R', 'CC-9011086-WW', 'MicroATX', 700000, 'MicroATX case with clean exterior design and versatile cooling options.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0LF12H2uy5w1R4CgvWlA-fTkdPX28loAbvw&s'),
-(56, 'NZXT H400i', 'CA-H400W-BB', 'MicroATX', 900000, 'Compact MicroATX case with tempered glass side panel and integrated RGB lighting.', 'https://www.bhphotovideo.com/images/images1000x1000/nzxt_ca_h400w_bb_h400i_matte_black_1395876.jpg'),
-(57, 'Phanteks Eclipse P300A', 'PH-EC300ATG_BK01', 'MicroATX', 750000, 'Budget-friendly MicroATX case with good airflow and stylish design.', 'https://m.media-amazon.com/images/I/91Gqz3yTwnL.jpg'),
-(58, 'Fractal Design Meshify C Mini', 'FD-CA-MESH-C-MINI-BKO-TG', 'MicroATX', 800000, 'Compact MicroATX case with high airflow mesh front panel and tempered glass side panel.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKol70Tn0FpN8q8SHW4EgRzmKS5PvI9maCSA&s'),
-(59, 'Cooler Master MasterBox Q300L', 'MCB-Q300L-KANN-S00', 'MicroATX', 600000, 'MicroATX case with magnetic dust filters and versatile cooling options.', 'https://a.storyblok.com/f/281110/5c1192c34c/gallery-2-min.png/m/1440x0/smart'),
-(60, 'Corsair Crystal Series 280X', 'CC-9011135-WW', 'MicroATX', 850000, 'MicroATX case with tempered glass side panels and dual-chamber internal layout.', 'https://assets.corsair.com/image/upload/c_pad,q_auto,h_1024,w_1024,f_auto/products/Cases/CC-9011135-WW/Gallery/280X_RGB_BLK_01.webp?width=1080&quality=85&auto=webp&format=pjpg');
+(1, 'NZXT H510', 'CA-H510B-W1', 'Mid Tower', 1200000, 'Stylish mid tower case with tempered glass side panel and excellent cable management.', 'https://nzxt.com/assets/cms/34299/1617970872-h510-white-black-mainw-system.png?auto=format&dpr=1.5&fit=crop&h=1000&w=1000'),
+(2, 'Phanteks Eclipse P400A', 'PH-EC400ATG_BK01', 'Mid Tower', 1400000, 'High airflow mid tower case with mesh front panel and RGB lighting.', 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//catalog-image/89/MTA-131424901/no-brand_no-brand_full01.jpg'),
+(3, 'Fractal Design Meshify C', 'FD-CA-MESH-C-BKO-TG', 'Mid Tower', 1300000, 'Compact mid tower case with excellent airflow and tempered glass side panel.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOv46jijvWgtndVeU3wWKJQjKxZ91z07fhJQ&s'),
+(4, 'Cooler Master MasterBox MB511 RGB', 'MCB-B511D-KGNN-RGB', 'Mid Tower', 1100000, 'Mid tower case with RGB lighting and optimized airflow for gaming builds.', 'https://a.storyblok.com/f/281110/322073bfac/mb511rgb_g1.png/m/1440x0/smart'),
+(5, 'Corsair iCUE 220T RGB', 'CC-9011190-WW', 'Mid Tower', 1500000, 'Compact mid tower case with tempered glass side panel and RGB lighting.', 'https://assets.corsair.com/image/upload/c_pad,q_auto,h_1024,w_1024,f_auto/products/Cases/CC-9011190-WW/Gallery/220T_RGB_GLASS_BLACK_01.webp?width=1080&quality=85&auto=webp&format=pjpg'),
+(6, 'NZXT H710i', 'CA-H710i-B1', 'Full Tower', 1800000, 'Premium full tower case with integrated RGB lighting and tempered glass side panel.', 'https://nzxt.com/assets/cms/34299/1615570836-h710i-2020-white-black-kraken-x-system.png?auto=format&dpr=1.5&fit=crop&h=1000&w=1000'),
+(7, 'Phanteks Enthoo Pro II', 'PH-ES719LTG_DBK01', 'Full Tower', 2000000, 'Spacious full tower case with versatile cooling options and extensive storage support.', 'https://m.media-amazon.com/images/I/81gALg+hx3L._AC_UF894,1000_QL80_.jpg'),
+(8, 'Fractal Design Define 7', 'FD-C-DEF7A-06', 'Full Tower', 1900000, 'Silent full tower case with sound-dampening panels and modular interior layout.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn-yjocwF8_v6yc51VE1AhRDpP15Nx8VYN7g&s'),
+(9, 'Cooler Master Cosmos C700M', 'MCC-C700M-MG5N-S00', 'Full Tower', 2200000, 'High-end full tower case with aluminum panels, RGB lighting, and adjustable motherboard layout.', 'https://a.storyblok.com/f/281110/cb15588e1a/c700m-black-gallery-1.png/m/1440x0/smart'),
+(10, 'Corsair Obsidian Series 1000D', 'CC-9011148-WW', 'Super Tower', 2500000, 'Super tower case with dual-system capability, extensive cooling support, and premium build quality.', 'https://assets.corsair.com/image/upload/c_pad,q_auto,h_1024,w_1024,f_auto/products/Cases/CC-9011148-WW/Gallery/1000D_01.webp?width=1080&quality=85&auto=webp&format=pjpg'),
+(11, 'NZXT H210i', 'CA-H210i-B1', 'Mini-ITX', 1000000, 'Compact Mini-ITX case with tempered glass side panel and integrated RGB lighting.', 'https://nzxt.com/assets/cms/34299/1615556894-h210i-2020-white-black-kraken-x-system.png?auto=format&dpr=1.5&fit=crop&h=1000&w=1000'),
+(12, 'Phanteks Evolv Shift 2', 'PH-ES217XE_BK01', 'Mini-ITX', 900000, 'Vertical Mini-ITX case with small footprint and unique dual-chamber design.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBo7psWDN90PLhhXOouChmX4RiOEKRalFlQQ&s'),
+(13, 'Fractal Design Node 202', 'FD-CA-NODE-202-BK', 'Mini-ITX', 800000, 'Slim Mini-ITX case designed for HTPC and console-style gaming builds.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ4hn6WrQUnE9udDu0ZA7LBzUU1ipdiV0cHg&s'),
+(14, 'Cooler Master Elite 110', 'RC-110-KKN2', 'Mini-ITX', 600000, 'Compact and affordable Mini-ITX case with mesh front panel for optimal airflow.', 'https://a.storyblok.com/f/281110/f6cacaa8a0/elite110-gallery-3.png/m/1440x0/smart'),
+(15, 'Corsair Carbide Series 88R', 'CC-9011086-WW', 'MicroATX', 700000, 'MicroATX case with clean exterior design and versatile cooling options.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0LF12H2uy5w1R4CgvWlA-fTkdPX28loAbvw&s'),
+(16, 'NZXT H400i', 'CA-H400W-BB', 'MicroATX', 900000, 'Compact MicroATX case with tempered glass side panel and integrated RGB lighting.', 'https://www.bhphotovideo.com/images/images1000x1000/nzxt_ca_h400w_bb_h400i_matte_black_1395876.jpg'),
+(17, 'Phanteks Eclipse P300A', 'PH-EC300ATG_BK01', 'MicroATX', 750000, 'Budget-friendly MicroATX case with good airflow and stylish design.', 'https://m.media-amazon.com/images/I/91Gqz3yTwnL.jpg'),
+(18, 'Fractal Design Meshify C Mini', 'FD-CA-MESH-C-MINI-BKO-TG', 'MicroATX', 800000, 'Compact MicroATX case with high airflow mesh front panel and tempered glass side panel.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKol70Tn0FpN8q8SHW4EgRzmKS5PvI9maCSA&s'),
+(19, 'Cooler Master MasterBox Q300L', 'MCB-Q300L-KANN-S00', 'MicroATX', 600000, 'MicroATX case with magnetic dust filters and versatile cooling options.', 'https://a.storyblok.com/f/281110/5c1192c34c/gallery-2-min.png/m/1440x0/smart'),
+(20, 'Corsair Crystal Series 280X', 'CC-9011135-WW', 'MicroATX', 850000, 'MicroATX case with tempered glass side panels and dual-chamber internal layout.', 'https://assets.corsair.com/image/upload/c_pad,q_auto,h_1024,w_1024,f_auto/products/Cases/CC-9011135-WW/Gallery/280X_RGB_BLK_01.webp?width=1080&quality=85&auto=webp&format=pjpg');
 
 -- --------------------------------------------------------
 
@@ -99,7 +99,7 @@ CREATE TABLE `contacts` (
   `email` varchar(50) NOT NULL,
   `message` text NOT NULL,
   `reg_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `contacts`
@@ -121,7 +121,7 @@ CREATE TABLE `gpu` (
   `item_name` varchar(50) NOT NULL,
   `power_usage` int(11) NOT NULL,
   `image_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `gpu`
@@ -167,7 +167,7 @@ CREATE TABLE `motherboard` (
   `image_url` varchar(300) DEFAULT NULL,
   `socket` varchar(20) NOT NULL,
   `ram_slot` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `motherboard`
@@ -209,7 +209,7 @@ CREATE TABLE `posts` (
   `UserID` int(11) NOT NULL,
   `title` varchar(64) DEFAULT NULL,
   `message` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `posts`
@@ -233,33 +233,33 @@ CREATE TABLE `powersupply` (
   `image_url` varchar(300) NOT NULL,
   `price` int(25) DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `powersupply`
 --
 
 INSERT INTO `powersupply` (`id`, `model`, `series_number`, `wattage`, `image_url`, `price`, `description`) VALUES
-(21, 'Corsair RM750x', 'CP-9020179-NA', 750, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStGXfUg-KVQX0B7Moz4KPM64MhyQ3hlE5fPw&s', 1500000, 'Unit sumber daya yang andal dan efisien dengan kabel modular.'),
-(22, 'EVGA SuperNOVA 850 G3', '220-G3-0850-X1', 850, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGfnKTlPgg_6Rie2cGXh5-dOvEc4ziYK6iYw&s', 1700000, 'Sumber daya yang sangat baik untuk gaming dan overclocking.'),
-(23, 'Seasonic Focus GX-650', 'SSR-650FX', 650, 'https://m.media-amazon.com/images/I/81JR4qhqzLL.jpg', 1300000, 'Sumber daya dengan sertifikasi 80 Plus Gold dan desain kompak.'),
-(24, 'Thermaltake Toughpower GF1 750W', 'PS-TPD-0750FNFAGU-1', 750, 'https://m.media-amazon.com/images/I/71DDgVE794L.jpg', 1600000, 'Sumber daya modular lengkap dengan pencahayaan RGB dan efisiensi tinggi.'),
-(25, 'Cooler Master MWE Gold 650 V2', 'MPY-6501-AFAAG-US', 650, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaBQr3jI9682DJgQKhOSdKm6kuwzSbYm2FAQ&s', 1400000, 'Sumber daya yang tenang dan efisien cocok untuk build gaming menengah.'),
-(26, 'be quiet! Straight Power 11 750W', 'BN283', 750, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmawwyBBP8Rzv-wU3Rj1UEtzbk1LIxO2oLKQ&s', 1800000, 'Sumber daya yang diam dan handal dengan komponen berkualitas tinggi.'),
-(27, 'NZXT C Series 650W', 'NP-C650M-US', 650, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyP1knmDmw_H7cH17REAZ6TqKsEy-sxkzTag&s', 1500000, 'Sumber daya kompak dengan sertifikasi 80 Plus Gold.'),
-(28, 'SilverStone SST-SX650-G', 'SST-SX650-G', 650, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpaZrEcVr7jQ2FF_bWrgHp__WNVKQy5Bwytg&s', 1600000, 'Unit sumber daya yang ramping dan kuat untuk build form factor kecil.'),
-(29, 'Antec Earthwatts Gold Pro 550W', 'EA550G PRO', 550, 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//91/MTA-40077403/antec_power_supply_-_psu_antec_ea-gold_pro_550w_-_ea550g_pro_-_80-_gold_full01_h6a5xilf.jpg', 1200000, 'Sumber daya hemat energi dengan kapasitor Jepang untuk kehandalan jangka panjang.'),
-(30, 'Cooler Master MasterWatt 750', 'MPX-7501-AMAAB-US', 750, 'https://m.media-amazon.com/images/I/61qimjpxKrL.jpg', 1400000, 'Sumber daya yang terjangkau dan tahan lama dengan kabel modular penuh.'),
-(31, 'EVGA 600 W1', '100-W1-0600-K1', 600, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBg19fTsd4oeWMFnFEsi20ZaHZFy15XKHz8g&s', 1100000, 'Sumber daya dasar untuk build berbiaya terjangkau.'),
-(32, 'Thermaltake Smart 500W', 'PS-SPD-0500NPCWUS-W', 500, 'https://thermaltakeusa.com/cdn/shop/files/PS-SPD-0500NPCW-W_6ef789325329466088eb98dc78b5bf77.jpg?v=1691162436&width=1445', 900000, 'Sumber daya tingkat pemula dengan performa yang handal untuk build pemula.'),
-(33, 'Seasonic S12III 500 SSR-500GB3', 'SSR-500GB3', 500, 'https://m.media-amazon.com/images/I/41geCC+1cqL.jpg', 1000000, 'Sumber daya berbiaya rendah dengan sertifikasi 80 Plus Bronze.'),
-(34, 'Rosewill Glacier 600W', 'GLACIER-600M', 600, 'https://m.media-amazon.com/images/I/816wyTSnBLL._AC_UF1000,1000_QL80_.jpg', 1100000, 'Sumber daya modular dengan operasi yang senyap dan efisiensi yang baik.'),
-(35, 'Corsair CX Series 450 Watt 80 Plus Bronze Certified', 'CP-9020120-NA', 450, 'https://images.tokopedia.net/img/cache/700/product-1/2020/1/24/batch-upload/batch-upload_f0dbdfdb-ca9d-40ee-b377-179b5402ab3f.jpg', 900000, 'Sumber daya berbiaya rendah dengan performa yang handal dan rating efisiensi Bronze.'),
-(36, 'EVGA 750 N1, 750W', '100-N1-0750-L1', 750, 'https://www.evga.com/products/images/gallery/100-N1-0750-L1_MD_1.jpg', 1300000, 'Sumber daya berbiaya rendah dengan performa yang handal untuk gaming menengah.'),
-(37, 'Cooler Master MWE 500W 80 Plus White', 'MPX-5001-ACABW-US', 500, 'https://a.storyblok.com/f/281110/2a55d7361e/1-500w-mwe-white-230v-v2.png/m/960x0/smart', 1000000, 'Sumber daya yang terjangkau untuk build gaming dasar dan kantor.'),
-(38, 'Antec VP 450 Watt Energy-Efficient Power Supply', 'VP450P', 450, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX4rIsXbD5DcE1DVCDraQ36aIiSsqchtpNgQ&s', 850000, 'Sumber daya level entry dengan fitur dasar dan kehandalan yang baik.'),
-(39, 'SilverStone SST-ST30SF', 'SST-ST30SF', 300, 'https://www.silverstonetek.com/upload/images/products/st30sf/st30sf-package.jpg', 700000, 'Sumber daya kompak dan efisien untuk PC form factor kecil.'),
-(40, 'be quiet! Pure Power 11 400W', 'BN287', 400, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMsbu4kn1zrGInPjI29-_Dw8idl4ZvzKN5nw&s', 1000000, 'Sumber daya yang tenang dan hemat energi cocok untuk kantor dan multimedia.');
+(1, 'Corsair RM750x', 'CP-9020179-NA', 750, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStGXfUg-KVQX0B7Moz4KPM64MhyQ3hlE5fPw&s', 1500000, 'Unit sumber daya yang andal dan efisien dengan kabel modular.'),
+(2, 'EVGA SuperNOVA 850 G3', '220-G3-0850-X1', 850, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGfnKTlPgg_6Rie2cGXh5-dOvEc4ziYK6iYw&s', 1700000, 'Sumber daya yang sangat baik untuk gaming dan overclocking.'),
+(3, 'Seasonic Focus GX-650', 'SSR-650FX', 650, 'https://m.media-amazon.com/images/I/81JR4qhqzLL.jpg', 1300000, 'Sumber daya dengan sertifikasi 80 Plus Gold dan desain kompak.'),
+(4, 'Thermaltake Toughpower GF1 750W', 'PS-TPD-0750FNFAGU-1', 750, 'https://m.media-amazon.com/images/I/71DDgVE794L.jpg', 1600000, 'Sumber daya modular lengkap dengan pencahayaan RGB dan efisiensi tinggi.'),
+(5, 'Cooler Master MWE Gold 650 V2', 'MPY-6501-AFAAG-US', 650, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaBQr3jI9682DJgQKhOSdKm6kuwzSbYm2FAQ&s', 1400000, 'Sumber daya yang tenang dan efisien cocok untuk build gaming menengah.'),
+(6, 'be quiet! Straight Power 11 750W', 'BN283', 750, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmawwyBBP8Rzv-wU3Rj1UEtzbk1LIxO2oLKQ&s', 1800000, 'Sumber daya yang diam dan handal dengan komponen berkualitas tinggi.'),
+(7, 'NZXT C Series 650W', 'NP-C650M-US', 650, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyP1knmDmw_H7cH17REAZ6TqKsEy-sxkzTag&s', 1500000, 'Sumber daya kompak dengan sertifikasi 80 Plus Gold.'),
+(8, 'SilverStone SST-SX650-G', 'SST-SX650-G', 650, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpaZrEcVr7jQ2FF_bWrgHp__WNVKQy5Bwytg&s', 1600000, 'Unit sumber daya yang ramping dan kuat untuk build form factor kecil.'),
+(9, 'Antec Earthwatts Gold Pro 550W', 'EA550G PRO', 550, 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//91/MTA-40077403/antec_power_supply_-_psu_antec_ea-gold_pro_550w_-_ea550g_pro_-_80-_gold_full01_h6a5xilf.jpg', 1200000, 'Sumber daya hemat energi dengan kapasitor Jepang untuk kehandalan jangka panjang.'),
+(10, 'Cooler Master MasterWatt 750', 'MPX-7501-AMAAB-US', 750, 'https://m.media-amazon.com/images/I/61qimjpxKrL.jpg', 1400000, 'Sumber daya yang terjangkau dan tahan lama dengan kabel modular penuh.'),
+(11, 'EVGA 600 W1', '100-W1-0600-K1', 600, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBg19fTsd4oeWMFnFEsi20ZaHZFy15XKHz8g&s', 1100000, 'Sumber daya dasar untuk build berbiaya terjangkau.'),
+(12, 'Thermaltake Smart 500W', 'PS-SPD-0500NPCWUS-W', 500, 'https://thermaltakeusa.com/cdn/shop/files/PS-SPD-0500NPCW-W_6ef789325329466088eb98dc78b5bf77.jpg?v=1691162436&width=1445', 900000, 'Sumber daya tingkat pemula dengan performa yang handal untuk build pemula.'),
+(13, 'Seasonic S12III 500 SSR-500GB3', 'SSR-500GB3', 500, 'https://m.media-amazon.com/images/I/41geCC+1cqL.jpg', 1000000, 'Sumber daya berbiaya rendah dengan sertifikasi 80 Plus Bronze.'),
+(14, 'Rosewill Glacier 600W', 'GLACIER-600M', 600, 'https://m.media-amazon.com/images/I/816wyTSnBLL._AC_UF1000,1000_QL80_.jpg', 1100000, 'Sumber daya modular dengan operasi yang senyap dan efisiensi yang baik.'),
+(15, 'Corsair CX Series 450 Watt 80 Plus Bronze Certified', 'CP-9020120-NA', 450, 'https://images.tokopedia.net/img/cache/700/product-1/2020/1/24/batch-upload/batch-upload_f0dbdfdb-ca9d-40ee-b377-179b5402ab3f.jpg', 900000, 'Sumber daya berbiaya rendah dengan performa yang handal dan rating efisiensi Bronze.'),
+(16, 'EVGA 750 N1, 750W', '100-N1-0750-L1', 750, 'https://www.evga.com/products/images/gallery/100-N1-0750-L1_MD_1.jpg', 1300000, 'Sumber daya berbiaya rendah dengan performa yang handal untuk gaming menengah.'),
+(17, 'Cooler Master MWE 500W 80 Plus White', 'MPX-5001-ACABW-US', 500, 'https://a.storyblok.com/f/281110/2a55d7361e/1-500w-mwe-white-230v-v2.png/m/960x0/smart', 1000000, 'Sumber daya yang terjangkau untuk build gaming dasar dan kantor.'),
+(18, 'Antec VP 450 Watt Energy-Efficient Power Supply', 'VP450P', 450, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX4rIsXbD5DcE1DVCDraQ36aIiSsqchtpNgQ&s', 850000, 'Sumber daya level entry dengan fitur dasar dan kehandalan yang baik.'),
+(19, 'SilverStone SST-ST30SF', 'SST-ST30SF', 300, 'https://www.silverstonetek.com/upload/images/products/st30sf/st30sf-package.jpg', 700000, 'Sumber daya kompak dan efisien untuk PC form factor kecil.'),
+(20, 'be quiet! Pure Power 11 400W', 'BN287', 400, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMsbu4kn1zrGInPjI29-_Dw8idl4ZvzKN5nw&s', 1000000, 'Sumber daya yang tenang dan hemat energi cocok untuk kantor dan multimedia.');
 
 -- --------------------------------------------------------
 
@@ -277,7 +277,7 @@ CREATE TABLE `processor` (
   `socket` varchar(20) NOT NULL,
   `core_count` int(11) NOT NULL,
   `performance_core_clock` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `processor`
@@ -323,7 +323,7 @@ CREATE TABLE `ram` (
   `type` varchar(20) NOT NULL,
   `power_usage` int(11) NOT NULL,
   `image_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ram`
@@ -365,7 +365,7 @@ CREATE TABLE `userdata` (
   `Email` varchar(256) NOT NULL,
   `Password` varchar(64) NOT NULL,
   `AccessLevel` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `userdata`
@@ -456,6 +456,12 @@ ALTER TABLE `userdata`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `build_component`
+--
+ALTER TABLE `build_component`
+  MODIFY `build_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cases`
