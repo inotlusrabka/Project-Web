@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2024 at 08:55 AM
+-- Generation Time: Jun 20, 2024 at 01:33 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -86,6 +86,27 @@ INSERT INTO `cases` (`id`, `model`, `series_number`, `type`, `price`, `descripti
 (58, 'Fractal Design Meshify C Mini', 'FD-CA-MESH-C-MINI-BKO-TG', 'MicroATX', 800000, 'Compact MicroATX case with high airflow mesh front panel and tempered glass side panel.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKol70Tn0FpN8q8SHW4EgRzmKS5PvI9maCSA&s'),
 (59, 'Cooler Master MasterBox Q300L', 'MCB-Q300L-KANN-S00', 'MicroATX', 600000, 'MicroATX case with magnetic dust filters and versatile cooling options.', 'https://a.storyblok.com/f/281110/5c1192c34c/gallery-2-min.png/m/1440x0/smart'),
 (60, 'Corsair Crystal Series 280X', 'CC-9011135-WW', 'MicroATX', 850000, 'MicroATX case with tempered glass side panels and dual-chamber internal layout.', 'https://assets.corsair.com/image/upload/c_pad,q_auto,h_1024,w_1024,f_auto/products/Cases/CC-9011135-WW/Gallery/280X_RGB_BLK_01.webp?width=1080&quality=85&auto=webp&format=pjpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(6) UNSIGNED NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `message` text NOT NULL,
+  `reg_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `reg_date`) VALUES
+(1, 'aaaaaaaa', 'zidanealfatih14@gmail.com', 'testing', '2024-06-20 11:28:32');
 
 -- --------------------------------------------------------
 
@@ -382,6 +403,12 @@ ALTER TABLE `cases`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `gpu`
 --
 ALTER TABLE `gpu`
@@ -433,6 +460,12 @@ ALTER TABLE `userdata`
 --
 ALTER TABLE `cases`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `posts`
