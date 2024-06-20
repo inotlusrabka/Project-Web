@@ -54,13 +54,13 @@ $(document).ready(function() {
             // Populate Power Supply dropdown
             powerSupplies.forEach(function(ps) {
                 var optionText = ps.model + " | Rp" + ps.price.toLocaleString('id-ID');
-                $('#psu').append('<option value="' + ps.item_id + '" data-price="' + ps.price + '" data-img="' + ps.image_url + '" data-power_watt="' + ps.wattage + '">' + optionText + '</option>');
+                $('#psu').append('<option value="' + ps.id + '" data-price="' + ps.price + '" data-img="' + ps.image_url + '" data-power_watt="' + ps.wattage + '">' + optionText + '</option>');
             });
 
             // Populate Case dropdown
             cases.forEach(function(caseItem) {
                 var optionText = caseItem.model + " | Rp" + caseItem.price.toLocaleString('id-ID');
-                $('#case').append('<option value="' + caseItem.item_id + '" data-price="' + caseItem.price + '" data-img="' + caseItem.image_url + '">' + optionText + '</option>');
+                $('#case').append('<option value="' + caseItem.id + '" data-price="' + caseItem.price + '" data-img="' + caseItem.image_url + '">' + optionText + '</option>');
             });
 
             // Enable/disable CPU dropdown based on motherboard selection
