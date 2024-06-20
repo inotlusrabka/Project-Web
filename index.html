@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS CSS -->
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -39,67 +41,61 @@
     <main class="py-4">
         <section id="home" class="py-5">
             <div class="container text-center">
-                <h2 class="animate__animated animate__fadeInDown">Welcome to Computer Crafter</h2>
-                <p class="animate__animated animate__fadeInUp">Your one-stop solution for building custom PCs.</p>
+                <h2 class="animate__animated animate__fadeInDown" data-aos="fade-down" data-aos-anchor-placement="top-bottom">Welcome to Computer Crafter</h2>
+                <p class="animate__animated animate__fadeInUp" data-aos="fade-up" data-aos-anchor-placement="top-bottom">Your one-stop solution for building custom PCs.</p>
             </div>
         </section>
-
+        
         <section id="parts" class="py-5 bg-light">
             <div class="container">
-                <h2 class="text-center">Parts List</h2>
+                <h2 class="text-center" data-aos="fade-up" data-aos-anchor-placement="top-bottom">Parts List</h2>
                 <div class="card-deck">
-                    <div class="card animate__animated animate__fadeIn" data-toggle="modal" data-target="#cpuModal">
-                        <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2020/12/16/16674345-3162-4a27-85e0-e4ff58f8f275.jpg" class="card-img-top fade-in" alt="CPU">
+                    <div class="card animate__animated animate__bounceIn" data-aos="zoom-in" data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#cpuModal">
+                        <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2020/12/16/16674345-3162-4a27-85e0-e4ff58f8f275.jpg" class="card-img-top" alt="CPU">
                         <div class="card-body">
                             <h5 class="card-title">CPU</h5>
                             <p class="card-text">High-performance processors.</p>
-                            <p class="card-text"><small class="text-muted">$300</small></p>
                         </div>
                     </div>
-                    <div class="card animate__animated animate__fadeIn" data-toggle="modal" data-target="#gpuModal">
-                        <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2022/1/27/c5c49b83-c01e-47c4-a63e-129fa1cdc5da.jpg" class="card-img-top fade-in" alt="GPU">
+                    <div class="card animate__animated animate__fadeInUp" data-aos="zoom-in" data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#gpuModal">
+                        <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2022/1/27/c5c49b83-c01e-47c4-a63e-129fa1cdc5da.jpg" class="card-img-top" alt="GPU">
                         <div class="card-body">
                             <h5 class="card-title">GPU</h5>
                             <p class="card-text">Powerful graphics cards.</p>
-                            <p class="card-text"><small class="text-muted">$500</small></p>
                         </div>
                     </div>
-                    <div class="card animate__animated animate__fadeIn" data-toggle="modal" data-target="#motherboardModal">
-                        <img src="https://images.tokopedia.net/img/cache/700/product-1/2020/6/11/7995538/7995538_886207b5-2ee8-40ed-9cd8-e74f1e86783f_700_700" class="card-img-top fade-in" alt="Motherboard">
+                    <div class="card animate__animated animate__zoomIn" data-aos="zoom-in" data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#motherboardModal">
+                        <img src="https://images.tokopedia.net/img/cache/700/product-1/2020/6/11/7995538/7995538_886207b5-2ee8-40ed-9cd8-e74f1e86783f_700_700" class="card-img-top" alt="Motherboard">
                         <div class="card-body">
                             <h5 class="card-title">Motherboard</h5>
                             <p class="card-text">Reliable and feature-packed motherboards.</p>
-                            <p class="card-text"><small class="text-muted">$200</small></p>
                         </div>
                     </div>
-                    <div class="card animate__animated animate__fadeIn" data-toggle="modal" data-target="#ramModal">
-                        <img src="https://down-id.img.susercontent.com/file/id-11134201-7r992-lqoh57f82ctle1" class="card-img-top fade-in" alt="RAM">
+                    <div class="card animate__animated animate__slideInLeft" data-aos="zoom-in" data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#ramModal">
+                        <img src="https://down-id.img.susercontent.com/file/id-11134201-7r992-lqoh57f82ctle1" class="card-img-top" alt="RAM">
                         <div class="card-body">
                             <h5 class="card-title">RAM</h5>
                             <p class="card-text">High-speed memory modules.</p>
-                            <p class="card-text"><small class="text-muted">$150</small></p>
                         </div>
                     </div>
-                    <div class="card animate__animated animate__fadeIn" data-toggle="modal" data-target="#psuModal">
-                        <img src="https://images.tokopedia.net/img/cache/700/product-1/2018/4/7/25691144/25691144_8efe5c6d-b3af-47ad-b614-915cc21c1044_686_541" class="card-img-top fade-in" alt="Power Supply">
+                    <div class="card animate__animated animate__flipInY" data-aos="zoom-in" data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#psuModal">
+                        <img src="https://images.tokopedia.net/img/cache/700/product-1/2018/4/7/25691144/25691144_8efe5c6d-b3af-47ad-b614-915cc21c1044_686_541" class="card-img-top" alt="Power Supply">
                         <div class="card-body">
                             <h5 class="card-title">Power Supply</h5>
                             <p class="card-text">Reliable and efficient power supplies.</p>
-                            <p class="card-text"><small class="text-muted">$100</small></p>
                         </div>
                     </div>
-                    <div class="card animate__animated animate__fadeIn" data-toggle="modal" data-target="#caseModal">
-                        <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2021/10/8/f2829c89-04d8-46b7-9fff-037f1c91ceab.jpg" class="card-img-top fade-in" alt="Case">
+                    <div class="card animate__animated animate__lightSpeedInRight" data-aos="zoom-in" data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#caseModal">
+                        <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2021/10/8/f2829c89-04d8-46b7-9fff-037f1c91ceab.jpg" class="card-img-top" alt="Case">
                         <div class="card-body">
                             <h5 class="card-title">Case</h5>
                             <p class="card-text">Sturdy and aesthetically pleasing cases.</p>
-                            <p class="card-text"><small class="text-muted">$80</small></p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+                                
         <div class="modal fade" id="cpuModal" tabindex="-1" aria-labelledby="cpuModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -113,7 +109,7 @@
                         <p>Model: Intel Core i9</p>
                         <p>Series Number: 10900K</p>
                         <p>Base Clock: 3.7 GHz</p>
-                        <p>Price: $300</p>
+                        <p>Price: Rp 4.500.000</p>
                         <p>Description: A high-performance processor suitable for gaming and productivity tasks.</p>
                     </div>
                 </div>
@@ -133,7 +129,7 @@
                         <p>Model: NVIDIA GeForce RTX 3080</p>
                         <p>Series Number: RTX 3080</p>
                         <p>Base Clock: 1.44 GHz</p>
-                        <p>Price: $500</p>
+                        <p>Price: Rp 7.500.000</p>
                         <p>Description: A powerful graphics card designed for high-end gaming and creative workloads.</p>
                     </div>
                 </div>
@@ -153,7 +149,7 @@
                         <p>Model: ASUS ROG Strix Z490-E</p>
                         <p>Series Number: Z490-E</p>
                         <p>Chipset: Intel Z490</p>
-                        <p>Price: $200</p>
+                        <p>Price: Rp 3.000.000</p>
                         <p>Description: A reliable motherboard with extensive features and high compatibility.</p>
                     </div>
                 </div>
@@ -174,7 +170,7 @@
                         <p>Series Number: CMK16GX4M2B3200C16</p>
                         <p>Capacity: 16GB (2 x 8GB)</p>
                         <p>Speed: 3200 MHz</p>
-                        <p>Price: $150</p>
+                        <p>Price: Rp 2.250.000</p>
                         <p>Description: High-performance memory modules designed for overclocking.</p>
                     </div>
                 </div>
@@ -194,7 +190,7 @@
                         <p>Model: Corsair RM750x</p>
                         <p>Series Number: CP-9020179-NA</p>
                         <p>Wattage: 750W</p>
-                        <p>Price: $100</p>
+                        <p>Price: Rp 1.500.000</p>
                         <p>Description: A reliable and efficient power supply unit with modular cabling.</p>
                     </div>
                 </div>
@@ -214,7 +210,7 @@
                         <p>Model: NZXT H510</p>
                         <p>Series Number: CA-H510B-B1</p>
                         <p>Type: Mid Tower</p>
-                        <p>Price: $80</p>
+                        <p>Price: Rp 1.200.000</p>
                         <p>Description: A sturdy and aesthetically pleasing case with excellent airflow.</p>
                     </div>
                 </div>
@@ -223,9 +219,9 @@
 
         <section id="build" class="py-5">
             <div class="container">
-                <h2 class="text-center animate__animated animate__zoomIn">Build Guide</h2>
+                <h2 class="text-center" data-aos="zoom-in">Build Guide</h2>
                 <div class="accordion" id="buildGuideAccordion">
-                    <div class="card">
+                    <div class="card" data-aos="fade-left">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
                                 <button class="btn btn-link" type="button" data-toggle="collapse"
@@ -241,7 +237,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card" data-aos="fade-right">
                         <div class="card-header" id="headingTwo">
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
@@ -257,7 +253,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card" data-aos="fade-left">
                         <div class="card-header" id="headingThree">
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
@@ -273,7 +269,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card" data-aos="fade-right">
                         <div class="card-header" id="headingFour">
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
@@ -289,7 +285,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card" data-aos="fade-left">
                         <div class="card-header" id="headingSix">
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
@@ -305,7 +301,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card" data-aos="fade-right">
                         <div class="card-header" id="headingSeven">
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
@@ -321,7 +317,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card" data-aos="fade-left">
                         <div class="card-header" id="headingEight">
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
@@ -339,23 +335,25 @@
                     </div>
                 </div>
             </div>
-        </section>        
+        </section>                        
 
         <section id="about" class="py-5 bg-light">
             <div class="container">
-                <h2 class="text-center animate__animated animate__fadeIn">About Us</h2>
+                <h2 class="text-center" data-aos="fade-in">About Us</h2>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6" data-aos="fade-left">
+                        <br>
                         <h3>Our Mission</h3>
                         <p>At Computer Crafter, our mission is to empower individuals to build their custom PCs with ease and confidence. We provide detailed guides, high-quality parts, and expert advice to ensure that you can create a system that meets your needs and budget.</p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" data-aos="fade-right">
+                        <br>
                         <h3>Our Vision</h3>
                         <p>We envision a world where everyone has access to the knowledge and resources needed to build their own computers. Our goal is to demystify the process and make it accessible to enthusiasts and beginners alike.</p>
                     </div>
                 </div>
                 <div class="row mt-4">
-                    <div class="col-md-6">
+                    <div class="col-md-6" data-aos="fade-left">
                         <h3>Our Values</h3>
                         <ul>
                             <li><strong>Quality:</strong> We provide only the best components and guides.</li>
@@ -364,7 +362,7 @@
                             <li><strong>Community:</strong> We believe in the power of a supportive and knowledgeable community.</li>
                         </ul>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" data-aos="fade-right">
                         <h3>Contact Us</h3>
                         <p>If you have any questions or need assistance, feel free to <a href="#contact" class="text-primary">contact us</a>. We're here to help you make your computer crafting experience the best it can be.</p>
                         <br>
@@ -374,11 +372,11 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section>               
 
         <section id="contact" class="py-5">
             <div class="container">
-                <h2 class="text-center animate__animated animate__fadeIn">Contact Us</h2>
+                <h2 class="text-center" data-aos="fade-up">Contact Us</h2>
                 <button type="button" class="btn btn-primary animate__animated animate__pulse animate__infinite"
                     data-toggle="modal" data-target="#contactModal">
                     Contact Form
@@ -455,6 +453,10 @@
                 img.classList.add('visible');
             });
         });
+    </script>
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
     </script>
 </body>
 </html>
