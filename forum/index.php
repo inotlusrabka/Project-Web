@@ -41,7 +41,7 @@ $result = $conn->query($sql);
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#parts">Parts List</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#build">Build</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/build">Build</a></li>
                         <li class="nav-item active"><a class="nav-link" href="#">Forum</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#contact">Contact</a></li>
