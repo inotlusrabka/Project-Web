@@ -138,3 +138,47 @@ fade-in {
 .fade-in.visible {
     opacity: 1;
 }
+
+/* Custom animation keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Apply animation to elements with specific classes */
+.animate__animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.animate__fadeIn {
+    animation-name: fadeIn;
+}
+
+#about {
+    padding: 60px 0; /* Padding atas dan bawah */
+    background-color: #f8f9fa; /* Warna latar belakang */
+}
+
+.card {
+    transition: transform 0.2s ease-in-out; /* Transisi untuk efek hover */
+    background-color: #ffffff; /* Warna latar belakang kartu */
+    border: none; /* Hapus border kartu */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efek naik sedikit saat dihover */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Bayangan kartu saat dihover */
+}
+
+.card-title {
+    color: #343a40; /* Warna judul kartu */
+}
+
+.card-text {
+    color: #6c757d; /* Warna teks isi kartu */
+}
