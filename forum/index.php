@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -22,12 +23,13 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CC - Computer Crafter Forum</title>
-    <!-- Bootstrap CSS -->
+    <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <!-- Bootstrap CSS and other styles -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <!-- AOS CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 </head>
 <body>
     <header>
@@ -54,27 +56,29 @@ $result = $conn->query($sql);
     </header>
 
     <main class="py-4">
-        <section id="forum" class="py-5" data-aos="fade-up">
+        <section id="forum" class="py-5">
             <div class="container">
-                <h2 class="text-center">Forum Discussion</h2>
+                <h2 class="text-center" data-aos="fade-up">Forum Discussion</h2>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Welcome to the Computer Crafter Forum</h5>
-                        <p class="card-text">Discuss and share your experiences, tips, and questions about building custom PCs.</p>
+                        <h5 class="card-title" data-aos="fade-up">Welcome to the Computer Crafter Forum</h5>
+                        <p class="card-text" data-aos="fade-up">Discuss and share your experiences, tips, and questions about building custom PCs.</p>
                         <!-- Forum content -->
                         <div class="list-group">
                             <?php
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    echo '<div class="list-group-item">';
+                                    echo '<div class="list-group-item" data-aos="fade-right" data-aos-duration="1000">';
                                     echo '<div class="d-flex w-100 justify-content-between">';
                                     echo '<div>';
                                     echo '<h5 class="mb-1">' . htmlspecialchars($row["title"]) . '</h5>';
                                     echo '<p class="mb-1">' . htmlspecialchars($row["message"]) . '</p>';
                                     echo '</div>';
-                                    echo '<div>';
-                                    echo '<button class="btn btn-secondary btn-sm edit-btn mr-2" data-toggle="modal" data-target="#editDeletePostModal" data-id="' . $row["id"] . '" data-title="' . htmlspecialchars($row["title"]) . '" data-message="' . htmlspecialchars($row["message"]) . '">Edit/Delete</button>';
-                                    echo '</div>';
+                                    if (isset($_SESSION['username'])) {
+                                        echo '<div>';
+                                        echo '<button class="btn btn-secondary btn-sm edit-btn mr-2" data-toggle="modal" data-target="#editDeletePostModal" data-id="' . $row["id"] . '" data-title="' . htmlspecialchars($row["title"]) . '" data-message="' . htmlspecialchars($row["message"]) . '">Edit/Delete</button>';
+                                        echo '</div>';
+                                    }
                                     echo '</div>';
                                     echo '</div>';
                                 }
@@ -84,7 +88,13 @@ $result = $conn->query($sql);
                             ?>
                         </div>
                         <div class="mt-4">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPostModal">New Post</button>
+                            <?php
+                            if (isset($_SESSION['username'])) {
+                                echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPostModal">New Post</button>';
+                            } else {
+                                echo '<p class="text-center" data-aos="fade-up">You must be logged in to create a new post.</p>';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -92,7 +102,7 @@ $result = $conn->query($sql);
         </section>
 
         <!-- New Post Modal -->
-        <div class="modal fade" id="newPostModal" tabindex="-1" aria-labelledby="newPostModalLabel" aria-hidden="true">
+        <div class="modal fade" id="newPostModal" tabindex="-1" aria-labelledby="newPostModalLabel" aria-hidden="true" data-aos="zoom-in">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -103,15 +113,21 @@ $result = $conn->query($sql);
                     </div>
                     <div class="modal-body">
                         <form action="post.php" method="POST">
-                            <div class="form-group">
-                                <label for="post-title">Title</label>
-                                <input type="text" class="form-control" id="post-title" name="post-title" placeholder="Enter post title">
-                            </div>
-                            <div class="form-group">
-                                <label for="post-content">Content</label>
-                                <textarea class="form-control" id="post-content" name="post-content" rows="3" placeholder="Enter post content"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <?php
+                            if (isset($_SESSION['username'])) {
+                                echo '<div class="form-group">';
+                                echo '<label for="post-title">Title</label>';
+                                echo '<input type="text" class="form-control" id="post-title" name="post-title" placeholder="Enter post title">';
+                                echo '</div>';
+                                echo '<div class="form-group">';
+                                echo '<label for="post-content">Content</label>';
+                                echo '<textarea class="form-control" id="post-content" name="post-content" rows="3" placeholder="Enter post content"></textarea>';
+                                echo '</div>';
+                                echo '<button type="submit" class="btn btn-primary">Submit</button>';
+                            } else {
+                                echo '<p class="text-center">You must be logged in to create a new post.</p>';
+                            }
+                            ?>
                         </form>
                     </div>
                 </div>
@@ -130,17 +146,23 @@ $result = $conn->query($sql);
                     </div>
                     <div class="modal-body">
                         <form id="editDeletePostForm" action="edit_delete_post.php" method="POST">
-                            <input type="hidden" id="edit-delete-post-id" name="post-id">
-                            <div class="form-group">
-                                <label for="edit-delete-post-title">Title</label>
-                                <input type="text" class="form-control" id="edit-delete-post-title" name="post-title" placeholder="Enter post title">
-                            </div>
-                            <div class="form-group">
-                                <label for="edit-delete-post-content">Content</label>
-                                <textarea class="form-control" id="edit-delete-post-content" name="post-content" rows="3" placeholder="Enter post content"></textarea>
-                            </div>
-                            <button type="submit" name="action" value="edit" class="btn btn-primary">Save Changes</button>
-                            <button type="submit" name="action" value="delete" class="btn btn-danger">Delete Post</button>
+                            <?php
+                            if (isset($_SESSION['username'])) {
+                                echo '<input type="hidden" id="edit-delete-post-id" name="post-id">';
+                                echo '<div class="form-group">';
+                                echo '<label for="edit-delete-post-title">Title</label>';
+                                echo '<input type="text" class="form-control" id="edit-delete-post-title" name="post-title" placeholder="Enter post title">';
+                                echo '</div>';
+                                echo '<div class="form-group">';
+                                echo '<label for="edit-delete-post-content">Content</label>';
+                                echo '<textarea class="form-control" id="edit-delete-post-content" name="post-content" rows="3" placeholder="Enter post content"></textarea>';
+                                echo '</div>';
+                                echo '<button type="submit" name="action" value="edit" class="btn btn-primary">Save Changes</button>';
+                                echo '<button type="submit" name="action" value="delete" class="btn btn-danger">Delete Post</button>';
+                            } else {
+                                echo '<p class="text-center">You must be logged in to edit or delete a post.</p>';
+                            }
+                            ?>
                         </form>
                     </div>
                 </div>
@@ -155,32 +177,17 @@ $result = $conn->query($sql);
         </div>
     </footer>
 
-    <!-- Bootstrap JS and dependencies -->
+    <!-- Bootstrap JS and other scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- AOS JS -->
+
+    <!-- AOS Library -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Initialize AOS -->
     <script>
         AOS.init();
     </script>
-
-    <script>
-        $('#editDeletePostModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var id = button.data('id');
-            var title = button.data('title');
-            var message = button.data('message');
-
-            var modal = $(this);
-            modal.find('#edit-delete-post-id').val(id);
-            modal.find('#edit-delete-post-title').val(title);
-            modal.find('#edit-delete-post-content').val(message);
-        });
-    </script>
 </body>
 </html>
-
-<?php
-$conn->close();
-?>
