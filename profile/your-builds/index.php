@@ -26,12 +26,12 @@ $UserID = $_SESSION['userid'];
 // Query untuk mengambil data build_component dan join dengan tabel part pc
 $sql = "
     SELECT 
-        motherboard.brand AS motherboard_brand, motherboard.item_name AS motherboard_item_name, motherboard.image_url AS motherboard_image_url,
-        processor.brand AS processor_brand, processor.item_name AS processor_item_name, processor.image_url AS processor_image_url,
-        ram.brand AS ram_brand, ram.item_name AS ram_item_name, ram.image_url AS ram_image_url,
-        gpu.brand AS gpu_brand, gpu.item_name AS gpu_item_name, gpu.image_url AS gpu_image_url,
-        powersupply.model AS powersupply_model, powersupply.image_url AS powersupply_image_url,
-        cases.model AS cases_model, cases.image_url AS cases_image_url
+        motherboard.brand AS motherboard_brand, motherboard.item_name AS motherboard_item_name, motherboard.image_url AS motherboard_image_url, motherboard.buy_url AS motherboard_buy_url,
+        processor.brand AS processor_brand, processor.item_name AS processor_item_name, processor.image_url AS processor_image_url, processor.buy_url AS processor_buy_url,
+        ram.brand AS ram_brand, ram.item_name AS ram_item_name, ram.image_url AS ram_image_url, ram.buy_url AS ram_buy_url,
+        gpu.brand AS gpu_brand, gpu.item_name AS gpu_item_name, gpu.image_url AS gpu_image_url, gpu.buy_url AS gpu_buy_url,
+        powersupply.model AS powersupply_model, powersupply.image_url AS powersupply_image_url, powersupply.buy_url AS powersupply_buy_url,
+        cases.model AS cases_model, cases.image_url AS cases_image_url, cases.buy_url AS cases_buy_url
     FROM build_component
     LEFT JOIN motherboard ON build_component.motherboard_id = motherboard.item_id
     LEFT JOIN processor ON build_component.processor_id = processor.item_id
@@ -112,62 +112,74 @@ $conn->close();
                             echo '</button>';
                             echo '</h2>';
                             echo '</div>';
-
+                    
                             echo '<div id="collapse' . $buildNumber . '" class="collapse" aria-labelledby="heading' . $buildNumber . '" data-parent="#buildsAccordion">';
                             echo '<div class="card-body">';
-                            
+                    
+                            // Motherboard
                             echo '<h5 class="card-title">Motherboard</h5>';
                             echo '<div class="list-group-item">';
                             echo '<div class="d-flex w-100 justify-content-between">';
                             echo '<p>' . htmlspecialchars($row['motherboard_brand']) . ' ' . htmlspecialchars($row['motherboard_item_name']) . '</p>';
                             echo '<img src="' . htmlspecialchars($row['motherboard_image_url']) . '" alt="Motherboard Image" width=20% height=20%>';
                             echo '</div>';
+                            echo '<a href="' . htmlspecialchars($row['motherboard_buy_url']) . '" target="_blank">Buy Here</a>';
                             echo '</div>';
-                            
+                    
+                            // Processor
                             echo '<h5 class="card-title">Processor</h5>';
                             echo '<div class="list-group-item">';
                             echo '<div class="d-flex w-100 justify-content-between">';
                             echo '<p>' . htmlspecialchars($row['processor_brand']) . ' ' . htmlspecialchars($row['processor_item_name']) . '</p>';
                             echo '<img src="' . htmlspecialchars($row['processor_image_url']) . '" alt="Processor Image" width=20% height=20%>';
                             echo '</div>';
+                            echo '<a href="' . htmlspecialchars($row['processor_buy_url']) . '" target="_blank">Buy Here</a>';
                             echo '</div>';
-                            
+                    
+                            // RAM
                             echo '<h5 class="card-title">RAM</h5>';
                             echo '<div class="list-group-item">';
                             echo '<div class="d-flex w-100 justify-content-between">';
                             echo '<p>' . htmlspecialchars($row['ram_brand']) . ' ' . htmlspecialchars($row['ram_item_name']) . '</p>';
                             echo '<img src="' . htmlspecialchars($row['ram_image_url']) . '" alt="RAM Image" width=20% height=20%>';
                             echo '</div>';
+                            echo '<a href="' . htmlspecialchars($row['ram_buy_url']) . '" target="_blank">Buy Here</a>';
                             echo '</div>';
-                            
+                    
+                            // GPU
                             echo '<h5 class="card-title">GPU</h5>';
                             echo '<div class="list-group-item">';
                             echo '<div class="d-flex w-100 justify-content-between">';
                             echo '<p>' . htmlspecialchars($row['gpu_brand']) . ' ' . htmlspecialchars($row['gpu_item_name']) . '</p>';
                             echo '<img src="' . htmlspecialchars($row['gpu_image_url']) . '" alt="GPU Image" width=20% height=20%>';
                             echo '</div>';
+                            echo '<a href="' . htmlspecialchars($row['gpu_buy_url']) . '" target="_blank">Buy Here</a>';
                             echo '</div>';
-                            
+                    
+                            // Power Supply
                             echo '<h5 class="card-title">Power Supply</h5>';
                             echo '<div class="list-group-item">';
                             echo '<div class="d-flex w-100 justify-content-between">';
                             echo '<p>' . htmlspecialchars($row['powersupply_model']) . '</p>';
                             echo '<img src="' . htmlspecialchars($row['powersupply_image_url']) . '" alt="Power Supply Image" width=20% height=20%>';
                             echo '</div>';
+                            echo '<a href="' . htmlspecialchars($row['powersupply_buy_url']) . '" target="_blank">Buy Here</a>';
                             echo '</div>';
-                            
+                    
+                            // Case
                             echo '<h5 class="card-title">Case</h5>';
                             echo '<div class="list-group-item">';
                             echo '<div class="d-flex w-100 justify-content-between">';
                             echo '<p>' . htmlspecialchars($row['cases_model']) . '</p>';
                             echo '<img src="' . htmlspecialchars($row['cases_image_url']) . '" alt="Case Image" width=20% height=20%>';
                             echo '</div>';
+                            echo '<a href="' . htmlspecialchars($row['cases_buy_url']) . '" target="_blank">Buy Here</a>';
                             echo '</div>';
-                            
+                    
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
-                            
+                    
                             $buildNumber++;
                         }
                     } else {
