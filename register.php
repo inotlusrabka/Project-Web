@@ -23,9 +23,11 @@
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#parts">Parts List</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#build">Build Guide</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/build">Build</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/forum">Forum</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#team">Our Team</a></li>
                     </ul>
                 </div>
             </div>
