@@ -81,7 +81,7 @@
     </header>
 
     <main class="py-4">
-        <section id="profile" class="py-5">
+      <section id="profile" class="py-5">
             <div class="container animate__animated animate__fadeIn">
                 <h2 class="text-center">Welcome to your profile, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
                 <div class="form-group">
@@ -94,18 +94,17 @@
                     <label for="profile-bio">Bio</label>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" id="profile-bio" name="profile-bio" rows="3" value="<?php if (!empty($_SESSION['bio'])){ echo htmlspecialchars($user['Bio']);} else {} ?>" placeholder="You have not set your bio yet"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="profile-picture">Profile Picture</label>
-                    <input type="file" class="form-control-file" id="profile-picture" name="profile-picture">
+                    <textarea class="form-control" id="profile-bio" name="profile-bio" rows="3" placeholder="You have not set your bio yet" disabled><?php if (!empty($_SESSION['bio'])) {
+                                                                                                                echo htmlspecialchars($user['Bio']);
+                                                                                                            } else {
+                                                                                                            } ?></textarea>
                 </div>
                 <div class="mt-4">
                     <a href="edit-profile.php" class="btn btn-primary">Edit Profile</a>
                     <a href="/ProjekUAS/profile/your-builds" class="btn btn-primary">Your Builds</a>
                 </div>
                 <div class="text-center mt-4">
-                    <a href="/ProjekUAS/logout.php" class="btn btn-danger">Logout</a>
+                    <a href="logout.php" class="btn btn-danger">Logout</a>
                 </div>
             </div>
         </section>
