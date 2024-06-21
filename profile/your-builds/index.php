@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 // Konfigurasi koneksi ke database
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "rafie1715";
 $dbname = "pc_part";
 
 // Membuat koneksi ke database
@@ -97,7 +97,7 @@ $conn->close();
 
     <main class="py-4">
         <section id="your-builds" class="py-5">
-            <div class="container">
+            <div class="container" data-aos="fade-up">
                 <h2 class="text-center">Your Builds</h2>
                 <div class="accordion" id="buildsAccordion">
                     <?php
@@ -189,6 +189,9 @@ $conn->close();
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>
