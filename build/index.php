@@ -46,6 +46,7 @@ if ($conn->connect_error) {
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/Forum">Forum</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#team">Our Team</a></li>
                         <?php
                             if (!isset($_SESSION['username'])) {
                                 header('Location: login.php');
