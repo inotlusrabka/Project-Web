@@ -48,6 +48,7 @@ $result = $conn->query($sql);
                         <li class="nav-item active"><a class="nav-link" href="#">Forum</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#team">Our Team</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/profile/"><i class="fas fa-user"></i></a></li>
                     </ul>
                 </div>
