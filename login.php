@@ -75,6 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/forum">Forum</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#team">Our Team</a></li>
                     </ul>
                 </div>
             </div>
