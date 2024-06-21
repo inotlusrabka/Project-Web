@@ -131,7 +131,7 @@ if ($conn->connect_error) {
             </form>
 
             <div class="mt-4" data-aos="fade-up">
-                <h4>Total Harga: Rp<span id="total-price">0</span></h4>
+                <h4>Total Price: Rp<span id="total-price">0</span></h4>
             </div>
             <div class="mt-4" data-aos="fade-up">
                 <h4>Total Power Consumption: <span id="total-power">0 W</span></h4>
