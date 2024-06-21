@@ -2,7 +2,7 @@
     session_start();
 
     if (!isset($_SESSION['username'])) {
-        header('Location: login.php');
+        header('Location: /ProjekUAS/login.php');
         exit();
     } elseif (isset($_SESSION['username'])){
         // Konfigurasi koneksi ke database
@@ -103,7 +103,7 @@
                     <a href="/ProjekUAS/profile/your-builds" class="btn btn-primary">Your Builds</a>
                 </div>
                 <div class="text-center mt-4">
-                    <a href="logout.php" class="btn btn-danger">Logout</a>
+                    <a href="/ProjekUAS/logout.php" class="btn btn-danger">Logout</a>
                 </div>
             </div>
         </section>

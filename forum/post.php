@@ -1,5 +1,5 @@
 <?php
-session_start(); // Start the session to access the session variables
+session_start();
 
 $servername = "localhost";
 $username = "root";
@@ -16,27 +16,23 @@ if ($conn->connect_error) {
 
 // Check if form is submitted
 if (!isset($_SESSION['username'])) {
-    header('Location: login.php');
+    header('Location: /ProjekUAS/login.php');
     exit();
 } elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Debugging output
-    echo '<pre>';
-    print_r($_POST);
-    echo '</pre>';
-    
     // Validate and sanitize input data
-    if (isset($_POST['post-title']) && isset($_POST['post-content'])) {
+    if (isset($_POST['post-title']) && isset($_POST['post-content']) && isset($_POST['build_id'])) {
         $title = htmlspecialchars($_POST['post-title']);
         $content = htmlspecialchars($_POST['post-content']);
-        
+        $build_id = htmlspecialchars($_POST['build_id']);
+
         // Assuming you have stored user ID in session after login
         if (isset($_SESSION['userid'])) {
             $userId = $_SESSION['userid'];
-            
+
             // Prepare and execute SQL query to insert post
-            $stmt = $conn->prepare("INSERT INTO posts (UserID, title, message) VALUES (?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO posts (UserID, title, message, build_id) VALUES (?, ?, ?, ?)");
             if ($stmt) {
-                $stmt->bind_param("iss", $userId, $title, $content);
+                $stmt->bind_param("issi", $userId, $title, $content, $build_id);
                 if ($stmt->execute()) {
                     // Redirect back to the forum page after successful submission
                     header("Location: /ProjekUAS/forum");
@@ -52,7 +48,7 @@ if (!isset($_SESSION['username'])) {
             echo "User ID not set in session.";
         }
     } else {
-        echo "Post title or content not set.";
+        echo "Post title, content, or build_id not set.";
     }
 }
 

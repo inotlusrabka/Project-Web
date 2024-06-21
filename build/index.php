@@ -49,7 +49,7 @@ if ($conn->connect_error) {
                         <li class="nav-item"><a class="nav-link" href="/ProjekUAS/#team">Our Team</a></li>
                         <?php
                             if (!isset($_SESSION['username'])) {
-                                header('Location: login.php');
+                                header('Location: /ProjekUAS/login.php');
                                 exit();
                             } elseif (isset($_SESSION['username'])){
                                 echo '<li class="nav-item"><a class="nav-link" href="/ProjekUAS/profile"><i class="fas fa-user"></i></a></li>';

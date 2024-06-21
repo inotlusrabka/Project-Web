@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Jun 2024 pada 12.22
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
+-- Generation Time: Jun 21, 2024 at 05:19 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `build_component`
+-- Table structure for table `build_component`
 --
 
 CREATE TABLE `build_component` (
@@ -36,22 +36,22 @@ CREATE TABLE `build_component` (
   `gpu_id` int(11) NOT NULL,
   `powersupply_id` int(11) NOT NULL,
   `cases_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `build_component`
+-- Dumping data for table `build_component`
 --
 
 INSERT INTO `build_component` (`build_id`, `UserID`, `motherboard_id`, `processor_id`, `ram_id`, `gpu_id`, `powersupply_id`, `cases_id`) VALUES
-(5, 1, 1, 1, 13, 10, 0, 0),
-(6, 1, 1, 1, 1, 15, 1, 1),
-(7, 1, 2, 1, 14, 5, 16, 6),
-(8, 1, 1, 1, 15, 6, 14, 1);
+(1, 3, 5, 9, 6, 3, 16, 3),
+(2, 3, 4, 11, 9, 4, 12, 17),
+(3, 3, 4, 8, 12, 4, 13, 10),
+(4, 1, 8, 6, 11, 4, 13, 10);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cases`
+-- Table structure for table `cases`
 --
 
 CREATE TABLE `cases` (
@@ -63,10 +63,10 @@ CREATE TABLE `cases` (
   `description` text DEFAULT NULL,
   `image_url` varchar(300) NOT NULL,
   `buy_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `cases`
+-- Dumping data for table `cases`
 --
 
 INSERT INTO `cases` (`id`, `model`, `series_number`, `type`, `price`, `description`, `image_url`, `buy_url`) VALUES
@@ -90,7 +90,7 @@ INSERT INTO `cases` (`id`, `model`, `series_number`, `type`, `price`, `descripti
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `contacts`
+-- Table structure for table `contacts`
 --
 
 CREATE TABLE `contacts` (
@@ -99,10 +99,10 @@ CREATE TABLE `contacts` (
   `email` varchar(50) NOT NULL,
   `message` text NOT NULL,
   `reg_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `contacts`
+-- Dumping data for table `contacts`
 --
 
 INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `reg_date`) VALUES
@@ -111,7 +111,7 @@ INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `reg_date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `gpu`
+-- Table structure for table `gpu`
 --
 
 CREATE TABLE `gpu` (
@@ -122,10 +122,10 @@ CREATE TABLE `gpu` (
   `power_usage` int(11) NOT NULL,
   `image_url` varchar(300) NOT NULL,
   `buy_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `gpu`
+-- Dumping data for table `gpu`
 --
 
 INSERT INTO `gpu` (`item_id`, `price`, `brand`, `item_name`, `power_usage`, `image_url`, `buy_url`) VALUES
@@ -156,7 +156,7 @@ INSERT INTO `gpu` (`item_id`, `price`, `brand`, `item_name`, `power_usage`, `ima
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `motherboard`
+-- Table structure for table `motherboard`
 --
 
 CREATE TABLE `motherboard` (
@@ -170,10 +170,10 @@ CREATE TABLE `motherboard` (
   `type` varchar(10) NOT NULL,
   `ram_slot` int(11) NOT NULL,
   `buy_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `motherboard`
+-- Dumping data for table `motherboard`
 --
 
 INSERT INTO `motherboard` (`item_id`, `price`, `brand`, `item_name`, `power_usage`, `image_url`, `socket`, `type`, `ram_slot`, `buy_url`) VALUES
@@ -204,28 +204,30 @@ INSERT INTO `motherboard` (`item_id`, `price`, `brand`, `item_name`, `power_usag
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `posts`
+-- Table structure for table `posts`
 --
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `UserID` int(11) NOT NULL,
   `title` varchar(64) DEFAULT NULL,
-  `message` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `message` text NOT NULL,
+  `build_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `posts`
+-- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `UserID`, `title`, `message`) VALUES
-(4, 1, '1', 'test'),
-(5, 12, 'Dreamybull', 'Ambasing');
+INSERT INTO `posts` (`id`, `UserID`, `title`, `message`, `build_id`) VALUES
+(2, 3, 'test', 'test', 1),
+(3, 3, 'test1', 'test1', 3),
+(4, 3, 'tesss', 'tesss', 2);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `powersupply`
+-- Table structure for table `powersupply`
 --
 
 CREATE TABLE `powersupply` (
@@ -237,10 +239,10 @@ CREATE TABLE `powersupply` (
   `price` int(25) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `buy_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `powersupply`
+-- Dumping data for table `powersupply`
 --
 
 INSERT INTO `powersupply` (`id`, `model`, `series_number`, `wattage`, `image_url`, `price`, `description`, `buy_url`) VALUES
@@ -268,7 +270,7 @@ INSERT INTO `powersupply` (`id`, `model`, `series_number`, `wattage`, `image_url
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `processor`
+-- Table structure for table `processor`
 --
 
 CREATE TABLE `processor` (
@@ -282,10 +284,10 @@ CREATE TABLE `processor` (
   `core_count` int(11) NOT NULL,
   `performance_core_clock` float NOT NULL,
   `buy_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `processor`
+-- Dumping data for table `processor`
 --
 
 INSERT INTO `processor` (`item_id`, `price`, `brand`, `item_name`, `power_usage`, `image_url`, `socket`, `core_count`, `performance_core_clock`, `buy_url`) VALUES
@@ -315,7 +317,7 @@ INSERT INTO `processor` (`item_id`, `price`, `brand`, `item_name`, `power_usage`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ram`
+-- Table structure for table `ram`
 --
 
 CREATE TABLE `ram` (
@@ -329,10 +331,10 @@ CREATE TABLE `ram` (
   `power_usage` int(11) NOT NULL,
   `image_url` varchar(300) NOT NULL,
   `buy_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `ram`
+-- Dumping data for table `ram`
 --
 
 INSERT INTO `ram` (`item_id`, `price`, `brand`, `item_name`, `size`, `module`, `type`, `power_usage`, `image_url`, `buy_url`) VALUES
@@ -362,7 +364,7 @@ INSERT INTO `ram` (`item_id`, `price`, `brand`, `item_name`, `size`, `module`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `userdata`
+-- Table structure for table `userdata`
 --
 
 CREATE TABLE `userdata` (
@@ -371,10 +373,10 @@ CREATE TABLE `userdata` (
   `Email` varchar(256) NOT NULL,
   `Password` varchar(64) NOT NULL,
   `AccessLevel` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `userdata`
+-- Dumping data for table `userdata`
 --
 
 INSERT INTO `userdata` (`UserID`, `Username`, `Email`, `Password`, `AccessLevel`) VALUES
@@ -394,7 +396,7 @@ INSERT INTO `userdata` (`UserID`, `Username`, `Email`, `Password`, `AccessLevel`
 --
 
 --
--- Indeks untuk tabel `build_component`
+-- Indexes for table `build_component`
 --
 ALTER TABLE `build_component`
   ADD PRIMARY KEY (`build_id`),
@@ -405,106 +407,107 @@ ALTER TABLE `build_component`
   ADD KEY `UserID` (`UserID`);
 
 --
--- Indeks untuk tabel `cases`
+-- Indexes for table `cases`
 --
 ALTER TABLE `cases`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `contacts`
+-- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `gpu`
+-- Indexes for table `gpu`
 --
 ALTER TABLE `gpu`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indeks untuk tabel `motherboard`
+-- Indexes for table `motherboard`
 --
 ALTER TABLE `motherboard`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indeks untuk tabel `posts`
+-- Indexes for table `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `UserID` (`UserID`);
+  ADD KEY `UserID` (`UserID`),
+  ADD KEY `posts_ibfk_2` (`build_id`);
 
 --
--- Indeks untuk tabel `powersupply`
+-- Indexes for table `powersupply`
 --
 ALTER TABLE `powersupply`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `processor`
+-- Indexes for table `processor`
 --
 ALTER TABLE `processor`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indeks untuk tabel `ram`
+-- Indexes for table `ram`
 --
 ALTER TABLE `ram`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indeks untuk tabel `userdata`
+-- Indexes for table `userdata`
 --
 ALTER TABLE `userdata`
   ADD PRIMARY KEY (`UserID`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `build_component`
+-- AUTO_INCREMENT for table `build_component`
 --
 ALTER TABLE `build_component`
-  MODIFY `build_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `build_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `cases`
+-- AUTO_INCREMENT for table `cases`
 --
 ALTER TABLE `cases`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
--- AUTO_INCREMENT untuk tabel `contacts`
+-- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
   MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `posts`
+-- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `powersupply`
+-- AUTO_INCREMENT for table `powersupply`
 --
 ALTER TABLE `powersupply`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT untuk tabel `userdata`
+-- AUTO_INCREMENT for table `userdata`
 --
 ALTER TABLE `userdata`
   MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `build_component`
+-- Constraints for table `build_component`
 --
 ALTER TABLE `build_component`
   ADD CONSTRAINT `build_component_ibfk_1` FOREIGN KEY (`gpu_id`) REFERENCES `gpu` (`item_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -514,10 +517,11 @@ ALTER TABLE `build_component`
   ADD CONSTRAINT `build_component_ibfk_5` FOREIGN KEY (`UserID`) REFERENCES `userdata` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Ketidakleluasaan untuk tabel `posts`
+-- Constraints for table `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `userdata` (`UserID`);
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `userdata` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`build_id`) REFERENCES `build_component` (`build_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

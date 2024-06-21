@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header('Location: login.php');
+    header('Location: /ProjekUAS/login.php');
     exit();
 }
 
@@ -183,7 +183,9 @@ $conn->close();
                             $buildNumber++;
                         }
                     } else {
-                        echo "No builds found for this user.";
+                        echo '<div class="card">';
+                        echo '<h5 class="card-title">No builds found for this user.</h5>';
+                        echo '</div>';
                     }
                     ?>
                 </div>
