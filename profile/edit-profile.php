@@ -8,7 +8,7 @@
         // Konfigurasi koneksi ke database
         $serverName = "localhost";
         $databaseUsername = "root";
-        $databasePassword = "";
+        $databasePassword = "rafie1715";
         $databaseName = "pc_part";
 
         // Membuat koneksi ke database
