@@ -13,8 +13,8 @@ $(document).ready(function() {
 
             // Populate motherboard dropdown
             motherboards.forEach(function(mb) {
-                var optionText = mb.brand + " " + mb.item_name + " | Rp" + mb.price.toLocaleString('id-ID');
-                $('#motherboard').append('<option value="' + mb.item_id + '" data-socket="' + mb.socket + '" data-price="' + mb.price + '" data-img="' + mb.image_url + '" data-power="' + mb.power_usage + '">' + optionText + '</option>');
+                var optionText = mb.brand + " " + mb.item_name + " (" + mb.socket + ") | Rp" + mb.price.toLocaleString('id-ID');
+                $('#motherboard').append('<option value="' + mb.item_id + '" data-socket="' + mb.socket + '" data-price="' + mb.price + '" data-img="' + mb.image_url + '" data-power="' + mb.power_usage + '" data-type="' + mb.type + '">' + optionText + '</option>');
             });
 
             // Populate GPU dropdown
@@ -25,7 +25,7 @@ $(document).ready(function() {
 
             // Populate RAM dropdown
             rams.forEach(function(ram) {
-                var optionText = ram.brand + " " + ram.item_name + " | Rp" + ram.price.toLocaleString('id-ID');
+                var optionText = ram.brand + " " + ram.item_name + " (" + ram.type + ") | Rp" + ram.price.toLocaleString('id-ID');
                 $('#ram').append('<option value="' + ram.item_id + '" data-price="' + ram.price + '" data-img="' + ram.image_url + '" data-power="' + ram.power_usage + '">' + optionText + '</option>');
             });
 
@@ -33,6 +33,7 @@ $(document).ready(function() {
             $('#motherboard').change(function() {
                 var selectedSocket = $(this).find('option:selected').data('socket');
                 var selectedImg = $(this).find('option:selected').data('img');
+                var selectedType = $(this).find('option:selected').data('type');
                 $('#motherboard-img').attr('src', selectedImg).show();
 
                 $('#cpu').empty().append('<option value="">Select a CPU</option>');
@@ -40,7 +41,7 @@ $(document).ready(function() {
                     $('#cpu').prop('disabled', false);
                     processors.forEach(function(cpu) {
                         if (cpu.socket === selectedSocket) {
-                            var optionText = cpu.brand + " " + cpu.item_name + " | Rp" + cpu.price.toLocaleString('id-ID');
+                            var optionText = cpu.brand + " " + cpu.item_name + " (" + cpu.socket + ") | Rp" + cpu.price.toLocaleString('id-ID');
                             $('#cpu').append('<option value="' + cpu.item_id + '" data-price="' + cpu.price + '" data-img="' + cpu.image_url + '" data-power="' + cpu.power_usage + '">' + optionText + '</option>');
                         }
                     });
@@ -48,6 +49,7 @@ $(document).ready(function() {
                     $('#cpu').prop('disabled', true);
                     $('#cpu-img').hide();
                 }
+                updateCaseDropdown(selectedType);
                 calculateTotalPrice();
             });
 
@@ -58,10 +60,17 @@ $(document).ready(function() {
             });
 
             // Populate Case dropdown
-            cases.forEach(function(caseItem) {
-                var optionText = caseItem.model + " | Rp" + caseItem.price.toLocaleString('id-ID');
-                $('#case').append('<option value="' + caseItem.id + '" data-price="' + caseItem.price + '" data-img="' + caseItem.image_url + '">' + optionText + '</option>');
-            });
+            function updateCaseDropdown(motherboardType) {
+                $('#case').empty().append('<option value="">Select a Case</option>');
+                cases.forEach(function(caseItem) {
+                    var optionText = caseItem.model + " (" + caseItem.type + ") | Rp" + caseItem.price.toLocaleString('id-ID');
+                    if (motherboardType === 'ATX' && (caseItem.type === 'Mid Tower' || caseItem.type === 'Full Tower')) {
+                        $('#case').append('<option value="' + caseItem.id + '" data-price="' + caseItem.price + '" data-img="' + caseItem.image_url + '">' + optionText + '</option>');
+                    } else if (motherboardType === 'Micro ATX' && (caseItem.type === 'MicroATX' || caseItem.type === 'Mid Tower' || caseItem.type === 'Full Tower')) {
+                        $('#case').append('<option value="' + caseItem.id + '" data-price="' + caseItem.price + '" data-img="' + caseItem.image_url + '">' + optionText + '</option>');
+                    }
+                });
+            }
 
             // Enable/disable CPU dropdown based on motherboard selection
             $('#motherboard').change(function() {
@@ -94,8 +103,8 @@ $(document).ready(function() {
         } else {
             $('#power-warning').text('');
         }
-
     }
+    
     function calculateTotalPower() {
         var totalPower = 0;
         $('#motherboard, #cpu, #gpu, #ram').each(function() {
@@ -108,7 +117,6 @@ $(document).ready(function() {
         $('#total-power').text(totalPower + ' W');
         checkPowerSupply(totalPower);
     }
-    
 
     function calculateTotalPrice() {
         var totalPrice = 0;
