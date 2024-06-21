@@ -114,6 +114,9 @@ if ($conn->connect_error) {
                     </select>
                     <img id="case-img" src="" alt="Case Image" class="img-fluid mt-2" style="display:none; width: 150px; height: 150px;">
                 </div>
+                <div class="mt-4 alert alert-warning" role="alert" data-aos="fade-up">
+                    Prices are subject to change.
+                </div>
                 <?php
                     if (isset($_SESSION['username'])) {
                         echo '<div class="text-center mt-4">';
