@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,23 +13,66 @@
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
     <style>
         #about {
-            padding: 60px 0; /* Padding atas dan bawah */
-            background-color: #f8f9fa; /* Warna latar belakang */
+            padding: 60px 0;
+            /* Padding atas dan bawah */
+            background-color: #f8f9fa;
+            /* Warna latar belakang */
         }
+
         .card {
-            transition: transform 0.2s ease-in-out; /* Transisi untuk efek hover */
-            background-color: #ffffff; /* Warna latar belakang kartu */
-            border: none; /* Hapus border kartu */
+            transition: transform 0.2s ease-in-out;
+            /* Transisi untuk efek hover */
+            background-color: #ffffff;
+            /* Warna latar belakang kartu */
+            border: none;
+            /* Hapus border kartu */
         }
+
         .card:hover {
-            transform: translateY(-5px); /* Efek naik sedikit saat dihover */
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Bayangan kartu saat dihover */
+            transform: translateY(-5px);
+            /* Efek naik sedikit saat dihover */
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            /* Bayangan kartu saat dihover */
         }
+
         .card-title {
-            color: #343a40; /* Warna judul kartu */
+            color: #343a40;
+            /* Warna judul kartu */
         }
+
         .card-text {
-            color: #6c757d; /* Warna teks isi kartu */
+            color: #6c757d;
+            /* Warna teks isi kartu */
+        }
+
+        .team-section {
+            padding: 50px 0;
+        }
+
+        .team-section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .team-member {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .team-member h4 {
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .team-member p {
+            margin-bottom: 0;
         }
     </style>
 </head>
@@ -39,7 +81,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="">CC - Computer Crafter</a>
+                <a class="navbar-brand" href="">Computer Crafter</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -53,7 +95,9 @@
                         <li class="nav-item"><a class="nav-link" href="forum">Forum</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/profile"><i class="fas fa-user"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#team">Our Team</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ProjekUAS/profile"><i
+                                    class="fas fa-user"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -63,52 +107,66 @@
     <main class="py-4">
         <section id="home" class="py-5">
             <div class="container text-center">
-                <h2 class="animate__animated animate__fadeInDown" data-aos="fade-down" data-aos-anchor-placement="top-bottom">Welcome to Computer Crafter</h2>
-                <p class="animate__animated animate__fadeInUp" data-aos="fade-up" data-aos-anchor-placement="top-bottom">Your one-stop solution for building custom PCs.</p>
+                <h2 class="animate__animated animate__fadeInDown" data-aos="fade-down"
+                    data-aos-anchor-placement="top-bottom">Welcome to Computer Crafter</h2>
+                <p class="animate__animated animate__fadeInUp" data-aos="fade-up"
+                    data-aos-anchor-placement="top-bottom">Your one-stop solution for building custom PCs.</p>
             </div>
         </section>
-        
+
         <section id="parts" class="py-5 bg-light">
             <div class="container">
                 <h2 class="text-center" data-aos="fade-up" data-aos-anchor-placement="top-bottom">Parts List</h2>
                 <div class="card-deck">
-                    <div class="card animate__animated animate__bounceIn" data-aos="zoom-in" data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#cpuModal">
-                        <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2020/12/16/16674345-3162-4a27-85e0-e4ff58f8f275.jpg" class="card-img-top" alt="CPU">
+                    <div class="card animate__animated animate__bounceIn" data-aos="zoom-in"
+                        data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#cpuModal">
+                        <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2020/12/16/16674345-3162-4a27-85e0-e4ff58f8f275.jpg"
+                            class="card-img-top" alt="CPU">
                         <div class="card-body">
                             <h5 class="card-title">CPU</h5>
                             <p class="card-text">High-performance processors.</p>
                         </div>
                     </div>
-                    <div class="card animate__animated animate__fadeInUp" data-aos="zoom-in" data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#gpuModal">
-                        <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2022/1/27/c5c49b83-c01e-47c4-a63e-129fa1cdc5da.jpg" class="card-img-top" alt="GPU">
+                    <div class="card animate__animated animate__fadeInUp" data-aos="zoom-in"
+                        data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#gpuModal">
+                        <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2022/1/27/c5c49b83-c01e-47c4-a63e-129fa1cdc5da.jpg"
+                            class="card-img-top" alt="GPU">
                         <div class="card-body">
                             <h5 class="card-title">GPU</h5>
                             <p class="card-text">Powerful graphics cards.</p>
                         </div>
                     </div>
-                    <div class="card animate__animated animate__zoomIn" data-aos="zoom-in" data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#motherboardModal">
-                        <img src="https://images.tokopedia.net/img/cache/700/product-1/2020/6/11/7995538/7995538_886207b5-2ee8-40ed-9cd8-e74f1e86783f_700_700" class="card-img-top" alt="Motherboard">
+                    <div class="card animate__animated animate__zoomIn" data-aos="zoom-in"
+                        data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#motherboardModal">
+                        <img src="https://images.tokopedia.net/img/cache/700/product-1/2020/6/11/7995538/7995538_886207b5-2ee8-40ed-9cd8-e74f1e86783f_700_700"
+                            class="card-img-top" alt="Motherboard">
                         <div class="card-body">
                             <h5 class="card-title">Motherboard</h5>
                             <p class="card-text">Reliable and feature-packed motherboards.</p>
                         </div>
                     </div>
-                    <div class="card animate__animated animate__slideInLeft" data-aos="zoom-in" data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#ramModal">
-                        <img src="https://down-id.img.susercontent.com/file/id-11134201-7r992-lqoh57f82ctle1" class="card-img-top" alt="RAM">
+                    <div class="card animate__animated animate__slideInLeft" data-aos="zoom-in"
+                        data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#ramModal">
+                        <img src="https://down-id.img.susercontent.com/file/id-11134201-7r992-lqoh57f82ctle1"
+                            class="card-img-top" alt="RAM">
                         <div class="card-body">
                             <h5 class="card-title">RAM</h5>
                             <p class="card-text">High-speed memory modules.</p>
                         </div>
                     </div>
-                    <div class="card animate__animated animate__flipInY" data-aos="zoom-in" data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#psuModal">
-                        <img src="https://images.tokopedia.net/img/cache/700/product-1/2018/4/7/25691144/25691144_8efe5c6d-b3af-47ad-b614-915cc21c1044_686_541" class="card-img-top" alt="Power Supply">
+                    <div class="card animate__animated animate__flipInY" data-aos="zoom-in"
+                        data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#psuModal">
+                        <img src="https://images.tokopedia.net/img/cache/700/product-1/2018/4/7/25691144/25691144_8efe5c6d-b3af-47ad-b614-915cc21c1044_686_541"
+                            class="card-img-top" alt="Power Supply">
                         <div class="card-body">
                             <h5 class="card-title">Power Supply</h5>
                             <p class="card-text">Reliable and efficient power supplies.</p>
                         </div>
                     </div>
-                    <div class="card animate__animated animate__lightSpeedInRight" data-aos="zoom-in" data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#caseModal">
-                        <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2021/10/8/f2829c89-04d8-46b7-9fff-037f1c91ceab.jpg" class="card-img-top" alt="Case">
+                    <div class="card animate__animated animate__lightSpeedInRight" data-aos="zoom-in"
+                        data-aos-anchor-placement="top-bottom" data-toggle="modal" data-target="#caseModal">
+                        <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2021/10/8/f2829c89-04d8-46b7-9fff-037f1c91ceab.jpg"
+                            class="card-img-top" alt="Case">
                         <div class="card-body">
                             <h5 class="card-title">Case</h5>
                             <p class="card-text">Sturdy and aesthetically pleasing cases.</p>
@@ -117,7 +175,7 @@
                 </div>
             </div>
         </section>
-                                
+
         <div class="modal fade" id="cpuModal" tabindex="-1" aria-labelledby="cpuModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -137,7 +195,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="modal fade" id="gpuModal" tabindex="-1" aria-labelledby="gpuModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -152,13 +210,15 @@
                         <p>Series Number: RTX 3080</p>
                         <p>Base Clock: 1.44 GHz</p>
                         <p>Price: Rp 7.500.000</p>
-                        <p>Description: A powerful graphics card designed for high-end gaming and creative workloads.</p>
+                        <p>Description: A powerful graphics card designed for high-end gaming and creative workloads.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="modal fade" id="motherboardModal" tabindex="-1" aria-labelledby="motherboardModalLabel" aria-hidden="true">
+
+        <div class="modal fade" id="motherboardModal" tabindex="-1" aria-labelledby="motherboardModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -177,7 +237,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="modal fade" id="ramModal" tabindex="-1" aria-labelledby="ramModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -198,7 +258,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="modal fade" id="psuModal" tabindex="-1" aria-labelledby="psuModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -218,7 +278,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="modal fade" id="caseModal" tabindex="-1" aria-labelledby="caseModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -237,7 +297,7 @@
                     </div>
                 </div>
             </div>
-        </div>                
+        </div>
 
         <section id="build" class="py-5">
             <div class="container">
@@ -255,7 +315,9 @@
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                             data-parent="#buildGuideAccordion">
                             <div class="card-body">
-                                Select a processor (CPU) that meets your computational needs. Consider factors such as clock speed, core count, and overclocking capabilities if desired. The right CPU will ensure optimal performance for your intended applications and games.
+                                Select a processor (CPU) that meets your computational needs. Consider factors such as
+                                clock speed, core count, and overclocking capabilities if desired. The right CPU will
+                                ensure optimal performance for your intended applications and games.
                             </div>
                         </div>
                     </div>
@@ -271,7 +333,10 @@
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                             data-parent="#buildGuideAccordion">
                             <div class="card-body">
-                                Choose a graphics card (GPU) that can handle the graphical tasks you intend to perform. GPUs with larger VRAM and faster processors will enhance graphical quality in games and design applications. Also, consider support for technologies like ray tracing and DLSS for improved visual experiences.
+                                Choose a graphics card (GPU) that can handle the graphical tasks you intend to perform.
+                                GPUs with larger VRAM and faster processors will enhance graphical quality in games and
+                                design applications. Also, consider support for technologies like ray tracing and DLSS
+                                for improved visual experiences.
                             </div>
                         </div>
                     </div>
@@ -287,7 +352,10 @@
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                             data-parent="#buildGuideAccordion">
                             <div class="card-body">
-                                Select a motherboard that matches your CPU and expansion needs. Consider factors such as chipset, expansion slots, and additional features like Wi-Fi or overclocking support. Choosing the right motherboard ensures good compatibility with other components and provides flexible upgrade capabilities.
+                                Select a motherboard that matches your CPU and expansion needs. Consider factors such as
+                                chipset, expansion slots, and additional features like Wi-Fi or overclocking support.
+                                Choosing the right motherboard ensures good compatibility with other components and
+                                provides flexible upgrade capabilities.
                             </div>
                         </div>
                     </div>
@@ -303,7 +371,9 @@
                         <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
                             data-parent="#buildGuideAccordion">
                             <div class="card-body">
-                                Pick RAM modules that suit your system's needs. Consider RAM capacity (GB) and speed (MHz) to support smooth-running applications and games. Sufficient and fast RAM ensures responsive and stable system performance.
+                                Pick RAM modules that suit your system's needs. Consider RAM capacity (GB) and speed
+                                (MHz) to support smooth-running applications and games. Sufficient and fast RAM ensures
+                                responsive and stable system performance.
                             </div>
                         </div>
                     </div>
@@ -319,7 +389,10 @@
                         <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
                             data-parent="#buildGuideAccordion">
                             <div class="card-body">
-                                Select a power supply unit (PSU) that can deliver sufficient power to all components in your system. Consider wattage, efficiency (80 Plus certification), and protection features such as over-voltage and short-circuit protection. The right PSU provides the necessary power stability and helps avoid device damage risks.
+                                Select a power supply unit (PSU) that can deliver sufficient power to all components in
+                                your system. Consider wattage, efficiency (80 Plus certification), and protection
+                                features such as over-voltage and short-circuit protection. The right PSU provides the
+                                necessary power stability and helps avoid device damage risks.
                             </div>
                         </div>
                     </div>
@@ -335,7 +408,10 @@
                         <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
                             data-parent="#buildGuideAccordion">
                             <div class="card-body">
-                                Select a case that can accommodate all components and support good ventilation. Consider factors such as size, ease of installation, and cable management features. A quality case not only provides physical protection for components but also helps maintain stable system temperatures.
+                                Select a case that can accommodate all components and support good ventilation. Consider
+                                factors such as size, ease of installation, and cable management features. A quality
+                                case not only provides physical protection for components but also helps maintain stable
+                                system temperatures.
                             </div>
                         </div>
                     </div>
@@ -351,13 +427,16 @@
                         <div id="collapseEight" class="collapse" aria-labelledby="headingEight"
                             data-parent="#buildGuideAccordion">
                             <div class="card-body">
-                                Carefully assemble components according to manufacturer guidelines and specific instructions. Ensure all cables are connected correctly, install the CPU cooler, and double-check all components before powering on the system. This step is crucial to ensure your PC is ready for optimal use.
+                                Carefully assemble components according to manufacturer guidelines and specific
+                                instructions. Ensure all cables are connected correctly, install the CPU cooler, and
+                                double-check all components before powering on the system. This step is crucial to
+                                ensure your PC is ready for optimal use.
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>                        
+        </section>
 
         <section id="about" class="py-5">
             <div class="container">
@@ -367,7 +446,10 @@
                         <div class="card shadow-sm mb-4">
                             <div class="card-body">
                                 <h3 class="card-title">Our Mission</h3>
-                                <p class="card-text">At Computer Crafter, our mission is to empower individuals to build their custom PCs with ease and confidence. We provide detailed guides, high-quality parts, and expert advice to ensure that you can create a system that meets your needs and budget.</p>
+                                <p class="card-text">At Computer Crafter, our mission is to empower individuals to build
+                                    their custom PCs with ease and confidence. We provide detailed guides, high-quality
+                                    parts, and expert advice to ensure that you can create a system that meets your
+                                    needs and budget.</p>
                             </div>
                         </div>
                     </div>
@@ -375,7 +457,9 @@
                         <div class="card shadow-sm mb-4">
                             <div class="card-body">
                                 <h3 class="card-title">Our Vision</h3>
-                                <p class="card-text">We envision a world where everyone has access to the knowledge and resources needed to build their own computers. Our goal is to demystify the process and make it accessible to enthusiasts and beginners alike.</p>
+                                <p class="card-text">We envision a world where everyone has access to the knowledge and
+                                    resources needed to build their own computers. Our goal is to demystify the process
+                                    and make it accessible to enthusiasts and beginners alike.</p>
                             </div>
                         </div>
                     </div>
@@ -388,8 +472,10 @@
                                 <ul class="card-text">
                                     <li><strong>Quality:</strong> We provide only the best components and guides.</li>
                                     <li><strong>Support:</strong> Our team is here to help you at every step.</li>
-                                    <li><strong>Innovation:</strong> We stay on top of the latest trends and technologies.</li>
-                                    <li><strong>Community:</strong> We believe in the power of a supportive and knowledgeable community.</li>
+                                    <li><strong>Innovation:</strong> We stay on top of the latest trends and
+                                        technologies.</li>
+                                    <li><strong>Community:</strong> We believe in the power of a supportive and
+                                        knowledgeable community.</li>
                                 </ul>
                             </div>
                         </div>
@@ -398,22 +484,26 @@
                         <div class="card shadow-sm mb-4">
                             <div class="card-body">
                                 <h3 class="card-title">Contact Us</h3>
-                                <p class="card-text">If you have any questions or need assistance, feel free to <a href="#contact" class="text-primary">contact us</a>. We're here to help you make your computer crafting experience the best it can be.</p>
+                                <p class="card-text">If you have any questions or need assistance, feel free to <a
+                                        href="#contact" class="text-primary">contact us</a>. We're here to help you make
+                                    your computer crafting experience the best it can be.</p>
                                 <br>
                                 <br>
                                 <h3 class="card-title">Join Our Community</h3>
-                                <p class="card-text">Become a part of our community by visiting our <a href="forum" class="text-primary">forum</a> where you can ask questions, share your builds, and get feedback from other PC enthusiasts.</p>
+                                <p class="card-text">Become a part of our community by visiting our <a href="forum"
+                                        class="text-primary">forum</a> where you can ask questions, share your builds,
+                                    and get feedback from other PC enthusiasts.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>                      
+        </section>
 
         <section id="contact" class="py-5">
             <div class="container">
-                <h2 class="text-center">Contact Us</h2>
-                <form action="contact_process.php" method="POST">
+                <h2 class="text-center" data-aos="fade-up">Contact Us</h2>
+                <form action="contact_process.php" method="POST" data-aos="fade-right">
                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input type="text" class="form-control" id="name" name="name" required>
@@ -429,9 +519,41 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
+        </section>
+
+        <section id="team" class="team-section">
+            <div class="container">
+                <h2 data-aos="fade-up">Our Team</h2>
+                <div class="row">
+                    <div class="col-md-3 team-member" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://res.cloudinary.com/highereducation/images/f_auto,q_auto/g_face,c_fill,fl_lossy,q_auto:best,w_448,h_382/v1662131294/ComputerScience.org/GettyImages-1097995482_711ffff4/GettyImages-1097995482_711ffff4.jpg?_i=AA" alt="Member 1">
+                        <h4>Danendra Helmy Pratama</h4>
+                        <h5>2210511039</h5>
+                        <p>User Manual Creator</p>
+                    </div>
+                    <div class="col-md-3 team-member" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://www.scnsoft.com/team/it-support-engineer-1.jpg" alt="Member 2">
+                        <h4>Mohammad Akbar Sultoni</h4>
+                        <h5>2210511041</h5>
+                        <p>Back-End Web Developer</p>
+                    </div>
+                    <div class="col-md-3 team-member" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://www.training.com.au/wp-content/uploads/Entry-level-IT-worker.jpg" alt="Member 3">
+                        <h4>Zidane Alfatih Parto Atmojo</h4>
+                        <h5>2210511042</h5>
+                        <p>Web Design and Back-End Web Developer</p>
+                    </div>
+                    <div class="col-md-3 team-member" data-aos="fade-up" data-aos-delay="400">
+                        <img src="https://media.licdn.com/dms/image/D4D12AQFQ-4cvW_fztw/article-cover_image-shrink_720_1280/0/1664825701279?e=2147483647&v=beta&t=VKKwlhrEJvmyhNkdDzo4OyIi7Yps5LdIk9m685n7hAI" alt="Member 4">
+                        <h4>Rafie Rojagat Bachri</h4>
+                        <h5>2210511043</h5>
+                        <p>Web Design and Front-End Web Developer</p>
+                    </div>
+                </div>
+            </div>
         </section>        
     </main>
-    
+
     <footer class="bg-dark text-white text-center py-3">
         <div class="container">
             <p>&copy; 2024 Computer Crafter. All rights reserved.</p>
