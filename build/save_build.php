@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("iiiiiii", $UserID, $motherboard_id, $processor_id, $ram_id, $gpu_id, $powersupply_id, $cases_id);
     
     if ($stmt->execute()) {
-        header("Location: index.php");
+        header("Location: /ProjekUAS/profile/index.php");
         exit();
     } else {
         echo "Error: " . $stmt->error;
