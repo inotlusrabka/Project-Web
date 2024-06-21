@@ -8,7 +8,7 @@
         // Konfigurasi koneksi ke database
         $serverName = "localhost";
         $databaseUsername = "root";
-        $databasePassword = "";
+        $databasePassword = "rafie1715";
         $databaseName = "pc_part";
 
         // Membuat koneksi ke database
@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="/ProjekUAS/stylesheets/footer.css">
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
 <header>
@@ -79,7 +80,7 @@
 
     <main class="py-4">
         <section id="profile" class="py-5">
-            <div class="container">
+            <div class="container animate__animated animate__fadeIn">
                 <h2 class="text-center">Welcome to your profile, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
                 <div class="form-group">
                     <label for="profile-name">Name : <?php echo htmlspecialchars($_SESSION['username']); ?></label>
