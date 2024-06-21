@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2024 at 06:25 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Jun 21, 2024 at 09:47 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,7 +36,7 @@ CREATE TABLE `build_component` (
   `gpu_id` int(11) NOT NULL,
   `powersupply_id` int(11) NOT NULL,
   `cases_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `build_component`
@@ -59,7 +59,7 @@ CREATE TABLE `cases` (
   `price` int(25) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `image_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cases`
@@ -75,11 +75,7 @@ INSERT INTO `cases` (`id`, `model`, `series_number`, `type`, `price`, `descripti
 (7, 'Phanteks Enthoo Pro II', 'PH-ES719LTG_DBK01', 'Full Tower', 2000000, 'Spacious full tower case with versatile cooling options and extensive storage support.', 'https://m.media-amazon.com/images/I/81gALg+hx3L._AC_UF894,1000_QL80_.jpg'),
 (8, 'Fractal Design Define 7', 'FD-C-DEF7A-06', 'Full Tower', 1900000, 'Silent full tower case with sound-dampening panels and modular interior layout.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn-yjocwF8_v6yc51VE1AhRDpP15Nx8VYN7g&s'),
 (9, 'Cooler Master Cosmos C700M', 'MCC-C700M-MG5N-S00', 'Full Tower', 2200000, 'High-end full tower case with aluminum panels, RGB lighting, and adjustable motherboard layout.', 'https://a.storyblok.com/f/281110/cb15588e1a/c700m-black-gallery-1.png/m/1440x0/smart'),
-(10, 'Corsair Obsidian Series 1000D', 'CC-9011148-WW', 'Super Tower', 2500000, 'Super tower case with dual-system capability, extensive cooling support, and premium build quality.', 'https://assets.corsair.com/image/upload/c_pad,q_auto,h_1024,w_1024,f_auto/products/Cases/CC-9011148-WW/Gallery/1000D_01.webp?width=1080&quality=85&auto=webp&format=pjpg'),
-(11, 'NZXT H210i', 'CA-H210i-B1', 'Mini-ITX', 1000000, 'Compact Mini-ITX case with tempered glass side panel and integrated RGB lighting.', 'https://nzxt.com/assets/cms/34299/1615556894-h210i-2020-white-black-kraken-x-system.png?auto=format&dpr=1.5&fit=crop&h=1000&w=1000'),
-(12, 'Phanteks Evolv Shift 2', 'PH-ES217XE_BK01', 'Mini-ITX', 900000, 'Vertical Mini-ITX case with small footprint and unique dual-chamber design.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBo7psWDN90PLhhXOouChmX4RiOEKRalFlQQ&s'),
-(13, 'Fractal Design Node 202', 'FD-CA-NODE-202-BK', 'Mini-ITX', 800000, 'Slim Mini-ITX case designed for HTPC and console-style gaming builds.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ4hn6WrQUnE9udDu0ZA7LBzUU1ipdiV0cHg&s'),
-(14, 'Cooler Master Elite 110', 'RC-110-KKN2', 'Mini-ITX', 600000, 'Compact and affordable Mini-ITX case with mesh front panel for optimal airflow.', 'https://a.storyblok.com/f/281110/f6cacaa8a0/elite110-gallery-3.png/m/1440x0/smart'),
+(10, 'Corsair Obsidian Series 1000D', 'CC-9011148-WW', 'Full Tower', 2500000, 'Super tower case with dual-system capability, extensive cooling support, and premium build quality.', 'https://assets.corsair.com/image/upload/c_pad,q_auto,h_1024,w_1024,f_auto/products/Cases/CC-9011148-WW/Gallery/1000D_01.webp?width=1080&quality=85&auto=webp&format=pjpg'),
 (15, 'Corsair Carbide Series 88R', 'CC-9011086-WW', 'MicroATX', 700000, 'MicroATX case with clean exterior design and versatile cooling options.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0LF12H2uy5w1R4CgvWlA-fTkdPX28loAbvw&s'),
 (16, 'NZXT H400i', 'CA-H400W-BB', 'MicroATX', 900000, 'Compact MicroATX case with tempered glass side panel and integrated RGB lighting.', 'https://www.bhphotovideo.com/images/images1000x1000/nzxt_ca_h400w_bb_h400i_matte_black_1395876.jpg'),
 (17, 'Phanteks Eclipse P300A', 'PH-EC300ATG_BK01', 'MicroATX', 750000, 'Budget-friendly MicroATX case with good airflow and stylish design.', 'https://m.media-amazon.com/images/I/91Gqz3yTwnL.jpg'),
@@ -99,7 +95,7 @@ CREATE TABLE `contacts` (
   `email` varchar(50) NOT NULL,
   `message` text NOT NULL,
   `reg_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contacts`
@@ -121,7 +117,7 @@ CREATE TABLE `gpu` (
   `item_name` varchar(50) NOT NULL,
   `power_usage` int(11) NOT NULL,
   `image_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gpu`
@@ -166,37 +162,38 @@ CREATE TABLE `motherboard` (
   `power_usage` int(11) DEFAULT NULL,
   `image_url` varchar(300) DEFAULT NULL,
   `socket` varchar(20) NOT NULL,
+  `type` varchar(10) NOT NULL,
   `ram_slot` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `motherboard`
 --
 
-INSERT INTO `motherboard` (`item_id`, `price`, `brand`, `item_name`, `power_usage`, `image_url`, `socket`, `ram_slot`) VALUES
-(1, 3500000, 'MSI', 'B650 GAMING PLUS WIFI', 60, 'https://storage-asset.msi.com/global/picture/image/feature/mb/B650/B650-GAMING-PLUS-WIFI/modelblock-gaming-pd.png', 'AM5', 4),
-(2, 3700000, 'Asus', 'ROG STRIX B650-A GAMING WIFI', 60, 'https://dlcdnwebimgs.asus.com/files/media/3151EBBB-8450-43F6-9994-D7E5E6A9D0E5/v1/img/style/id-desig', 'AM5', 4),
-(3, 2900000, 'Gigabyte', 'B650 GAMING X AX', 60, 'https://static.gigabyte.com/StaticFile/Image/Global/78a667df301f4e8abecc66bb5e8ea619/Product/32245/p', 'AM5', 4),
-(4, 2500000, 'ASRock', 'B450M PRO4', 50, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOfhHfuFGG48In_bNPmmL1B1W4cSBFTuFu_Q&s', 'AM4', 4),
-(5, 3000000, 'MSI', 'MAG B550 TOMAHAWK', 55, 'https://blossomzones.com/wp-content/uploads/2020/07/B550-TOMAHAWK.jpg', 'AM4', 4),
-(6, 4500000, 'Gigabyte', 'X570 AORUS ELITE', 60, 'https://static.gigabyte.com/StaticFile/Image/Global/b281bb90ea1787d73fe5bff45821cd8c/Product/22419/png/500', 'AM4', 4),
-(7, 5000000, 'Asus', 'ROG STRIX B550-F GAMING', 70, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/2/26/a7c69a9d-6129-4649-af35-e0d3aa4409bf.jpg', 'AM4', 4),
-(8, 4000000, 'MSI', 'MAG B550M MORTAR WIFI', 50, 'https://m.media-amazon.com/images/I/91dm7oEjt3L._AC_UF894,1000_QL80_.jpg', 'AM4', 4),
-(9, 3500000, 'Gigabyte', 'B550 AORUS ELITE', 55, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/3/10/dbb9d0be-6d05-4019-ac9a-eedb8bae7de4.png', 'AM4', 4),
-(10, 2800000, 'ASRock', 'B450 STEEL LEGEND', 50, 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//106/MTA-74350986/amd_asrock-b450-steel-legend-am4-amd-promontory-b450-ddr4-usb3-1-_full01.jpg', 'AM4', 4),
-(11, 6000000, 'Asus', 'TUF GAMING X570-PLUS', 65, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDM544Ur7W8f1y_QguKxivj6iu4cb0evTinw&s', 'AM4', 4),
-(12, 7000000, 'MSI', 'MEG X570 UNIFY', 75, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReVrx-dGcT6w95r7S6bApeoWeZe_QjdS9hZQ&s', 'AM4', 4),
-(13, 8000000, 'Gigabyte', 'Z490 AORUS MASTER', 85, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2020/11/4/9e619c3f-978b-4c7e-bd66-17ab3714142f.png', 'LGA1200', 4),
-(14, 9000000, 'Asus', 'ROG MAXIMUS XII HERO', 90, 'https://images.tokopedia.net/img/cache/700/product-1/2020/9/5/5163039/5163039_661fd887-fa22-4b5e-ae2c-bc36d4da6cd2_508_508', 'LGA1200', 4),
-(15, 9500000, 'MSI', 'MEG Z490 GODLIKE', 95, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVzQWciL5oYtU73x3L22dosArsoQdD13fOnQ&s', 'LGA1200', 4),
-(16, 7500000, 'Gigabyte', 'Z490 VISION D', 80, 'https://static.gigabyte.com/StaticFile/Image/Global/ac3834c102ae0a0d103b7e3cf764fd1c/Product/25021/Png', 'LGA1200', 4),
-(17, 5500000, 'ASRock', 'Z490 STEEL LEGEND', 60, 'https://www.asrock.com/mb/photo/Z490%20Steel%20Legend(M1).png', 'LGA1200', 4),
-(18, 6500000, 'Asus', 'TUF GAMING Z490-PLUS', 70, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyRx2WAFgual3Qvb50SEJKDbBdXLDZf-S7PQ&s', 'LGA1200', 4),
-(19, 4700000, 'MSI', 'MPG Z490 GAMING EDGE WIFI', 65, 'https://asset.msi.com/resize/image/global/product/product_160938693173d821d3e96c87e573f494cb2197728e.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png', 'LGA1200', 4),
-(20, 3200000, 'Gigabyte', 'Z490 UD', 50, 'https://static.gigabyte.com/StaticFile/Image/Global/5194226566f55c0daf2b06d9ef8e4969/Product/24912/Png', 'LGA1200', 4),
-(21, 4800000, 'ASRock', 'Z490 PHANTOM GAMING 4', 60, 'https://pg.asrock.com/mb/photo/Z490%20Phantom%20Gaming%204(L1).png', 'LGA1200', 4),
-(22, 5200000, 'Asus', 'PRIME Z490-P', 65, 'https://images.tokopedia.net/img/cache/700/hDjmkQ/2021/6/1/7c15bf60-a2b2-4483-92e0-ac4dda27626b.jpg', 'LGA1200', 4),
-(23, 5300000, 'MSI', 'Z490-A PRO', 70, 'https://asset.msi.com/resize/image/global/product/product_1682670061e46ba0eab3bd45242c22708e43da606f.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png', 'LGA1200', 4);
+INSERT INTO `motherboard` (`item_id`, `price`, `brand`, `item_name`, `power_usage`, `image_url`, `socket`, `type`, `ram_slot`) VALUES
+(1, 3500000, 'MSI', 'B650 GAMING PLUS WIFI', 60, 'https://storage-asset.msi.com/global/picture/image/feature/mb/B650/B650-GAMING-PLUS-WIFI/modelblock-gaming-pd.png', 'AM5', 'ATX', 4),
+(2, 3700000, 'Asus', 'ROG STRIX B650-A GAMING WIFI', 60, 'https://dlcdnwebimgs.asus.com/files/media/3151EBBB-8450-43F6-9994-D7E5E6A9D0E5/v1/img/style/id-desig', 'AM5', 'ATX', 4),
+(3, 2900000, 'Gigabyte', 'B650 GAMING X AX', 60, 'https://static.gigabyte.com/StaticFile/Image/Global/78a667df301f4e8abecc66bb5e8ea619/Product/32245/p', 'AM5', 'ATX', 4),
+(4, 2500000, 'ASRock', 'B450M PRO4', 50, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOfhHfuFGG48In_bNPmmL1B1W4cSBFTuFu_Q&s', 'AM4', 'Micro ATX', 4),
+(5, 3000000, 'MSI', 'MAG B550 TOMAHAWK', 55, 'https://blossomzones.com/wp-content/uploads/2020/07/B550-TOMAHAWK.jpg', 'AM4', 'ATX', 4),
+(6, 4500000, 'Gigabyte', 'X570 AORUS ELITE', 60, 'https://static.gigabyte.com/StaticFile/Image/Global/b281bb90ea1787d73fe5bff45821cd8c/Product/22419/png/500', 'AM4', 'ATX', 4),
+(7, 5000000, 'Asus', 'ROG STRIX B550-F GAMING', 70, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/2/26/a7c69a9d-6129-4649-af35-e0d3aa4409bf.jpg', 'AM4', 'ATX', 4),
+(8, 4000000, 'MSI', 'MAG B550M MORTAR WIFI', 50, 'https://m.media-amazon.com/images/I/91dm7oEjt3L._AC_UF894,1000_QL80_.jpg', 'AM4', 'Micro ATX', 4),
+(9, 3500000, 'Gigabyte', 'B550 AORUS ELITE', 55, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2021/3/10/dbb9d0be-6d05-4019-ac9a-eedb8bae7de4.png', 'AM4', 'ATX', 4),
+(10, 2800000, 'ASRock', 'B450 STEEL LEGEND', 50, 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//106/MTA-74350986/amd_asrock-b450-steel-legend-am4-amd-promontory-b450-ddr4-usb3-1-_full01.jpg', 'AM4', 'ATX', 4),
+(11, 6000000, 'Asus', 'TUF GAMING X570-PLUS', 65, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDM544Ur7W8f1y_QguKxivj6iu4cb0evTinw&s', 'AM4', 'ATX', 4),
+(12, 7000000, 'MSI', 'MEG X570 UNIFY', 75, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReVrx-dGcT6w95r7S6bApeoWeZe_QjdS9hZQ&s', 'AM4', 'ATX', 4),
+(13, 8000000, 'Gigabyte', 'Z490 AORUS MASTER', 85, 'https://images.tokopedia.net/img/cache/700/VqbcmM/2020/11/4/9e619c3f-978b-4c7e-bd66-17ab3714142f.png', 'LGA1200', 'ATX', 4),
+(14, 9000000, 'Asus', 'ROG MAXIMUS XII HERO', 90, 'https://images.tokopedia.net/img/cache/700/product-1/2020/9/5/5163039/5163039_661fd887-fa22-4b5e-ae2c-bc36d4da6cd2_508_508', 'LGA1200', 'ATX', 4),
+(15, 9500000, 'MSI', 'MEG Z490 GODLIKE', 95, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVzQWciL5oYtU73x3L22dosArsoQdD13fOnQ&s', 'LGA1200', 'ATX', 4),
+(16, 7500000, 'Gigabyte', 'Z490 VISION D', 80, 'https://static.gigabyte.com/StaticFile/Image/Global/ac3834c102ae0a0d103b7e3cf764fd1c/Product/25021/Png', 'LGA1200', 'ATX', 4),
+(17, 5500000, 'ASRock', 'Z490 STEEL LEGEND', 60, 'https://www.asrock.com/mb/photo/Z490%20Steel%20Legend(M1).png', 'LGA1200', 'ATX', 4),
+(18, 6500000, 'Asus', 'TUF GAMING Z490-PLUS', 70, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyRx2WAFgual3Qvb50SEJKDbBdXLDZf-S7PQ&s', 'LGA1200', 'ATX', 4),
+(19, 4700000, 'MSI', 'MPG Z490 GAMING EDGE WIFI', 65, 'https://asset.msi.com/resize/image/global/product/product_160938693173d821d3e96c87e573f494cb2197728e.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png', 'LGA1200', 'ATX', 4),
+(20, 3200000, 'Gigabyte', 'Z490 UD', 50, 'https://static.gigabyte.com/StaticFile/Image/Global/5194226566f55c0daf2b06d9ef8e4969/Product/24912/Png', 'LGA1200', 'ATX', 4),
+(21, 4800000, 'ASRock', 'Z490 PHANTOM GAMING 4', 60, 'https://pg.asrock.com/mb/photo/Z490%20Phantom%20Gaming%204(L1).png', 'LGA1200', 'ATX', 4),
+(22, 5200000, 'Asus', 'PRIME Z490-P', 65, 'https://images.tokopedia.net/img/cache/700/hDjmkQ/2021/6/1/7c15bf60-a2b2-4483-92e0-ac4dda27626b.jpg', 'LGA1200', 'ATX', 4),
+(23, 5300000, 'MSI', 'Z490-A PRO', 70, 'https://asset.msi.com/resize/image/global/product/product_1682670061e46ba0eab3bd45242c22708e43da606f.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png', 'LGA1200', 'ATX', 4);
 
 -- --------------------------------------------------------
 
@@ -209,7 +206,7 @@ CREATE TABLE `posts` (
   `UserID` int(11) NOT NULL,
   `title` varchar(64) DEFAULT NULL,
   `message` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `posts`
@@ -233,7 +230,7 @@ CREATE TABLE `powersupply` (
   `image_url` varchar(300) NOT NULL,
   `price` int(25) DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `powersupply`
@@ -277,7 +274,7 @@ CREATE TABLE `processor` (
   `socket` varchar(20) NOT NULL,
   `core_count` int(11) NOT NULL,
   `performance_core_clock` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `processor`
@@ -323,7 +320,7 @@ CREATE TABLE `ram` (
   `type` varchar(20) NOT NULL,
   `power_usage` int(11) NOT NULL,
   `image_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `ram`
@@ -365,7 +362,7 @@ CREATE TABLE `userdata` (
   `Email` varchar(256) NOT NULL,
   `Password` varchar(64) NOT NULL,
   `AccessLevel` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `userdata`
