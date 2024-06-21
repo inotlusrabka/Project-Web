@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 // Konfigurasi koneksi ke database
 $servername = "localhost";
 $username = "root";
-$password = "rafie1715";
+$password = "";
 $dbname = "pc_part";
 
 // Membuat koneksi ke database
