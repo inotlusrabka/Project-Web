@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2024 at 07:22 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Jun 22, 2024 at 08:28 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,7 +36,7 @@ CREATE TABLE `build_component` (
   `gpu_id` int(11) NOT NULL,
   `powersupply_id` int(11) NOT NULL,
   `cases_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `build_component`
@@ -64,7 +64,7 @@ CREATE TABLE `cases` (
   `description` text DEFAULT NULL,
   `image_url` varchar(300) NOT NULL,
   `buy_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cases`
@@ -91,6 +91,27 @@ INSERT INTO `cases` (`id`, `model`, `series_number`, `type`, `price`, `descripti
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `id` int(3) NOT NULL,
+  `PostId` int(3) NOT NULL,
+  `UserId` int(3) NOT NULL,
+  `message` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`id`, `PostId`, `UserId`, `message`) VALUES
+(0, 2, 1, 'aaa'),
+(1, 2, 7, 'test comment');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `contacts`
 --
 
@@ -100,7 +121,7 @@ CREATE TABLE `contacts` (
   `email` varchar(50) NOT NULL,
   `message` text NOT NULL,
   `reg_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contacts`
@@ -123,7 +144,7 @@ CREATE TABLE `gpu` (
   `power_usage` int(11) NOT NULL,
   `image_url` varchar(300) NOT NULL,
   `buy_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gpu`
@@ -171,7 +192,7 @@ CREATE TABLE `motherboard` (
   `type` varchar(10) NOT NULL,
   `ram_slot` int(11) NOT NULL,
   `buy_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `motherboard`
@@ -214,7 +235,7 @@ CREATE TABLE `posts` (
   `title` varchar(64) DEFAULT NULL,
   `message` text NOT NULL,
   `build_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `posts`
@@ -241,7 +262,7 @@ CREATE TABLE `powersupply` (
   `price` int(25) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `buy_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `powersupply`
@@ -286,7 +307,7 @@ CREATE TABLE `processor` (
   `core_count` int(11) NOT NULL,
   `performance_core_clock` float NOT NULL,
   `buy_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `processor`
@@ -333,7 +354,7 @@ CREATE TABLE `ram` (
   `power_usage` int(11) NOT NULL,
   `image_url` varchar(300) NOT NULL,
   `buy_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `ram`
@@ -375,7 +396,7 @@ CREATE TABLE `userdata` (
   `Email` varchar(256) NOT NULL,
   `Password` varchar(64) NOT NULL,
   `AccessLevel` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `userdata`
@@ -414,6 +435,14 @@ ALTER TABLE `build_component`
 --
 ALTER TABLE `cases`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `PostId` (`PostId`),
+  ADD KEY `UserId` (`UserId`);
 
 --
 -- Indexes for table `contacts`
@@ -518,6 +547,13 @@ ALTER TABLE `build_component`
   ADD CONSTRAINT `build_component_ibfk_3` FOREIGN KEY (`processor_id`) REFERENCES `processor` (`item_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `build_component_ibfk_4` FOREIGN KEY (`ram_id`) REFERENCES `ram` (`item_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `build_component_ibfk_5` FOREIGN KEY (`UserID`) REFERENCES `userdata` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `PostId` FOREIGN KEY (`PostId`) REFERENCES `posts` (`id`),
+  ADD CONSTRAINT `UserId` FOREIGN KEY (`UserId`) REFERENCES `userdata` (`UserID`);
 
 --
 -- Constraints for table `posts`
