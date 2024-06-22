@@ -4,39 +4,39 @@
     if (!isset($_SESSION['username'])) {
         header('Location: /ProjekUAS/login.php');
         exit();
-    } elseif (isset($_SESSION['username'])){
-        // Konfigurasi koneksi ke database
-        $serverName = "localhost";
-        $databaseUsername = "root";
-        $databasePassword = "";
-        $databaseName = "pc_part";
-
-        // Membuat koneksi ke database
-        $connect = new mysqli($serverName, $databaseUsername, $databasePassword, $databaseName);
-
-        // Memeriksa koneksi
-        if ($connect->connect_error) {
-            die("Connection failed: " . $connect->connect_error);
-        }
-
-        // Ambil data pengguna dari database
-        $username = $_SESSION['username'];
-        $sql = "SELECT * FROM userdata WHERE Username = ?";
-        $stmt = $connect->prepare($sql);
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-        } else {
-            echo "User not found.";
-            exit();
-        }
-
-        $stmt->close();
-        $connect->close();
     }
+
+    // Konfigurasi koneksi ke database
+    $serverName = "localhost";
+    $databaseUsername = "root";
+    $databasePassword = "";
+    $databaseName = "pc_part";
+
+    // Membuat koneksi ke database
+    $connect = new mysqli($serverName, $databaseUsername, $databasePassword, $databaseName);
+
+    // Memeriksa koneksi
+    if ($connect->connect_error) {
+        die("Connection failed: " . $connect->connect_error);
+    }
+
+    // Ambil data pengguna dari database
+    $username = $_SESSION['username'];
+    $sql = "SELECT * FROM userdata WHERE Username = ?";
+    $stmt = $connect->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+    } else {
+        echo "User not found.";
+        exit();
+    }
+
+    $stmt->close();
+    $connect->close();
 ?>
 
 <!DOCTYPE html>
@@ -85,19 +85,16 @@
             <div class="container animate__animated animate__fadeIn">
                 <h2 class="text-center">Welcome to your profile, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
                 <div class="form-group">
-                    <label for="profile-name">Name : <?php echo htmlspecialchars($_SESSION['username']); ?></label>
+                    <label for="profile-name">Name : <?php echo htmlspecialchars($user['Username']); ?></label>
                 </div>
                 <div class="form-group">
-                    <label for="profile-email">Email : <?php echo htmlspecialchars($_SESSION['email']); ?></label>
+                    <label for="profile-email">Email : <?php echo htmlspecialchars($user['Email']); ?></label>
                 </div>
                 <div class="form-group">
                     <label for="profile-bio">Bio</label>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" id="profile-bio" name="profile-bio" rows="3" placeholder="You have not set your bio yet" disabled><?php if (!empty($_SESSION['bio'])) {
-                                                                                                                echo htmlspecialchars($user['Bio']);
-                                                                                                            } else {
-                                                                                                            } ?></textarea>
+                    <textarea class="form-control" id="profile-bio" name="profile-bio" rows="3" placeholder="You have not set your bio yet" disabled><?php echo htmlspecialchars($user['Bio']); ?></textarea>
                 </div>
                 <div class="mt-4">
                     <a href="edit-profile.php" class="btn btn-primary">Edit Profile</a>
