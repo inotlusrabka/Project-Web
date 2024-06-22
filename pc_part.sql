@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2024 at 08:28 AM
+-- Generation Time: Jun 22, 2024 at 08:34 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -440,7 +440,6 @@ ALTER TABLE `cases`
 -- Indexes for table `comment`
 --
 ALTER TABLE `comment`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `PostId` (`PostId`),
   ADD KEY `UserId` (`UserId`);
 
