@@ -4,39 +4,39 @@
     if (!isset($_SESSION['username'])) {
         header('Location: /ProjekUAS/login.php');
         exit();
-    } elseif (isset($_SESSION['username'])){
-        // Konfigurasi koneksi ke database
-        $serverName = "localhost";
-        $databaseUsername = "root";
-        $databasePassword = "";
-        $databaseName = "pc_part";
-
-        // Membuat koneksi ke database
-        $connect = new mysqli($serverName, $databaseUsername, $databasePassword, $databaseName);
-
-        // Memeriksa koneksi
-        if ($connect->connect_error) {
-            die("Connection failed: " . $connect->connect_error);
-        }
-
-        // Ambil data pengguna dari database
-        $username = $_SESSION['username'];
-        $sql = "SELECT * FROM userdata WHERE Username = ?";
-        $stmt = $connect->prepare($sql);
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-        } else {
-            echo "User not found.";
-            exit();
-        }
-
-        $stmt->close();
-        $connect->close();
     }
+
+    // Konfigurasi koneksi ke database
+    $serverName = "localhost";
+    $databaseUsername = "root";
+    $databasePassword = "rafie1715";
+    $databaseName = "pc_part";
+
+    // Membuat koneksi ke database
+    $connect = new mysqli($serverName, $databaseUsername, $databasePassword, $databaseName);
+
+    // Memeriksa koneksi
+    if ($connect->connect_error) {
+        die("Connection failed: " . $connect->connect_error);
+    }
+
+    // Ambil data pengguna dari database
+    $username = $_SESSION['username'];
+    $sql = "SELECT * FROM userdata WHERE Username = ?";
+    $stmt = $connect->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+    } else {
+        echo "User not found.";
+        exit();
+    }
+
+    $stmt->close();
+    $connect->close();
 ?>
 
 <!DOCTYPE html>
@@ -77,19 +77,15 @@
                 <form method="POST" action="update_profile.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="profile-name">Name</label>
-                        <input type="text" class="form-control" id="profile-name" name="profile-name" value="<?php echo htmlspecialchars($_SESSION['username']); ?>" placeholder="Enter your name">
+                        <input type="text" class="form-control" id="profile-name" name="profile-name" value="<?php echo htmlspecialchars($user['Username']); ?>" placeholder="Enter your name">
                     </div>
                     <div class="form-group">
                         <label for="profile-email">Email</label>
-                        <input type="email" class="form-control" id="profile-email" name="profile-email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>" placeholder="Enter your email">
+                        <input type="email" class="form-control" id="profile-email" name="profile-email" value="<?php echo htmlspecialchars($user['Email']); ?>" placeholder="Enter your email">
                     </div>
                     <div class="form-group">
                         <label for="profile-bio">Bio</label>
-                        <textarea class="form-control" id="profile-bio" name="profile-bio" rows="3" value="<?php if (!empty($_SESSION['bio'])){ echo htmlspecialchars($user['Bio']);} else {} ?>" placeholder="Tell us about yourself"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="profile-picture">Profile Picture</label>
-                        <input type="file" class="form-control-file" id="profile-picture" name="profile-picture">
+                        <textarea class="form-control" id="profile-bio" name="profile-bio" rows="3" placeholder="Tell us about yourself"><?php echo htmlspecialchars($user['Bio']); ?></textarea>
                     </div>
                     <a href="index.php" class="btn btn-danger">Cancel</a> <button type="submit" class="btn btn-primary">Save Changes</button>
                 </form>
