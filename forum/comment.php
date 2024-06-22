@@ -28,6 +28,6 @@ $stmt->execute();
 $stmt->close();
 $conn->close();
 
-header("Location: forum.php");
+header("Location: index.php");
 exit();
 ?>
