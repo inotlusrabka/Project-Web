@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Memeriksa apakah username dan password cocok
-        $stmt = $pdo->prepare('SELECT UserID, Username, Email FROM userdata WHERE Username = :username AND Password = :password LIMIT 1');
+        $stmt = $pdo->prepare('SELECT UserID, Username, Email, AccessLevel FROM userdata WHERE Username = :username AND Password = :password LIMIT 1');
         $stmt->execute(['username' => $username, 'password' => $hashPassword]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 

@@ -24,7 +24,8 @@ $sql = "
         ram.brand AS ram_brand, ram.item_name AS ram_item_name, ram.image_url AS ram_image_url, ram.buy_url AS ram_buy_url,
         gpu.brand AS gpu_brand, gpu.item_name AS gpu_item_name, gpu.image_url AS gpu_image_url, gpu.buy_url AS gpu_buy_url,
         powersupply.model AS powersupply_model, powersupply.image_url AS powersupply_image_url, powersupply.buy_url AS powersupply_buy_url,
-        cases.model AS cases_model, cases.image_url AS cases_image_url, cases.buy_url AS cases_buy_url, userdata.username
+        cases.model AS cases_model, cases.image_url AS cases_image_url, cases.buy_url AS cases_buy_url, 
+        userdata.username, userdata.AccessLevel
     FROM posts
     LEFT JOIN build_component ON posts.build_id = build_component.build_id
     LEFT JOIN motherboard ON build_component.motherboard_id = motherboard.item_id
@@ -41,9 +42,12 @@ $result = $conn->query($sql);
 // Mendapatkan UserID dari sesi
 $UserID = $_SESSION['userid'] ?? null;
 
-// Query untuk mengambil data build_component
+// Query untuk mengambil data build_component dengan nomor urut berdasarkan UserID
 $sql_build = "
-    SELECT build_component.build_id AS build_id, build_component.UserID FROM build_component WHERE build_component.UserID = ?
+    SELECT build_component.build_id, build_component.UserID, 
+    ROW_NUMBER() OVER (PARTITION BY build_component.UserID ORDER BY build_component.build_id) AS build_number 
+    FROM build_component 
+    WHERE build_component.UserID = ?
 ";
 
 $stmt = $conn->prepare($sql_build);
@@ -140,92 +144,95 @@ $conn->close();
                                             </div>
                                         <?php endif; ?>
                                         <?php
-                                            if (isset($_SESSION['username'])) {
+                                            if (isset($_SESSION['userid']) && ($_SESSION['userid'] == $row['UserID'] ) || $_SESSION['access_level'] == 'Admin' ) {
                                                 echo '<div class="text-right mb-3">';
-                                                echo '<button class="btn btn-primary mt-3" data-toggle="modal" data-target="#editDeletePostModal" data-id="' . $row['id'] . '" data-title="' . htmlspecialchars($row['title']) . '" data-message="' . htmlspecialchars($row['message']) . '">Edit/Delete Post</button>';
+                                                echo '<button class="btn btn-primary mt-3" data-toggle="modal" data-target="#editDeletePostModal" data-id="' . $row['id'] . '" data-title="' . htmlspecialchars($row['title']) . '" data-message="' . htmlspecialchars($row['message']) . '">Edit / Delete</button>';
                                                 echo '</div>';
-                                            } 
-                                        ?>                                      
+                                            }
+                                        ?>
                                     </div>
                                 </div>
                             <?php endwhile; ?>
                         <?php else: ?>
-                            <p class="text-center">No posts found.</p>
+                            <div class="alert alert-info" role="alert" data-aos="fade-up" data-aos-duration="1000">No posts found.</div>
                         <?php endif; ?>
-
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- New Post Modal -->
-        <div class="modal fade" id="newPostModal" tabindex="-1" aria-labelledby="newPostModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <form action="new_post.php" method="POST">
-                            <div class="form-group">
-                                <label for="post-title">Title</label>
-                                <input type="text" class="form-control" id="post-title" name="post-title" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="post-content">Content</label>
-                                <textarea class="form-control" id="post-content" name="post-content" rows="3" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="build-select">Select Build</label>
-                                <select class="form-control" id="build-select" name="build-id">
-                                    <option value="">None</option>
-                                    <?php if ($build_result->num_rows > 0): ?>
-                                        <?php while($build_row = $build_result->fetch_assoc()): ?>
-                                            <option value="<?php echo $build_row['build_id']; ?>"><?php echo "Build ID: " . $build_row['build_id']; ?></option>
-                                        <?php endwhile; ?>
-                                    <?php else: ?>
-                                        <option value="">No builds found for this user.</option>
-                                    <?php endif; ?>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Post</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Edit/Delete Post Modal -->
-        <div class="modal fade" id="editDeletePostModal" tabindex="-1" aria-labelledby="editDeletePostModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editDeletePostModalLabel">Edit/Delete Post</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="editDeletePostForm">
-                            <input type="hidden" id="edit-post-id" name="post-id">
-                            <div class="form-group">
-                                <label for="edit-post-title">Title</label>
-                                <input type="text" class="form-control" id="edit-post-title" name="post-title">
-                            </div>
-                            <div class="form-group">
-                                <label for="edit-post-content">Content</label>
-                                <textarea class="form-control" id="edit-post-content" name="post-content" rows="3"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
-                            <button type="button" class="btn btn-danger" id="deletePostBtn">Delete Post</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
 
-    <footer>
-        <div class="container text-center">
-            <p>© 2023 Computer Crafter. All Rights Reserved.</p>
+    <!-- New Post Modal -->
+    <div class="modal fade" id="newPostModal" tabindex="-1" role="dialog" aria-labelledby="newPostModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newPostModalLabel">New Post</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="newPostForm" action="post.php" method="post">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="post-title" name="post-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="post-content" name="post-content" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="build_id">Select a Build (Optional)</label>
+                            <select class="form-control" id="build_id" name="build_id">
+                                <option value="">None</option>
+                                <?php if ($build_result->num_rows > 0): ?>
+                                    <?php while($build_row = $build_result->fetch_assoc()): ?>
+                                        <option value="<?php echo $build_row['build_id']; ?>">
+                                            Build <?php echo $build_row['build_number']; ?>
+                                        </option>
+                                    <?php endwhile; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <!-- Edit / Delete Post Modal -->
+    <div class="modal fade" id="editDeletePostModal" tabindex="-1" role="dialog" aria-labelledby="editDeletePostModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editDeletePostModalLabel">Edit / Delete Post</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editDeletePostForm" action="edit_delete_post.php" method="post">
+                        <input type="hidden" id="editDeletePostId" name="post_id">
+                        <div class="form-group">
+                            <label for="editDeleteTitle">Title</label>
+                            <input type="text" class="form-control" id="editDeleteTitle" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editDeleteMessage">Message</label>
+                            <textarea class="form-control" id="editDeleteMessage" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="btn btn-danger" id="deletePostButton">Delete Post</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white mt-5 p-4 text-center">
+        &copy; 2024 Computer Crafter. All Rights Reserved.
     </footer>
 
     <!-- AOS JavaScript -->
@@ -233,39 +240,29 @@ $conn->close();
     <script>
         AOS.init();
     </script>
-    
-    <!-- Bootstrap and jQuery scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <!-- jQuery, Bootstrap JS, and other scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         $('#editDeletePostModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var postId = button.data('id');
-            var postTitle = button.data('title');
-            var postContent = button.data('message');
-            var modal = $(this);
-            modal.find('#edit-post-id').val(postId);
-            modal.find('#edit-post-title').val(postTitle);
-            modal.find('#edit-post-content').val(postContent);
-        });
+            var button = $(event.relatedTarget)
+            var id = button.data('id')
+            var title = button.data('title')
+            var message = button.data('message')
+            var modal = $(this)
+            modal.find('#editDeletePostId').val(id)
+            modal.find('#editDeleteTitle').val(title)
+            modal.find('#editDeleteMessage').val(message)
+        })
 
-        $('#deletePostBtn').on('click', function() {
-            var postId = $('#edit-post-id').val();
+        $('#deletePostButton').on('click', function () {
             if (confirm('Are you sure you want to delete this post?')) {
-                $.post('delete_post.php', { postId: postId }, function(response) {
-                    location.reload();
-                });
+                $('#editDeletePostForm').attr('action', 'delete_post.php');
+                $('#editDeletePostForm').submit();
             }
-        });
-
-        $('#editDeletePostForm').on('submit', function(event) {
-            event.preventDefault();
-            $.post('edit_post.php', $(this).serialize(), function(response) {
-                location.reload();
-            });
-        });
+        })
     </script>
 </body>
 </html>

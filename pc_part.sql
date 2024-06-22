@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2024 at 05:19 PM
+-- Generation Time: Jun 22, 2024 at 07:22 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -46,7 +46,8 @@ INSERT INTO `build_component` (`build_id`, `UserID`, `motherboard_id`, `processo
 (1, 3, 5, 9, 6, 3, 16, 3),
 (2, 3, 4, 11, 9, 4, 12, 17),
 (3, 3, 4, 8, 12, 4, 13, 10),
-(4, 1, 8, 6, 11, 4, 13, 10);
+(4, 1, 8, 6, 11, 4, 13, 10),
+(5, 12, 15, 10, 8, 5, 14, 6);
 
 -- --------------------------------------------------------
 
@@ -222,7 +223,8 @@ CREATE TABLE `posts` (
 INSERT INTO `posts` (`id`, `UserID`, `title`, `message`, `build_id`) VALUES
 (2, 3, 'test', 'test', 1),
 (3, 3, 'test1', 'test1', 3),
-(4, 3, 'tesss', 'tesss', 2);
+(4, 3, 'tesss', 'tesss', 2),
+(5, 12, 'Nanya', 'Apakah ada rekomendasi?', 5);
 
 -- --------------------------------------------------------
 
@@ -389,7 +391,8 @@ INSERT INTO `userdata` (`UserID`, `Username`, `Email`, `Password`, `AccessLevel`
 (8, 'joko', 'zidanealfatih@yahoo.com', 'dd05b4f47074fdd20fcf4db9861f4453fe9543798d913d432e9f2886ff9649dd', 'Member'),
 (9, '111', '111', 'ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1', 'Member'),
 (10, 'gwgeming', 'akbar123', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Member'),
-(12, 'Rafie1715', 'rafie@gmail.com', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Member');
+(12, 'Rafie1715', 'rafie@gmail.com', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Member'),
+(13, 'admin_akbar', 'bukanemailsiapasiapa@gmail.com', 'e09c3465534fa465826f34232e3e3129a794e106306dd22af14bd57c486ec839', 'Admin');
 
 --
 -- Indexes for dumped tables
@@ -470,7 +473,7 @@ ALTER TABLE `userdata`
 -- AUTO_INCREMENT for table `build_component`
 --
 ALTER TABLE `build_component`
-  MODIFY `build_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `build_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cases`
@@ -488,7 +491,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `powersupply`
@@ -500,7 +503,7 @@ ALTER TABLE `powersupply`
 -- AUTO_INCREMENT for table `userdata`
 --
 ALTER TABLE `userdata`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
