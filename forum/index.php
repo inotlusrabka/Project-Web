@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 // Query to get posts and join with build_component and part pc tables
 $sql = "
     SELECT
-        posts.id, posts.UserID, posts.title, posts.message, build_component.build_id, build_component.motherboard_id,
+        posts.id AS post_id, posts.UserID, posts.title, posts.message, build_component.build_id, build_component.motherboard_id,
         build_component.processor_id, build_component.ram_id, build_component.gpu_id, build_component.powersupply_id,
         build_component.cases_id, motherboard.brand AS motherboard_brand, motherboard.item_name AS motherboard_item_name,
         motherboard.image_url AS motherboard_image_url, motherboard.buy_url AS motherboard_buy_url,
@@ -60,6 +60,22 @@ $stmt->execute();
 $build_result = $stmt->get_result();
 
 $stmt->close();
+
+// Fetch comments for each post
+$sql_comments = "
+    SELECT comment.id, comment.PostId, comment.UserId, comment.message, userdata.username
+    FROM comment
+    JOIN userdata ON comment.UserId = userdata.UserID
+";
+$comments_result = $conn->query($sql_comments);
+
+$comments = [];
+if ($comments_result->num_rows > 0) {
+    while ($row = $comments_result->fetch_assoc()) {
+        $comments[$row['PostId']][] = $row;
+    }
+}
+
 $conn->close();
 ?>
 
@@ -143,10 +159,32 @@ $conn->close();
                                                 </div>
                                             </div>
                                         <?php endif; ?>
+                                        <div class="card-body">
+                                            <h5 class="card-subtitle mb-2">Comments:</h5>
+                                            <?php if (isset($comments[$row['post_id']])): ?>
+                                                <?php foreach ($comments[$row['post_id']] as $comment): ?>
+                                                    <div class="border p-2 mb-2">
+                                                        <p class="mb-1"><strong><?php echo htmlspecialchars($comment['username']); ?>:</strong></p>
+                                                        <p class="mb-1"><?php echo nl2br(htmlspecialchars($comment['message'])); ?></p>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            <?php else: ?>
+                                                <p class="text-muted">No comments yet.</p>
+                                            <?php endif; ?>
+                                            <?php if (isset($_SESSION['username'])): ?>
+                                                <form action="comment.php" method="post">
+                                                    <input type="hidden" name="post_id" value="<?php echo $row['post_id']; ?>">
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" name="message" rows="2" placeholder="Add a comment..." required></textarea>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary btn-sm">Comment</button>
+                                                </form>
+                                            <?php endif; ?>
+                                        </div>
                                         <?php
                                             if (isset($_SESSION['userid']) && ($_SESSION['userid'] == $row['UserID'] ) || $_SESSION['access_level'] == 'Admin' ) {
                                                 echo '<div class="text-right mb-3">';
-                                                echo '<button class="btn btn-primary mt-3" data-toggle="modal" data-target="#editDeletePostModal" data-id="' . $row['id'] . '" data-title="' . htmlspecialchars($row['title']) . '" data-message="' . htmlspecialchars($row['message']) . '">Edit / Delete</button>';
+                                                echo '<button class="btn btn-primary mt-3" data-toggle="modal" data-target="#editDeletePostModal" data-id="' . $row['post_id'] . '" data-title="' . htmlspecialchars($row['title']) . '" data-message="' . htmlspecialchars($row['message']) . '">Edit / Delete</button>';
                                                 echo '</div>';
                                             }
                                         ?>
