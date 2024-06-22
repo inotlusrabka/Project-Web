@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2024 at 08:34 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Waktu pembuatan: 22 Jun 2024 pada 12.29
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `build_component`
+-- Struktur dari tabel `build_component`
 --
 
 CREATE TABLE `build_component` (
@@ -39,7 +39,7 @@ CREATE TABLE `build_component` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `build_component`
+-- Dumping data untuk tabel `build_component`
 --
 
 INSERT INTO `build_component` (`build_id`, `UserID`, `motherboard_id`, `processor_id`, `ram_id`, `gpu_id`, `powersupply_id`, `cases_id`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `build_component` (`build_id`, `UserID`, `motherboard_id`, `processo
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cases`
+-- Struktur dari tabel `cases`
 --
 
 CREATE TABLE `cases` (
@@ -67,7 +67,7 @@ CREATE TABLE `cases` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `cases`
+-- Dumping data untuk tabel `cases`
 --
 
 INSERT INTO `cases` (`id`, `model`, `series_number`, `type`, `price`, `description`, `image_url`, `buy_url`) VALUES
@@ -91,7 +91,7 @@ INSERT INTO `cases` (`id`, `model`, `series_number`, `type`, `price`, `descripti
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comment`
+-- Struktur dari tabel `comment`
 --
 
 CREATE TABLE `comment` (
@@ -102,17 +102,18 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `comment`
+-- Dumping data untuk tabel `comment`
 --
 
 INSERT INTO `comment` (`id`, `PostId`, `UserId`, `message`) VALUES
 (0, 2, 1, 'aaa'),
-(1, 2, 7, 'test comment');
+(1, 2, 7, 'test comment'),
+(0, 5, 12, 'ddsd');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contacts`
+-- Struktur dari tabel `contacts`
 --
 
 CREATE TABLE `contacts` (
@@ -124,7 +125,7 @@ CREATE TABLE `contacts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `contacts`
+-- Dumping data untuk tabel `contacts`
 --
 
 INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `reg_date`) VALUES
@@ -133,7 +134,7 @@ INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `reg_date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gpu`
+-- Struktur dari tabel `gpu`
 --
 
 CREATE TABLE `gpu` (
@@ -147,7 +148,7 @@ CREATE TABLE `gpu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `gpu`
+-- Dumping data untuk tabel `gpu`
 --
 
 INSERT INTO `gpu` (`item_id`, `price`, `brand`, `item_name`, `power_usage`, `image_url`, `buy_url`) VALUES
@@ -178,7 +179,7 @@ INSERT INTO `gpu` (`item_id`, `price`, `brand`, `item_name`, `power_usage`, `ima
 -- --------------------------------------------------------
 
 --
--- Table structure for table `motherboard`
+-- Struktur dari tabel `motherboard`
 --
 
 CREATE TABLE `motherboard` (
@@ -195,7 +196,7 @@ CREATE TABLE `motherboard` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `motherboard`
+-- Dumping data untuk tabel `motherboard`
 --
 
 INSERT INTO `motherboard` (`item_id`, `price`, `brand`, `item_name`, `power_usage`, `image_url`, `socket`, `type`, `ram_slot`, `buy_url`) VALUES
@@ -226,7 +227,7 @@ INSERT INTO `motherboard` (`item_id`, `price`, `brand`, `item_name`, `power_usag
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Struktur dari tabel `posts`
 --
 
 CREATE TABLE `posts` (
@@ -238,7 +239,7 @@ CREATE TABLE `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `posts`
+-- Dumping data untuk tabel `posts`
 --
 
 INSERT INTO `posts` (`id`, `UserID`, `title`, `message`, `build_id`) VALUES
@@ -250,7 +251,7 @@ INSERT INTO `posts` (`id`, `UserID`, `title`, `message`, `build_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `powersupply`
+-- Struktur dari tabel `powersupply`
 --
 
 CREATE TABLE `powersupply` (
@@ -265,7 +266,7 @@ CREATE TABLE `powersupply` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `powersupply`
+-- Dumping data untuk tabel `powersupply`
 --
 
 INSERT INTO `powersupply` (`id`, `model`, `series_number`, `wattage`, `image_url`, `price`, `description`, `buy_url`) VALUES
@@ -293,7 +294,7 @@ INSERT INTO `powersupply` (`id`, `model`, `series_number`, `wattage`, `image_url
 -- --------------------------------------------------------
 
 --
--- Table structure for table `processor`
+-- Struktur dari tabel `processor`
 --
 
 CREATE TABLE `processor` (
@@ -310,7 +311,7 @@ CREATE TABLE `processor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `processor`
+-- Dumping data untuk tabel `processor`
 --
 
 INSERT INTO `processor` (`item_id`, `price`, `brand`, `item_name`, `power_usage`, `image_url`, `socket`, `core_count`, `performance_core_clock`, `buy_url`) VALUES
@@ -340,7 +341,7 @@ INSERT INTO `processor` (`item_id`, `price`, `brand`, `item_name`, `power_usage`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ram`
+-- Struktur dari tabel `ram`
 --
 
 CREATE TABLE `ram` (
@@ -357,7 +358,7 @@ CREATE TABLE `ram` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `ram`
+-- Dumping data untuk tabel `ram`
 --
 
 INSERT INTO `ram` (`item_id`, `price`, `brand`, `item_name`, `size`, `module`, `type`, `power_usage`, `image_url`, `buy_url`) VALUES
@@ -387,7 +388,7 @@ INSERT INTO `ram` (`item_id`, `price`, `brand`, `item_name`, `size`, `module`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userdata`
+-- Struktur dari tabel `userdata`
 --
 
 CREATE TABLE `userdata` (
@@ -395,32 +396,33 @@ CREATE TABLE `userdata` (
   `Username` varchar(256) NOT NULL,
   `Email` varchar(256) NOT NULL,
   `Password` varchar(64) NOT NULL,
-  `AccessLevel` varchar(16) NOT NULL
+  `AccessLevel` varchar(16) NOT NULL,
+  `Bio` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `userdata`
+-- Dumping data untuk tabel `userdata`
 --
 
-INSERT INTO `userdata` (`UserID`, `Username`, `Email`, `Password`, `AccessLevel`) VALUES
-(1, 'kelompokkeren', '12345678', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Member'),
-(2, 'insert into UserData (AccessLevel) values (\"Admin\");', '123456', 'ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1', 'Member'),
-(3, 'akbar', 'akbar@gmail.com', 'ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1', 'Member'),
-(4, 'lmfaos', 'lol', '1718c24b10aeb8099e3fc44960ab6949ab76a267352459f203ea1036bec382c2', 'Member'),
-(5, 'kelasb', 'kelasb@gmail.com', '054e3b308708370ea029dc2ebd1646c498d59d7203c9e1a44cf0484df98e581a', 'Member'),
-(7, 'Alfazi', 'zidanealfatih14@gmail.com', 'c70d47cf241e0004847b515aa069219004ecc987859d443d9d8c7507f1f3f86c', 'Member'),
-(8, 'joko', 'zidanealfatih@yahoo.com', 'dd05b4f47074fdd20fcf4db9861f4453fe9543798d913d432e9f2886ff9649dd', 'Member'),
-(9, '111', '111', 'ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1', 'Member'),
-(10, 'gwgeming', 'akbar123', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Member'),
-(12, 'Rafie1715', 'rafie@gmail.com', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Member'),
-(13, 'admin_akbar', 'bukanemailsiapasiapa@gmail.com', 'e09c3465534fa465826f34232e3e3129a794e106306dd22af14bd57c486ec839', 'Admin');
+INSERT INTO `userdata` (`UserID`, `Username`, `Email`, `Password`, `AccessLevel`, `Bio`) VALUES
+(1, 'kelompokkeren', '12345678', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Member', NULL),
+(2, 'insert into UserData (AccessLevel) values (\"Admin\");', '123456', 'ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1', 'Member', NULL),
+(3, 'akbar', 'akbar@gmail.com', 'ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1', 'Member', NULL),
+(4, 'lmfaos', 'lol', '1718c24b10aeb8099e3fc44960ab6949ab76a267352459f203ea1036bec382c2', 'Member', NULL),
+(5, 'kelasb', 'kelasb@gmail.com', '054e3b308708370ea029dc2ebd1646c498d59d7203c9e1a44cf0484df98e581a', 'Member', NULL),
+(7, 'Alfazi', 'zidanealfatih14@gmail.com', 'c70d47cf241e0004847b515aa069219004ecc987859d443d9d8c7507f1f3f86c', 'Member', NULL),
+(8, 'joko', 'zidanealfatih@yahoo.com', 'dd05b4f47074fdd20fcf4db9861f4453fe9543798d913d432e9f2886ff9649dd', 'Member', NULL),
+(9, '111', '111', 'ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1', 'Member', NULL),
+(10, 'gwgeming', 'akbar123', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Member', NULL),
+(12, 'Rafie1715', 'rafie@gmail.com', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Member', ''),
+(13, 'admin_akbar', 'bukanemailsiapasiapa@gmail.com', 'e09c3465534fa465826f34232e3e3129a794e106306dd22af14bd57c486ec839', 'Admin', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `build_component`
+-- Indeks untuk tabel `build_component`
 --
 ALTER TABLE `build_component`
   ADD PRIMARY KEY (`build_id`),
@@ -431,38 +433,38 @@ ALTER TABLE `build_component`
   ADD KEY `UserID` (`UserID`);
 
 --
--- Indexes for table `cases`
+-- Indeks untuk tabel `cases`
 --
 ALTER TABLE `cases`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `comment`
+-- Indeks untuk tabel `comment`
 --
 ALTER TABLE `comment`
   ADD KEY `PostId` (`PostId`),
   ADD KEY `UserId` (`UserId`);
 
 --
--- Indexes for table `contacts`
+-- Indeks untuk tabel `contacts`
 --
 ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `gpu`
+-- Indeks untuk tabel `gpu`
 --
 ALTER TABLE `gpu`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indexes for table `motherboard`
+-- Indeks untuk tabel `motherboard`
 --
 ALTER TABLE `motherboard`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indexes for table `posts`
+-- Indeks untuk tabel `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
@@ -470,75 +472,75 @@ ALTER TABLE `posts`
   ADD KEY `posts_ibfk_2` (`build_id`);
 
 --
--- Indexes for table `powersupply`
+-- Indeks untuk tabel `powersupply`
 --
 ALTER TABLE `powersupply`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `processor`
+-- Indeks untuk tabel `processor`
 --
 ALTER TABLE `processor`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indexes for table `ram`
+-- Indeks untuk tabel `ram`
 --
 ALTER TABLE `ram`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indexes for table `userdata`
+-- Indeks untuk tabel `userdata`
 --
 ALTER TABLE `userdata`
   ADD PRIMARY KEY (`UserID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `build_component`
+-- AUTO_INCREMENT untuk tabel `build_component`
 --
 ALTER TABLE `build_component`
   MODIFY `build_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `cases`
+-- AUTO_INCREMENT untuk tabel `cases`
 --
 ALTER TABLE `cases`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
--- AUTO_INCREMENT for table `contacts`
+-- AUTO_INCREMENT untuk tabel `contacts`
 --
 ALTER TABLE `contacts`
   MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `posts`
+-- AUTO_INCREMENT untuk tabel `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `powersupply`
+-- AUTO_INCREMENT untuk tabel `powersupply`
 --
 ALTER TABLE `powersupply`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT for table `userdata`
+-- AUTO_INCREMENT untuk tabel `userdata`
 --
 ALTER TABLE `userdata`
   MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `build_component`
+-- Ketidakleluasaan untuk tabel `build_component`
 --
 ALTER TABLE `build_component`
   ADD CONSTRAINT `build_component_ibfk_1` FOREIGN KEY (`gpu_id`) REFERENCES `gpu` (`item_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -548,14 +550,14 @@ ALTER TABLE `build_component`
   ADD CONSTRAINT `build_component_ibfk_5` FOREIGN KEY (`UserID`) REFERENCES `userdata` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `comment`
+-- Ketidakleluasaan untuk tabel `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `PostId` FOREIGN KEY (`PostId`) REFERENCES `posts` (`id`),
   ADD CONSTRAINT `UserId` FOREIGN KEY (`UserId`) REFERENCES `userdata` (`UserID`);
 
 --
--- Constraints for table `posts`
+-- Ketidakleluasaan untuk tabel `posts`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `userdata` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
