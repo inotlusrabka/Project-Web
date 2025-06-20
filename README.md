@@ -55,8 +55,7 @@ Untuk menjalankan website Computer Crafter di komputer lokal Anda, ikuti langkah
 
 ## User Manual
 
-Untuk panduan lengkap tentang cara menggunakan fitur-fitur website Computer Crafter (Login, Register, Simulasi Perakitan, Forum, dll.), silakan merujuk pada dokumen **User Manual** yang tersedia di repositori ini.
-
+Untuk panduan lengkap tentang cara menggunakan fitur-fitur website Computer Crafter (Login, Register, Simulasi Perakitan, Forum, dll.), silakan merujuk pada dokumen * [User Manual](https://drive.google.com/file/d/1Sxj9ddsZXihxkiibYBOkZipV7Qcede93/view)
 * **Login & Register:** Panduan langkah demi langkah untuk membuat akun dan masuk ke website.
 * **Simulasi PC Build:** Cara memilih komponen seperti Motherboard, CPU, GPU, RAM, Power Supply, dan Case, serta melihat total harga dan konsumsi daya.
 * **Forum Diskusi:** Cara membuat *post* baru, melihat *post* orang lain, dan menambahkan komentar.
